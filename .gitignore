@@ -1,0 +1,36 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (Vercel CLI 등 사용 시)
+node_modules/
+.npm/
+package-lock.json
+yarn.lock
+
+# Vercel
+.vercel
+.env
+.env.local
+.env.*.local
+
+# Claude Code 작업 부산물 (외부 공유 불필요)
+.claude/
+CLAUDE.md
+
+# 로컬 임시 파일
+*.log
+*.tmp
+*.bak
+.cache/
+
+# Office 자동 생성
+~$*

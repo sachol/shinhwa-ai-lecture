@@ -1,0 +1,2828 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="공인중개사를 위한 AI 활용 특강 — 180분 — ChatGPT로 광고문 5분, 카톡 응대 30초, 답사 음성 메모 즉시. 공인중개사법·위반건축물·AI 기본법 3중 준수.">
+<title>공인중개사를 위한 AI 활용 특강 (180분)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root {
+  --c-bg: #fafafa;
+  --c-paper: #ffffff;
+  --c-text: #1a1a1a;
+  --c-muted: #5a5a5a;
+  --c-primary: #1971c2;
+  --c-primary-dark: #1864ab;
+  --c-warn-bg: #fff5f5;
+  --c-warn-border: #c92a2a;
+  --c-warn-text: #842029;
+  --c-ok-bg: #ebfbee;
+  --c-ok-border: #2f9e44;
+  --c-law-bg: #f1f3f5;
+  --c-law-border: #868e96;
+  --c-code-bg: #2d2d2d;
+  --c-code-text: #f8f8f2;
+  --c-track-beg-bg: #e7f5ff;
+  --c-track-beg-text: #1971c2;
+  --c-track-int-bg: #fff3bf;
+  --c-track-int-text: #9c6f00;
+  --c-border: #e9ecef;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+body {
+  font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+  background: var(--c-bg);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5 { letter-spacing: -0.02em; line-height: 1.4; }
+h1 { font-size: 1.8em; margin: 0 0 0.4em 0; }
+h2 { font-size: 1.6em; margin: 0 0 0.6em 0; color: var(--c-primary-dark); border-bottom: 3px solid var(--c-primary); padding-bottom: 0.3em; }
+h3 { font-size: 1.25em; margin: 0 0 0.5em 0; color: #212529; }
+h4 { font-size: 1.05em; margin: 0 0 0.4em 0; color: #495057; }
+p { margin: 0 0 0.8em 0; }
+ul, ol { margin: 0 0 0.8em 0; padding-left: 1.4em; }
+li { margin-bottom: 0.3em; }
+a { color: var(--c-primary); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--c-primary-dark); }
+hr { border: none; border-top: 1px solid var(--c-border); margin: 2em 0; }
+
+/* ===== Header / Sticky Nav ===== */
+header.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--c-border);
+  padding: 12px 24px;
+}
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1200px; margin: 0 auto; }
+.site-title { font-size: 1.05em; font-weight: 700; margin: 0; color: var(--c-text); }
+.site-title small { font-weight: 500; color: var(--c-muted); font-size: 0.85em; margin-left: 8px; }
+.nav-modules { display: flex; flex-wrap: wrap; gap: 4px; max-width: 1200px; margin: 8px auto 0; }
+.nav-modules a {
+  display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 0.88em;
+  background: #f1f3f5; color: #495057; text-decoration: none; transition: all 0.15s;
+}
+.nav-modules a:hover { background: #dee2e6; color: #212529; }
+.nav-modules a.active { background: var(--c-primary); color: #fff; }
+.nav-modules a.practice-link { background: #e7f5ff; color: var(--c-primary-dark); font-weight: 600; }
+.nav-modules a.practice-link:hover { background: #d0ebff; }
+
+.header-actions { display: flex; gap: 8px; }
+.btn {
+  display: inline-block; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--c-border);
+  background: #fff; color: var(--c-text); font-family: inherit; font-size: 0.88em; cursor: pointer;
+  transition: all 0.15s;
+}
+.btn:hover { background: #f1f3f5; border-color: #adb5bd; }
+.btn-primary { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+.btn-primary:hover { background: var(--c-primary-dark); border-color: var(--c-primary-dark); }
+body.speaker-mode .btn-primary { background: #d6336c; border-color: #d6336c; }
+
+/* ===== Main layout ===== */
+main { max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+section[data-module] {
+  background: var(--c-paper);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 36px 36px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.module-meta {
+  background: #f8f9fa; border-left: 4px solid var(--c-primary); padding: 12px 16px;
+  border-radius: 0 6px 6px 0; margin: 0 0 24px 0; font-size: 0.93em;
+}
+.module-meta strong { color: var(--c-primary-dark); }
+.module-meta ul { margin: 6px 0 0 0; }
+
+/* ===== Slide article ===== */
+article.slide {
+  border: 1px solid var(--c-border); border-radius: 8px; padding: 20px 22px;
+  margin: 20px 0; background: #fff; position: relative;
+}
+article.slide::before {
+  content: attr(data-slide-label);
+  position: absolute; top: -10px; left: 16px;
+  background: var(--c-primary); color: #fff; font-size: 0.75em; font-weight: 600;
+  padding: 2px 10px; border-radius: 999px; letter-spacing: 0;
+}
+article.slide h3 { margin-top: 6px; }
+.slide-body { background: #f8f9fa; border-radius: 6px; padding: 14px 18px 14px 36px; margin: 10px 0; }
+.slide-meta { font-size: 0.83em; color: var(--c-muted); margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--c-border); }
+.slide-meta span { margin-right: 16px; }
+
+/* ===== Track labels ===== */
+.track-label {
+  display: inline-block; font-size: 0.75em; padding: 2px 9px; border-radius: 999px;
+  font-weight: 600; vertical-align: middle; margin-left: 6px; letter-spacing: 0;
+}
+.track-beginner { background: var(--c-track-beg-bg); color: var(--c-track-beg-text); }
+.track-intermediate { background: var(--c-track-int-bg); color: var(--c-track-int-text); }
+
+/* ===== Speaker notes ===== */
+aside.speaker-notes {
+  background: #fff9db; border-left: 4px solid #f59f00; border-radius: 0 6px 6px 0;
+  padding: 12px 16px; margin: 14px 0 4px; font-size: 0.95em;
+}
+aside.speaker-notes h4 { color: #9c6f00; margin-bottom: 6px; font-size: 0.92em; text-transform: uppercase; letter-spacing: 0.05em; }
+aside.speaker-notes blockquote { margin: 0; padding-left: 14px; border-left: 2px solid #ffd43b; color: #5a4500; font-style: italic; }
+body:not(.speaker-mode) aside.speaker-notes { display: none; }
+
+/* ===== Prompt code block ===== */
+pre.prompt {
+  position: relative; background: var(--c-code-bg); color: var(--c-code-text);
+  border-radius: 8px; padding: 18px 18px 50px; margin: 14px 0; overflow-x: auto;
+  font-family: 'D2Coding', 'Menlo', 'Consolas', monospace;
+  font-size: 14.5px; line-height: 1.65; letter-spacing: 0;
+}
+pre.prompt code { font-family: inherit; white-space: pre-wrap; word-break: keep-all; }
+.copy-btn {
+  position: absolute; bottom: 10px; right: 10px;
+  background: #495057; color: #fff; border: none; border-radius: 4px;
+  padding: 6px 12px; font-size: 0.82em; cursor: pointer;
+  font-family: inherit; transition: background 0.15s;
+}
+.copy-btn:hover { background: #212529; }
+.copy-btn.copied { background: #2f9e44; }
+
+/* ===== Practice section ===== */
+section.practice {
+  background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;
+  padding: 20px 22px; margin: 24px 0;
+}
+section.practice > h3 { color: #1864ab; }
+.situation { background: #fff; border-left: 4px solid #339af0; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 10px 0; }
+.situation strong { color: #1864ab; }
+details.expected { background: #fff; border: 1px solid var(--c-border); border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+details.expected summary { cursor: pointer; font-weight: 600; color: var(--c-primary-dark); }
+details.expected[open] summary { margin-bottom: 8px; }
+details.expected blockquote { margin: 8px 0; padding-left: 14px; border-left: 3px solid #adb5bd; color: #495057; }
+details.extension { background: #fff8e1; border: 1px solid #ffe066; border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+details.extension summary { cursor: pointer; font-weight: 600; color: #9c6f00; }
+
+/* ===== Warnings / OK boxes ===== */
+section.warnings {
+  background: var(--c-warn-bg); border-left: 5px solid var(--c-warn-border);
+  border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0;
+}
+section.warnings h3, section.warnings h4 { color: var(--c-warn-text); margin-top: 0; }
+section.warnings .ok-block { background: var(--c-ok-bg); border-left: 4px solid var(--c-ok-border); padding: 12px 16px; border-radius: 0 6px 6px 0; margin-top: 14px; }
+section.warnings .ok-block h4 { color: #1b5e20; }
+
+/* ===== Law citation ===== */
+aside.law-citation {
+  background: var(--c-law-bg); border-left: 4px solid var(--c-law-border);
+  padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 14px 0; font-size: 0.95em;
+}
+aside.law-citation h4 { color: #495057; font-size: 0.88em; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ===== Highlight callout (for "사진 찍으세요" type emphasis) ===== */
+.highlight-callout {
+  background: linear-gradient(135deg, #fff9db 0%, #ffec99 100%);
+  border: 2px solid #f59f00; border-radius: 8px;
+  padding: 16px 20px; margin: 18px 0; font-weight: 600;
+}
+.highlight-callout::before { content: "📸 "; font-size: 1.2em; }
+
+/* ===== Placeholder figure ===== */
+figure.placeholder {
+  border: 2px dashed #adb5bd; border-radius: 8px;
+  padding: 28px 16px; text-align: center; color: var(--c-muted);
+  background: #f8f9fa; margin: 14px 0; font-size: 0.92em;
+}
+figure.placeholder::before { content: "🖼️ "; }
+
+/* ===== Tables ===== */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 0.94em; }
+th, td { border: 1px solid var(--c-border); padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f3f5; font-weight: 600; }
+tbody tr:nth-child(even) { background: #fafafa; }
+
+/* ===== Wrap-up ===== */
+section.wrap-up {
+  background: #e7f5ff; border-radius: 8px; padding: 18px 22px; margin: 24px 0;
+  border: 1px solid #a5d8ff;
+}
+section.wrap-up h3 { color: #1864ab; }
+section.wrap-up ol { padding-left: 1.5em; }
+.action-now {
+  background: #fff; border-left: 4px solid #1971c2; padding: 12px 16px;
+  border-radius: 0 6px 6px 0; margin: 12px 0; font-weight: 500;
+}
+
+/* ===== Footer ===== */
+footer.site-footer {
+  background: #212529; color: #ced4da; padding: 32px 24px; margin-top: 60px;
+  text-align: center; font-size: 0.9em;
+}
+footer.site-footer a { color: #74c0fc; }
+
+/* ===== Mobile ===== */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  main { padding: 20px 14px 60px; }
+  section[data-module] { padding: 22px 18px 16px; border-radius: 8px; }
+  article.slide { padding: 16px 14px; }
+  pre.prompt { font-size: 13px; padding: 14px 14px 46px; }
+  header.site-header { padding: 10px 14px; }
+  .header-row { flex-wrap: wrap; }
+  .nav-modules { gap: 3px; }
+  .nav-modules a { padding: 5px 9px; font-size: 0.82em; }
+  .site-title { font-size: 0.95em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.1em; }
+  table { font-size: 0.86em; }
+  th, td { padding: 6px 8px; }
+}
+
+/* ===== Print ===== */
+@media print {
+  body { background: #fff; font-size: 11pt; line-height: 1.55; }
+  header.site-header, footer.site-footer, .copy-btn, .header-actions, .nav-modules { display: none !important; }
+  main { max-width: 100%; padding: 0; }
+  section[data-module] { page-break-before: always; box-shadow: none; border: none; padding: 0; margin: 0 0 24px; }
+  section[data-module]:first-of-type { page-break-before: auto; }
+  article.slide { page-break-inside: avoid; border: 1px solid #ccc; }
+  aside.speaker-notes { display: block !important; background: #fff; border-left: 3px solid #888; color: #333; }
+  aside.speaker-notes h4 { color: #333; }
+  pre.prompt { background: #f4f4f4; color: #222; border: 1px solid #ccc; page-break-inside: avoid; padding-bottom: 14px; }
+  a { color: #1864ab; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.78em; color: #555; }
+  .highlight-callout { background: #fff; border: 1.5px solid #888; }
+  section.warnings { background: #fff; border-left: 4px solid #c92a2a; }
+  section.practice, section.wrap-up { background: #fff; border: 1px solid #ccc; }
+}
+
+/* 강사 진행 가이드 박스 (강사 모드 전용) */
+section.instructor-guide {
+  margin: 24px 0;
+  padding: 18px 22px;
+  background: #fff9db;
+  border-left: 5px solid #fab005;
+  border-radius: 6px;
+}
+section.instructor-guide h3 {
+  margin: 0 0 6px;
+  color: #845e00;
+  font-size: 1.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+section.instructor-guide h3::before {
+  content: "🎤";
+  font-size: 1.1em;
+}
+section.instructor-guide .ig-note {
+  font-size: 0.88em;
+  color: #845e00;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+section.instructor-guide ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+section.instructor-guide li { margin: 6px 0; }
+body:not(.speaker-mode) section.instructor-guide { display: none; }
+
+/* 인쇄 시에도 강사 가이드 표시 */
+@media print {
+  section.instructor-guide { display: block !important; page-break-inside: avoid; }
+}
+
+/* 옵션 라벨 */
+.option-label {
+  display: inline-block;
+  font-size: 0.75em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e7f5ff;
+  color: #1971c2;
+  border: 1px solid #74c0fc;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-row">
+    <h1 class="site-title">공인중개사를 위한 AI 활용 특강 <small>180분 · 6모듈 · 110슬라이드</small></h1>
+    <div class="header-actions">
+      <button class="btn btn-primary" id="speaker-mode-toggle" type="button">강사 모드 ON</button>
+      <button class="btn" id="print-btn" type="button">인쇄</button>
+    </div>
+  </div>
+  <nav class="nav-modules" aria-label="모듈 목차">
+    <a href="#module-1">M1 오프닝</a>
+    <a href="#module-2">M2 광고문</a>
+    <a href="#module-3">M3 마스킹</a>
+    <a href="#module-4">M4 검증</a>
+    <a href="#module-5">M5 통합실습</a>
+    <a href="#module-6">M6 Q&amp;A</a>
+    <a href="practice.html" class="practice-link">📋 실습 자료</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================================================
+     COURSE INTRO
+============================================================ -->
+<section id="intro" style="background:#fff;border:1px solid var(--c-border);border-radius:12px;padding:32px 36px;margin-bottom:32px;">
+  <h2 style="border:none;padding:0;">강의 개요</h2>
+  <p><strong>총 180분</strong> (휴식 2회 10분씩 포함) · 입문~중급 혼합 공인중개사 15~30명 · 강사 시연 40% + 청중 실습 40% + Q&amp;A 20%</p>
+
+  <h3>오늘 끝나면 할 수 있는 것</h3>
+  <ol>
+    <li>ChatGPT/Claude로 매물 광고문을 <strong>공인중개사법 제18조의2 + 위반건축물 표기(2025.1.1) + AI 기본법 제31조 라벨링(2026.1.22)</strong> 3중 규제를 자동 준수하며 생성</li>
+    <li>고객 응대 카톡·이메일 초안을 <strong>개인정보 마스킹 후</strong> AI에 입력</li>
+    <li>답사 현장에서 <strong>모바일 음성 메모 30초 → 광고 초안</strong> 워크플로우 실행</li>
+    <li>AI 답변을 <strong>1차 출처 5단계 검증 체크리스트</strong>로 재확인</li>
+    <li>AI 라벨 의무 위반(과태료 3,000만원) 등 법적 리스크 회피</li>
+  </ol>
+
+  <h3>사전 준비물</h3>
+  <ul>
+    <li>노트북 (Windows/Mac 무관, 크롬 또는 엣지)</li>
+    <li>ChatGPT 계정 (무료, gmail로 1분 가입)</li>
+    <li>카카오톡 PC 버전 (실습용)</li>
+    <li>사무소 임의 매물 1개 정보 (주소·평수·층·향·가격) — 단, 호수는 마스킹</li>
+  </ul>
+
+  <h3>모듈 시퀀스</h3>
+  <table>
+    <thead><tr><th>시각</th><th>모듈</th><th>주제</th><th>시간</th></tr></thead>
+    <tbody>
+      <tr><td>00:00</td><td><a href="#module-1">M1</a></td><td>오프닝 + AI 첫 켜기</td><td>25분</td></tr>
+      <tr><td>00:25</td><td><a href="#module-2">M2</a></td><td>매물 광고문 + 법령 3중 준수</td><td>40분</td></tr>
+      <tr><td>01:05</td><td>☕</td><td>휴식 1</td><td>10분</td></tr>
+      <tr><td>01:15</td><td><a href="#module-3">M3</a></td><td>고객 응대 + 개인정보 마스킹</td><td>35분</td></tr>
+      <tr><td>01:50</td><td><a href="#module-4">M4</a></td><td>시장·법령 리서치 + 환각 검증</td><td>30분</td></tr>
+      <tr><td>02:20</td><td>☕</td><td>휴식 2</td><td>10분</td></tr>
+      <tr><td>02:30</td><td><a href="#module-5">M5</a></td><td>통합 실습 (답사→음성→광고→발송)</td><td>30분</td></tr>
+      <tr><td>03:00</td><td><a href="#module-6">M6</a></td><td>Q&amp;A + 내일 시작 액션플랜</td><td>10분</td></tr>
+    </tbody>
+  </table>
+
+  <h3>표준 가상 매물 · 표준 가상 고객 (전 모듈 공통)</h3>
+  <div class="situation">
+    <p><strong>표준 매물:</strong> 서울 마포구 공덕동 OO오피스텔, 전용 23㎡(약 7평), 신축(2025년 준공), 보증금 5천만원 / 월세 80만원, 공덕역 5호선·6호선·공항철도 도보 3분, 남향, 12층 / 20층, 빌트인 풀옵션(에어컨·세탁기·냉장고·인덕션), 즉시 입주 가능, 위반건축물 해당 없음.</p>
+    <p><strong>표준 고객:</strong> 고객A — 30대 여성, 1인 가구 직장인, 마포 근무지, 1~2년 거주 예정.</p>
+  </div>
+
+  <p style="color:var(--c-muted);font-size:0.9em;margin-top:24px;">
+    <span class="track-label track-beginner">입문 필수</span> <span class="track-label track-intermediate">중급 심화</span> 트랙 라벨을 슬라이드마다 표시합니다. 우상단 <strong>강사 모드</strong> 버튼으로 강사 스크립트를 모두 펼쳐볼 수 있습니다.
+  </p>
+</section>
+
+<!-- ============================================================
+     MODULE 1 — 오프닝 + AI 첫 켜기 (25분, 14 슬라이드)
+============================================================ -->
+<section data-module="1" id="module-1">
+  <h2>모듈 1 — 오프닝 + AI 첫 켜기</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 25분 · <strong>슬라이드:</strong> 14장 · <strong>실습:</strong> 1개 (실습 1-A)
+    <ul>
+      <li><strong>입문 학습 목표:</strong> ChatGPT 가입을 마치고, 한국어로 첫 프롬프트를 입력해 응답을 받는다. "개인정보 절대 금지" 원칙을 머리에 박는다.</li>
+      <li><strong>중급 학습 목표:</strong> ChatGPT vs Claude 차이를 이해하고, 데이터 학습 옵트아웃 설정 경로를 본인 계정에서 끈다. Plus($20) 결제 시점 판단 기준을 갖는다.</li>
+    </ul>
+  </div>
+
+  <article class="slide" data-slide="1-1" data-slide-label="Slide 1-1">
+    <h3>강의 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>공인중개사를 위한 AI 활용 특강</li>
+      <li>광고문 5분 / 응대 30초 / 답사 메모 즉시</li>
+      <li>2026년 1월 22일 AI 기본법 시행 대응</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 공덕역 인근 사무소 야경 (강사 배경 이미지)</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"안녕하세요, 반갑습니다 여러분. 오늘 3시간 동안 ChatGPT 같은 AI를 우리 공인중개사 업무에 어떻게 바로 써먹을 수 있을지 같이 보려고 해요. 결론부터 말씀드릴게요. 평소에 30분 걸리던 광고문, 5분이면 끝나요. 답사 메모요? 차에서 음성으로 30초면 됩니다. 진짜예요. 단, 한 가지 — 법적으로 안전하게 써야 하거든요. 2026년 1월 22일부터 AI 기본법이 시행됐잖아요. 그것까지 같이 배워볼게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span><span>상호작용: 없음 (인사)</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-2" data-slide-label="Slide 1-2">
+    <h3>강사 자기소개 &amp; 오늘의 약속 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>강사 이름·경력 1줄</li>
+      <li>오늘 끝나면 여러분이 할 수 있는 것 3가지
+        <ol>
+          <li>ChatGPT로 광고문 5분 작성</li>
+          <li>카톡 응대 초안 30초 받기</li>
+          <li>답사 메모를 음성으로 정리</li>
+        </ol>
+      </li>
+    </ul>
+    <figure class="placeholder">스크린샷: 강사 프로필 사진</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"저요, ○○에서 ○년 동안 공인중개사 했어요. 작년부터 AI를 본격적으로 만져보기 시작했고요. 오늘 끝나면 여러분, 딱 세 가지는 진짜 가져가실 수 있어요 — 광고문 5분 만에 쓰는 거, 카톡 답장 30초 만에 받는 거, 그리고 답사 메모를 음성으로 바로 정리하는 거. 이거 하나만 해도 매일 1시간은 아끼시거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-3" data-slide-label="Slide 1-3">
+    <h3>청중 거수 — "ChatGPT 써본 적 있는 분?" <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>손 들어주세요
+        <ul>
+          <li>아예 처음이세요?</li>
+          <li>가입은 했는데 두세 번 써본 정도?</li>
+          <li>매일 쓰고 계세요?</li>
+        </ul>
+      </li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 솔직하게 손 한번 들어볼까요? 첫 번째 — ChatGPT 한 번도 안 써보신 분? (잠시 기다림) 네네, 좋아요. 두 번째 — 가입은 했는데 두세 번 정도 써보신 분? (기다림) 세 번째 — 매일 쓰시는 분? (기다림) 좋습니다. 오늘 강의는 첫 번째 분들 기준으로 갈 거예요. 대신 중급 트랙도 슬라이드에 분명히 표시해드릴게요. 두세 번 써보신 분들은요, 옆자리 처음 오신 분 좀 도와드리세요. 그게 오늘 제일 빨리 배우는 길이거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span><span>상호작용: 거수 3회</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-4" data-slide-label="Slide 1-4">
+    <h3>AI는 무엇을 잘하나 — 광고문·요약·번역 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>잘하는 것</strong>
+        <ul>
+          <li>매물 광고문 초안 (5분 → 30초)</li>
+          <li>카톡 답장 톤 정리</li>
+          <li>긴 문서 요약 (건축물대장 PDF 등)</li>
+        </ul>
+      </li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, AI가 뭘 잘하는지부터 짚고 갈게요. 첫째, 글쓰기 초안이요. 광고문 30분 걸리던 거 30초로 줄여줘요. 둘째, 카톡 답장 톤 다듬기. 친절하게, 전문가답게, 공손하게 — 톤만 바꿔달라고 하면 바로 바꿔주거든요. 셋째, 긴 PDF 요약. 건축물대장 50쪽짜리 통째로 넣어도 핵심 3줄로 정리해줘요. 이게 AI가 진짜 잘하는 영역이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-5" data-slide-label="Slide 1-5">
+    <h3>AI가 못하는 것 — 실시간 시세·정확한 법령 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>못하는 것 (절대 믿지 말 것)</strong>
+        <ul>
+          <li>오늘 실거래가</li>
+          <li>공인중개사법 정확한 조문 번호</li>
+          <li>판례 사건번호</li>
+        </ul>
+      </li>
+      <li>"그럴듯한 거짓말" = <strong>환각(hallucination)</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"반대로요, 절대 믿으면 안 되는 것도 있어요. 첫째, 오늘 강남구 실거래가? AI는 몰라요. 그냥 그럴듯하게 추측해서 말해줄 뿐이에요. 둘째, 법령 조문. ChatGPT가 '공인중개사법 제○○조에 따르면…' 이렇게 자신 있게 말하는데, 그 조문이 아예 없는 경우가 진짜 자주 있어요. 셋째, 판례 사건번호. 미국에서 변호사가 ChatGPT가 만든 가짜 판례 6건을 법원에 냈다가 제재받은 사건도 있었거든요. 이걸 '환각'이라고 해요. 그럴듯한 거짓말이죠. 이거 모듈 4에서 검증하는 법 배울 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="1-6">
+    <h3>📢 Slide 1-6 — 빨간 경고 · 절대 금지 5종 <span class="track-label track-beginner">입문 필수</span></h3>
+    <p><strong>절대 ChatGPT에 입력 금지:</strong></p>
+    <ol>
+      <li>고객 실명</li>
+      <li>고객 전화번호</li>
+      <li>정확한 주소·호수</li>
+      <li>주민등록번호·계좌번호</li>
+      <li>신분증·등기부 사본 이미지</li>
+    </ol>
+    <p>이유: 외산 AI 서버 저장 → 개인정보보호법 위반 소지</p>
+    <div class="highlight-callout">사진 한 장 찍어두세요. 오늘 가장 중요한 슬라이드입니다.</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 여기가 오늘 가장 중요한 슬라이드예요. 사진 한 장 꼭 찍어두세요. ChatGPT, Claude 같은 외산 AI에 절대 넣으면 안 되는 5가지. 고객 실명, 전화번호, 정확한 호수, 주민번호와 계좌, 그리고 신분증 사본. 왜 그러냐면요, 입력값이 미국 서버에 저장될 수 있고, 일부는 학습에 쓰일 수도 있거든요. 그러면 개인정보보호법 제28조의8 국외 이전 동의 의무를 어기게 됩니다. 그래서 우리는 항상 '고객A', '○○○호', '010-****-****'로 마스킹해요. 모듈 3에서 본격적으로 배울 거예요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="1-7" data-slide-label="Slide 1-7">
+    <h3>ChatGPT vs Claude — 한 줄 비교 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li><strong>ChatGPT:</strong> 광고문·카톡 초안에 강함</li>
+      <li><strong>Claude:</strong> 긴 계약서·건축물대장 PDF 요약에 강함</li>
+      <li>둘 다 무료 플랜 있음 (월 $20 Plus는 한 달 써본 후)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 중급 트랙 슬라이드예요. 처음 오신 분들은 메모만 하고 가볍게 넘기시면 돼요. ChatGPT랑 Claude — 둘 다 미국 회사 AI인데요, 역할을 좀 나눠서 쓰시면 좋아요. ChatGPT는 짧은 글, 광고문, 카톡 초안에 강하고요. Claude는 긴 PDF — 계약서 30쪽이나 건축물대장 50쪽 — 통째로 넣어서 요약하는 데 강해요. 둘 다 무료부터 시작하시고, 한 달 써보다가 답답해지면 그때 월 $20 결제하시면 돼요. 자, 지금부터는 ChatGPT 기준으로 갈게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-8" data-slide-label="Slide 1-8">
+    <h3>ChatGPT 가입 — 3단계 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>크롬에서 <code>chatgpt.com</code> 접속</li>
+      <li>"Sign up" → 구글 계정 선택</li>
+      <li>휴대폰 번호 인증 (1분)</li>
+    </ol>
+    <p>끝. 회원가입 비용 없음.</p>
+    <figure class="placeholder">스크린샷: ChatGPT 가입 화면 (Sign up 버튼 강조)</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 본격 실습 들어갈게요. 크롬 브라우저 열고 chatgpt.com 쳐보세요. c-h-a-t-g-p-t 점 c-o-m. 우측 상단에 'Sign up' 있죠? 그거 누르시고, 구글 계정 선택. 평소 쓰시는 G메일로 1초면 돼요. 휴대폰 번호 인증 한 번 하시면 회원가입 끝. 비용 안 들어요. 5분 드릴게요. 옆자리 분이랑 같이 도와가면서 가입해보세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 5분 (실습)</span><span>강사·조교 1:N 지원 / 가입 완료 시 손들기</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-9" data-slide-label="Slide 1-9">
+    <h3>첫 화면 — 채팅창 위치 안내 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>가운데 큰 입력창</strong> = 여기에 한국어로 말 걸기</li>
+      <li><strong>좌측 사이드바</strong> = 대화 기록</li>
+      <li><strong>우측 상단 프로필</strong> = 설정 (옵트아웃은 여기서)</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT 첫 화면 — 입력창에 화살표 표시</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"가입 끝나신 분들, 화면 보시면 한가운데 큰 입력창 있죠? 거기다 한국어로 그냥 말 걸면 돼요. 사장님이나 부장님께 말하듯이요. 영어요? 필요 없어요. 왼쪽에는 그동안 했던 대화 목록이 쭉 쌓이고요, 오른쪽 위 프로필 누르면 설정이 나와요. 중급 트랙 분들은요, 잠시 후에 거기서 데이터 학습 옵트아웃 끄는 법 보여드릴게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="1-10" data-slide-label="Slide 1-10">
+    <h3>첫 프롬프트 — 어색함 깨기 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>다 같이 입력해보세요</li>
+      <li>매물 정보는 다음 모듈부터. 지금은 가볍게.</li>
+    </ul>
+    <pre class="prompt"><code id="prompt-1a">안녕, 나는 서울에서 일하는 공인중개사야. 오늘 점심 메뉴 추천해줘.</code><button class="copy-btn" type="button" data-target="prompt-1a">📋 복사</button></pre>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 실습 1번이에요. 입력창에 이 문장 그대로 쳐보세요. '안녕, 나는 서울에서 일하는 공인중개사야. 오늘 점심 메뉴 추천해줘.' 엔터. 매물 정보는 다음 모듈부터 본격적으로 다룰 거고요, 지금은 그냥 어색함 깨는 거예요. 평소 사장님이나 부장님께 카톡 보내듯이요. ChatGPT가 점심 추천해줄 거예요. 받으신 분들은 옆자리 분이랑 결과 한번 비교해보세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (실습)</span><span>받은 응답 옆자리와 공유</span></div>
+  </article>
+
+  <section class="practice" data-practice="1-A">
+    <h3>실습 1-A: 첫 프롬프트</h3>
+    <div class="situation">
+      <strong>상황:</strong> 가입 직후 어색함 깨기. 매물 정보 없이 가벼운 질문으로 첫 응답 받아보기.
+    </div>
+    <p><strong>복사용 프롬프트:</strong></p>
+    <pre class="prompt"><code id="prompt-1a-full">안녕, 나는 서울에서 일하는 공인중개사야. 오늘 점심 메뉴 추천해줘.</code><button class="copy-btn" type="button" data-target="prompt-1a-full">📋 복사</button></pre>
+    <details class="expected">
+      <summary>예상 결과 (ChatGPT 출력 예시)</summary>
+      <blockquote>"안녕하세요! 공인중개사 일 하시느라 고생 많으시죠. 오늘 점심으로는 가까운 직장인 식당의 김치찌개 정식이나, 시간이 부족하시면 김밥과 라면 세트 같은 간편식도 좋겠어요. 답사 일정이 많은 날이라면 든든하게 백반 정식을 추천드립니다…"</blockquote>
+    </details>
+    <details class="extension">
+      <summary>확장 과제 (중급자용)</summary>
+      <p>같은 ChatGPT 창에 이어서 "그러면 답사 사이 5분만에 먹을 수 있는 메뉴로 다시 추천해줘"라고 입력해보세요. AI가 앞 대화를 기억해 새 조건만 반영해 다시 답합니다.</p>
+    </details>
+    <p style="font-size:0.88em;color:var(--c-muted);">⏱ 약 3분</p>
+  </section>
+
+  <article class="slide" data-slide="1-11" data-slide-label="Slide 1-11">
+    <h3>데이터 학습 옵트아웃 설정 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>우측 상단 프로필 → <strong>Settings</strong></li>
+      <li><strong>Data Controls</strong> → "Improve the model for everyone" <strong>OFF</strong></li>
+      <li>입력값이 학습에 안 쓰임 (개인정보 보호 1차 방어선)</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT Settings &gt; Data Controls 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 중급 트랙이에요. 처음 오신 분들은 화면만 봐주세요. ChatGPT 우측 상단 프로필 누르고, Settings 들어가요. 거기서 Data Controls — 데이터 컨트롤이라는 항목이 있어요. 그 안에 'Improve the model for everyone'을 OFF로 끄세요. 이거 끄면 우리가 입력한 내용이 OpenAI 학습 데이터로 안 쓰여요. 개인정보 보호의 1차 방어선이거든요. 근데요, 이거 켰든 껐든 우리는 항상 마스킹합니다 — 이건 무조건 기본 원칙이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="1-12">
+    <h3>Slide 1-12 — 흔한 실수 박스 <span class="track-label track-beginner">입문 필수</span></h3>
+    <h4>❌ 이렇게 하지 마세요</h4>
+    <ul>
+      <li>"고객 김민수(010-1234-5678)가 마포구 공덕동 OO오피스텔 1203호 보고 싶대" → AI에 직접 입력</li>
+      <li>"오늘 강남구 84㎡ 아파트 실거래가 알려줘" → AI는 모름</li>
+    </ul>
+    <div class="ok-block">
+      <h4>✅ 이렇게 하세요</h4>
+      <ul>
+        <li>"고객A가 공덕동 신축 오피스텔을 보고 싶어해. 답장 초안 줘." → 마스킹 후 입력</li>
+        <li>실거래가는 <a href="https://rt.molit.go.kr" target="_blank" rel="noopener">rt.molit.go.kr</a>에서 직접 조회 후, AI에는 요약만 시키기</li>
+      </ul>
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 오늘의 흔한 실수예요. 왼쪽 빨간 박스 보세요 — 고객 이름·전화번호·정확한 호수까지 ChatGPT에 통째로 넣는 거. 이거 절대 금지예요. 오른쪽 빨간 박스 — '오늘 강남구 실거래가 얼마야?' 이렇게 묻는 거. AI는 오늘 시세 몰라요. 그럴듯하게 추측만 하거든요. 초록 박스 한번 보세요. 마스킹해서 '고객A'로, 실거래가는 국토부 사이트에서 직접 조회한 다음에 AI한테는 정리만 시키는 거예요. 이게 안전한 사용법이에요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="1-13" data-slide-label="Slide 1-13">
+    <h3>Plus 결제 시점 판단 기준 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>무료부터 시작 → 한 달 사용 → 답답하면 결제</li>
+      <li><strong>Plus 결제 시점 신호 3가지</strong>
+        <ol>
+          <li>무료 한도 자주 소진됨 ("한 시간 후 다시" 메시지)</li>
+          <li>GPTs(맞춤 챗봇)에 사무소 양식 등록하고 싶을 때</li>
+          <li>모바일 고급 음성 모드를 자주 쓰고 싶을 때</li>
+        </ol>
+      </li>
+      <li>가격: 월 $20 (한국 결제 시 부가세 포함 약 29,000원)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"중급 트랙 한 장만 더 갈게요. 'Plus 결제는 언제 해야 하나요?' 이거 진짜 많이 물어보세요. 답은 간단해요. 한 달 무료로 일단 써보세요. 그러다가 다음 세 가지 중에 하나라도 해당되면 그때 결제하시면 돼요. 첫째, 무료 한도 자주 소진돼서 '한 시간 후 다시 시도' 메시지가 자꾸 뜬다. 둘째, GPTs라는 맞춤 챗봇에 우리 사무소 광고 양식을 등록하고 싶다 — 이건 모듈 2에서 시연해드릴게요. 셋째, 모바일 음성 모드로 답사 메모를 자주 받고 싶다 — 이건 모듈 5 통합 실습에서요. 그 전까지는 무료로도 충분해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="wrap-up" data-slide="1-14">
+    <h3>Slide 1-14 — 모듈 1 정리 + 다음 모듈 미리보기</h3>
+    <p><strong>오늘 배운 3가지:</strong></p>
+    <ol>
+      <li>ChatGPT 가입 + 첫 한국어 프롬프트</li>
+      <li>AI가 잘하는 것 / 못하는 것</li>
+      <li>개인정보 절대 금지 5종</li>
+    </ol>
+    <div class="action-now">
+      <strong>오늘 사무실 돌아가서 바로 할 1가지:</strong><br>
+      휴대폰에 ChatGPT 앱을 설치하고, 카카오톡 옆 자리에 둔다. 내일 아침 첫 매물 문의가 오면 답변 초안을 ChatGPT에 한 번 돌려본다.
+    </div>
+    <p><strong>다음 모듈 미리보기:</strong> 매물 광고문 5분 작성 + 광고법 3중 준수 (모듈 2)</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 모듈 1 정리할게요. 첫째, ChatGPT 가입하고 한국어로 처음 말 걸어봤어요. 둘째, AI는 광고문·요약·번역은 잘하는데 실시간 시세나 법령은 못 해요. 셋째, 개인정보 5종 절대 금지. 오늘 사무실 가시면 딱 하나만 하세요 — 휴대폰에 ChatGPT 앱 깔고 카톡 옆자리에 두기. 내일 첫 매물 문의 오면 답변 초안 한번 돌려보시는 거예요. 다음 모듈은 본격적인 매물 광고문 작성이에요 — 5분 안에 광고법까지 자동으로 지키는 프롬프트 만들 거고요. 잠깐 물 한 모금 드시고 5분 안에 시작할게요."</blockquote>
+    </aside>
+  </section>
+</section><!-- /module-1 -->
+
+<!-- ============================================================
+     MODULE 2 — 매물 광고문 + 법령 3중 준수 (40분, 24 슬라이드)
+============================================================ -->
+<section data-module="2" id="module-2">
+  <h2>모듈 2 — 매물 광고문 + 법령 3중 준수</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 40분 · <strong>슬라이드:</strong> 24장 · <strong>실습:</strong> 1개 (실습 2-A)
+    <ul>
+      <li><strong>★ 강의 결정적 차별화 포인트:</strong> AI 기본법 제31조(2026.1.22) + 위반건축물 표기 의무(2025.1.1) + 광고법 금지 표현 블랙리스트</li>
+      <li><strong>입문 학습 목표:</strong> 매물 정보 5종을 입력해 광고문 3톤 초안을 5분 안에 생성. 금지 표현 육안 검수.</li>
+      <li><strong>중급 학습 목표:</strong> GPTs/Claude Projects에 사무소 표준 등록. 3중 의무를 시스템 프롬프트에 영구 내장.</li>
+    </ul>
+  </div>
+
+  <article class="slide" data-slide="2-1" data-slide-label="Slide 2-1">
+    <h3>모듈 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>모듈 2 / 매물 광고문 + 법령 3중 준수</li>
+      <li>40분 — 시연 + 실습</li>
+      <li>오늘의 키워드: <strong>광고법 / 위반건축물 / AI 기본법</strong></li>
+    </ul>
+    <figure class="placeholder">스크린샷: 마포구 공덕동 야경 + 광고문 텍스트 합성 이미지</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 본격적인 첫 모듈입니다. 모듈 2. 매물 광고문 만드는 법이에요. 근데 그냥 만드는 게 아니라 — 법령 세 개를 동시에 지키면서 만들어요. 공인중개사법, 2025년 1월 1일부터 시행된 위반건축물 표기 의무, 그리고 결정적으로 2026년 1월 22일부터 시행된 AI 기본법. 여러분, 이 세 가지를 매번 신경 쓰면요, 광고문 한 장 만드는 데 한 시간 걸려요. 그래서 우리는 프롬프트 안에 다 박아둘 거예요. 한 번 만들어두면 1년 동안 자동으로 지켜지거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-2" data-slide-label="Slide 2-2">
+    <h3>학습 목표 (입문/중급 분리)</h3>
+    <div class="slide-body">
+      <p><strong><span class="track-label track-beginner">입문 필수</span></strong></p>
+      <ul>
+        <li>매물 정보 5종 입력 → 광고문 3톤 자동 생성</li>
+        <li>출력 육안 검수 (금지 표현·명시사항 누락 체크)</li>
+      </ul>
+      <p><strong><span class="track-label track-intermediate">중급 심화</span></strong></p>
+      <ul>
+        <li>GPTs / Claude Projects에 사무소 표준 등록</li>
+        <li>광고법·위반건축물·AI 라벨 3중 의무 시스템 프롬프트 내장</li>
+      </ul>
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"오늘 입문자는 딱 두 가지만 가져가시면 돼요. 첫째, 매물 5개 정보를 어떻게 입력해야 광고문 3개 톤이 한 번에 나오는지. 둘째, 나온 결과를 어떻게 검수하는지. 중급자분들은 한 단계 더 가요 — 우리 사무소 전용 챗봇을 만들어서 매번 프롬프트 설명할 필요 없게 자동화하는 데까지 갈 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-3" data-slide-label="Slide 2-3">
+    <h3>도입 — 미국 부동산 사례 (한국경제 보도) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>한국경제 2023년 보도</li>
+      <li>미국 중개사: 4베드룸 소개글 작성</li>
+      <li>종전 1시간 → ChatGPT로 5초</li>
+      <li>우리는 5분으로 — 법령 검수 포함</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 한국경제 기사 캡처</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"2023년 한국경제 기사에 나온 미국 사례예요. 미국 중개업자가 4베드룸 매물 소개글 한 시간 걸리던 거 ChatGPT로 5초 만에 만들었대요. 5초. 근데요, 미국은 우리 같은 광고법, 위반건축물 표기, AI 라벨 의무가 없잖아요. 그래서 우리는 5초가 아니라 5분이 목표예요. 대신 법령 세 개를 자동으로 지키면서요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-4" data-slide-label="Slide 2-4">
+    <h3>법령 시행 타임라인 <span class="track-label track-beginner">입문 필수</span></h3>
+    <div class="slide-body">
+      <p><strong>▼ 시행 순서 (시간 순)</strong></p>
+      <ul>
+        <li><strong>2025.1.1</strong> — 위반건축물 표기 의무 (공인중개사법 행정규칙)</li>
+        <li><strong>2026.1.22</strong> — AI 기본법 제31조 (AI 생성 콘텐츠 라벨)</li>
+        <li><strong>기존</strong> — 공인중개사법 제18조의2 (명시사항·금지 표현)</li>
+      </ul>
+    </div>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <ul>
+        <li><strong>공인중개사법 제18조의2</strong> — 광고 명시사항 의무</li>
+        <li><strong>공인중개사법 행정규칙 (2025.1.1 시행)</strong> — 위반건축물 표기 의무</li>
+        <li><strong>AI 기본법 제31조 (2026.1.22 시행)</strong> — AI 생성 콘텐츠 라벨링 의무</li>
+      </ul>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"법령 시행 시점이 헷갈리기 쉬워서 슬라이드 한 장 보여드릴게요. 첫째, 2025년 1월 1일 — 작년부터 시행됐죠. 위반건축물이면 광고문에 '위반건축물'이라고 반드시 기재해야 해요. 둘째, 올해 2026년 1월 22일 — 넉 달 전에 시행됐어요. AI 기본법. AI로 만든 콘텐츠에는 'AI 생성' 표시를 해야 합니다. 위반하면 과태료가 무려 3,000만원이에요. 그리고 셋째, 원래부터 있던 공인중개사법 제18조의2 — 명시사항 7개와 금지 표현이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-5" data-slide-label="Slide 2-5">
+    <h3>공인중개사법 제18조의2 — 명시사항 7개 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>소재지</li>
+      <li>면적 (전용·공용 구분)</li>
+      <li>가격</li>
+      <li>거래형태 (매매/전세/월세)</li>
+      <li>사무소 명칭·전화번호·등록번호</li>
+      <li>개업공인중개사 성명</li>
+      <li>건축물 사용승인일</li>
+    </ol>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>공인중개사법 제18조의2 제1항</strong> — 광고 명시사항 7개 · 중개보조원에 관한 사항은 명시 금지</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"공인중개사법 제18조의2가 요구하는 명시사항 7개예요. 외우실 필요는 없어요 — 어차피 프롬프트에 박아둘 거니까요. 그래도 한 번 짚고 갈게요. 소재지, 면적, 가격, 거래형태, 사무소 정보, 개업공인중개사 성명, 건축물 사용승인일. 그리고 결정적으로요 — 중개보조원에 관한 사항은 명시하면 안 됩니다. 광고에 보조원 이름이나 연락처 나오면 안 돼요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-6" data-slide-label="Slide 2-6">
+    <h3>위반건축물 표기 의무 (2025.1.1) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body" style="background:#fff9db;border-left:4px solid #f59f00;">
+      <li>시행일: <strong>2025년 1월 1일</strong></li>
+      <li>한방·네이버·당근 등 외부광고 시</li>
+      <li>매물설명란에 "<strong>위반건축물</strong>" 반드시 기재</li>
+      <li>위반 시 과태료 (공인중개사법)</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 네이버 부동산 광고 캡처에 "위반건축물" 표시 강조</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여기서부터가 진짜 중요해요. 작년 1월 1일부터요 — 위반건축물이면 광고에 '위반건축물'이라고 반드시 적어야 해요. 한방, 네이버 부동산, 당근, 어디에 광고하든 매물설명란에 꼭 명기하셔야 합니다. 무단증축, 무단용도변경 같은 거 다 해당돼요. 건축물대장 확인하셨을 때 위반사항 있으면 절대 빼먹지 마세요. 잠시 후에 프롬프트에 자동으로 이게 들어가도록 설계해드릴게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="2-7">
+    <h3>📢 Slide 2-7 — ★ AI 기본법 제31조 (2026.1.22) · 라벨 의무 ★ <span class="track-label track-beginner">입문 필수</span></h3>
+    <p><strong>AI 기본법 제31조 — 인공지능 투명성 확보 의무</strong></p>
+    <ul>
+      <li>시행일: <strong>2026년 1월 22일</strong></li>
+      <li>생성형 AI로 만든 광고·콘텐츠 사용 시 <strong>사전 고지 의무</strong></li>
+      <li>위반 시 <strong>과태료 최대 3,000만원</strong></li>
+      <li>광고 하단 고정 멘트:
+        <blockquote style="margin:8px 0;padding:8px 12px;background:#fff;border-left:3px solid var(--c-warn-border);">"본 콘텐츠 일부는 AI로 제작되었습니다."</blockquote>
+      </li>
+    </ul>
+    <div class="highlight-callout">이 슬라이드는 사진 찍어두세요. 오늘 강의의 가장 큰 변경 사항.</div>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>AI 기본법 제31조 (2026.1.22 시행)</strong> — 인공지능 투명성 확보 의무 · 과태료 최대 3,000만원</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 이 슬라이드는 사진 꼭 찍어두세요. 오늘 강의의 가장 큰 변경 사항이거든요. AI 기본법 제31조. 올해 1월 22일 시행. 우리가 ChatGPT로 만든 광고문이나 AI로 만든 이미지를 광고에 쓸 때는요, 광고 하단에 'AI로 제작됐다'고 고지해야 해요. 위반 시 과태료 3,000만원입니다. 공인중개사법 광고 위반 과태료가 500만원인데요, AI 기본법은 6배예요. 이중 리스크라는 거죠. 그래서 우리 프롬프트에는 'AI 라벨 멘트를 반드시 광고문 끝에 붙여라'를 박아둘 거예요. 빼먹을 수가 없게요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="2-8" data-slide-label="Slide 2-8">
+    <h3>광고법 금지 표현 — 블랙리스트 <span class="track-label track-beginner">입문 필수</span></h3>
+    <div class="slide-body">
+      <p><strong>절대 쓰지 말 단어 (광고법·표시광고법 위반):</strong></p>
+      <ul>
+        <li>"최고 / 최저가 / 유일"</li>
+        <li>"확정 / 보장 / 무조건 / 100%"</li>
+        <li>"사실상 / 압도적"</li>
+        <li>"초역세권 / 한강 전체 조망"</li>
+      </ul>
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 광고법에서 절대 금지하는 표현들이에요. ChatGPT가 우리가 시키지도 않았는데 자연스럽게 막 만들어내는 단어들이거든요. '최고급 신축', '단지 내 최저가', '확정 수익률', '초역세권' 이런 거. AI는 매력적인 카피 만들도록 학습돼 있어서 그냥 두면 자꾸 이런 말이 섞여요. 5년간 부동산광고시장감시센터에서 적발한 게 4만 506건이에요. 연간 1만 건 넘거든요. 그래서 우리는 이 블랙리스트를 프롬프트에 아예 못 박아둘 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-9" data-slide-label="Slide 2-9">
+    <h3>안전 프롬프트 템플릿 — 전체 구조 미리보기 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li><strong>역할</strong> ("당신은 공인중개사 광고 카피라이터")</li>
+      <li><strong>매물 정보</strong> (소재지·면적·가격·옵션 등)</li>
+      <li><strong>필수 포함 사항</strong> (명시사항 7개 + 위반건축물)</li>
+      <li><strong>금지 표현 블랙리스트</strong></li>
+      <li><strong>AI 라벨 멘트</strong> (AI 기본법 제31조)</li>
+    </ol>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 우리가 만들 안전 프롬프트는 5개 블록이에요. 첫째, 역할 부여. 둘째, 매물 정보. 셋째, 반드시 포함해야 할 명시사항. 넷째, 절대 쓰지 말 금지 표현. 다섯째, AI 라벨 멘트. 이 다섯 개를 한 번 만들어두면요, 매물 정보만 바꿔서 평생 쓸 수 있어요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-10" data-slide-label="Slide 2-10">
+    <h3>강사 시연 ① — 프롬프트 입력</h3>
+    <ul class="slide-body">
+      <li>화면 전환 — 강사 노트북 라이브</li>
+      <li>ChatGPT에 5블록 프롬프트 붙여넣기</li>
+      <li>표준 매물: 마포구 공덕동 OO오피스텔, 전용 23㎡, 보5천/월80</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 강사 화면 미리보기 (ChatGPT에 프롬프트 붙여넣기)</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 제 화면으로 전환할게요. ChatGPT 새 창에서 열고요, 미리 준비한 5블록 프롬프트를 그대로 붙여넣을게요. 매물 정보는 우리 표준 매물이에요 — 마포구 공덕동 OO오피스텔, 전용 23㎡, 보증금 5천에 월세 80만원. 보시면 위반건축물은 '해당 없음'으로 미리 채워뒀어요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분 (시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-11" data-slide-label="Slide 2-11">
+    <h3>강사 시연 ② — 결과 받기 &amp; 검수</h3>
+    <ul class="slide-body">
+      <li>결과: 전문/친근/감성 3톤</li>
+      <li>명시사항 7개 모두 포함됐는지 ⭕/❌</li>
+      <li>금지 표현 섞였는지 ⭕/❌</li>
+      <li>AI 라벨 멘트 끝에 있는지 ⭕/❌</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT 3톤 결과 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 결과 보세요. 약 30초 만에 세 가지 톤이 나왔죠? 전문, 친근, 감성. 이제 검수 들어갈게요. 첫째, 명시사항 7개 — 소재지, 면적, 가격, 거래형태, 사무소 정보, 성명, 사용승인일. 다 있나요? (확인) 둘째, 금지 표현 — '최고', '초역세권' 같은 단어 섞였나요? (확인) 셋째, 광고문 끝에 '본 콘텐츠 일부는 AI로 제작되었습니다.' 멘트 있나요? (확인). 셋 다 통과면 그대로 게시 가능해요. 하나라도 빠지면요, '다시 작성해줘. ○○ 빠뜨렸어' 이렇게 한 줄만 추가하시면 돼요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-12" data-slide-label="Slide 2-12">
+    <h3>실습 안내 — 청중 차례</h3>
+    <ul class="slide-body">
+      <li>다음 슬라이드의 복사용 프롬프트를 ChatGPT에 붙여넣기</li>
+      <li>매물 정보는 표준 매물(공덕동) 또는 본인 사무소 매물 1건</li>
+      <li>단, 본인 매물이라도 주소 동까지만, 호수는 ###호로 마스킹</li>
+      <li>시간: 8분 (작성 5분 + 짝꿍과 비교 3분)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 여러분 차례예요. 다음 슬라이드에 복사용 프롬프트 통째로 띄워드릴게요. 그대로 복사해서 ChatGPT에 붙여넣으세요. 매물 정보는 우리 표준 매물 — 공덕동 오피스텔로 시작하시면 되고요, 오늘 본인 사무소 매물 가져오신 분들은 본인 매물로 해보세요. 단요, 본인 매물이라도 동까지만 정확히, 호수는 ###호로 마스킹하셔야 해요. 8분 드릴게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 (안내)</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-13" data-slide-label="Slide 2-13">
+    <h3>복사용 프롬프트 (실습용 전체 화면)</h3>
+    <p>아래 실습 2-A 박스에서 한 번에 드래그 복사 가능합니다.</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 화면 사진으로 찍으셔도 좋고요, 우리 강의 자료에 텍스트 파일로도 배포해드릴 거예요. 지금은 일단 복사해서 ChatGPT에 붙여넣고 결과 받아보세요. 자, 시작!"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 5분 (실습 본격 시작)</span></div>
+  </article>
+
+  <section class="practice" data-practice="2-A">
+    <h3>실습 2-A: 표준 매물로 광고문 생성</h3>
+    <div class="situation">
+      <strong>상황:</strong> 서울 마포구 공덕동 OO오피스텔, 전용 23㎡(약 7평), 신축(2025년 준공), 보증금 5천만원 / 월세 80만원, 공덕역 5호선·6호선·공항철도 도보 3분, 남향, 12층 / 20층, 빌트인 풀옵션, 즉시 입주 가능, 위반건축물 해당 없음.
+    </div>
+    <p><strong>복사용 프롬프트:</strong></p>
+    <pre class="prompt"><code id="prompt-2a">당신은 서울 공인중개사 사무소의 광고 카피라이터다.
+아래 매물 정보로 네이버 블로그용 광고문을 3개 톤별(전문/친근/감성)로 작성하라.
+
+[매물 정보]
+- 소재지: 서울 마포구 공덕동 OO오피스텔
+- 종류: 오피스텔
+- 면적: 전용 23㎡ (약 7평)
+- 층: 12층 / 20층
+- 향: 남향
+- 가격: 보증금 5,000만원 / 월세 80만원
+- 옵션: 빌트인 풀옵션(에어컨·세탁기·냉장고·인덕션)
+- 입주: 즉시 가능
+- 사용승인일: 2025년 (신축)
+- 교통: 공덕역 5호선·6호선·공항철도 도보 3분
+- 사무소명: ○○공인중개사사무소
+- 등록번호: 11440-2024-OOOOO
+- 개업공인중개사: 홍길동
+- 위반건축물: 해당 없음
+
+[필수 포함 사항 — 공인중개사법 제18조의2]
+- 소재지
+- 면적(전용)
+- 가격
+- 거래형태(월세)
+- 사무소명·등록번호·개업공인중개사 성명
+- 건축물 사용승인일
+- 위반건축물 여부 표기 (2025.1.1 시행 의무) — 해당 없음일 경우에도 명기
+
+[금지 표현 — 표시광고법·공인중개사법 위반]
+다음 단어는 절대 사용하지 마라:
+최고 / 최저가 / 유일 / 확정 / 보장 / 사실상 / 무조건 / 100% / 초역세권 / 한강 전체 조망 / 압도적 / 완벽한
+
+[금지 정보]
+- 중개보조원에 관한 사항(이름·연락처 등) — 공인중개사법 제18조의2 제1항
+
+[필수 첨부 멘트 — AI 기본법 제31조 (2026.1.22 시행)]
+각 광고문 끝에 다음 멘트를 반드시 한 줄 추가하라:
+"본 콘텐츠 일부는 AI로 제작되었습니다."
+
+[출력 형식]
+- 톤 1 (전문): 250자 내외, 신뢰감 있는 어조
+- 톤 2 (친근): 250자 내외, 1인 가구 직장인에게 말 거는 어조
+- 톤 3 (감성): 250자 내외, 라이프스타일을 묘사하는 어조
+- 각 톤 끝에 AI 라벨 멘트 한 줄</code><button class="copy-btn" type="button" data-target="prompt-2a">📋 복사</button></pre>
+    <details class="expected">
+      <summary>예상 결과 (ChatGPT 출력 예시 · 3톤)</summary>
+      <blockquote>
+        <p><strong>[톤 1 — 전문]</strong><br>서울 마포구 공덕동 OO오피스텔 신축 매물 안내드립니다. 전용 23㎡(약 7평) 남향, 12층/20층, 빌트인 풀옵션(에어컨·세탁기·냉장고·인덕션) 구비. 공덕역 5·6호선 및 공항철도 도보 3분권에 위치합니다. 보증금 5,000만원 / 월세 80만원, 즉시 입주 가능. 2025년 사용승인 완료, 위반건축물 해당 없음. 자세한 문의는 ○○공인중개사사무소(등록번호 11440-2024-OOOOO, 홍길동)로 연락 주십시오.<br><em>본 콘텐츠 일부는 AI로 제작되었습니다.</em></p>
+        <p><strong>[톤 2 — 친근]</strong><br>공덕역 출퇴근 직장인분들께 추천드리는 신축 오피스텔입니다. 전용 23㎡(약 7평) 남향에 빌트인 풀옵션이라 짐만 들고 오시면 돼요. 5호선·6호선·공항철도까지 도보 3분이라 김포공항 출장이나 인천공항 가실 때도 편하시고요. 보증금 5,000에 월세 80, 즉시 입주 가능합니다. 2025년 신축, 위반건축물 해당 없음. 직접 보러 오시는 게 가장 좋아요. ○○공인중개사사무소(11440-2024-OOOOO, 홍길동) 연락 주세요.<br><em>본 콘텐츠 일부는 AI로 제작되었습니다.</em></p>
+        <p><strong>[톤 3 — 감성]</strong><br>마포의 아침은 공덕역에서 시작됩니다. 5호선·6호선·공항철도 세 노선이 만나는 길목, 도보 3분 거리에 새로 들어선 신축 오피스텔. 남향 12층에서 맞이하는 햇살, 인덕션과 세탁기까지 갖춰진 빌트인 풀옵션. 전용 23㎡(약 7평), 보증금 5,000만원 월세 80만원으로 1인 가구의 하루를 담아냅니다. 2025년 사용승인, 위반건축물 해당 없음. ○○공인중개사사무소(11440-2024-OOOOO, 홍길동).<br><em>본 콘텐츠 일부는 AI로 제작되었습니다.</em></p>
+      </blockquote>
+    </details>
+    <details class="extension">
+      <summary>확장 과제 (중급자용)</summary>
+      <ol>
+        <li><strong>타겟 맞춤화:</strong> 위 결과를 "표준 고객(고객A) 카톡 발송용 5줄 요약"으로 다시 요청.</li>
+        <li><strong>GPTs 등록:</strong> 1·3·4·5 블록(역할·필수·금지·AI 라벨)만 떼서 "Create a GPT" 시스템 프롬프트로 등록.</li>
+        <li><strong>Claude Projects 비교:</strong> 같은 프롬프트를 Claude Projects에 등록 후 톤 차이 비교.</li>
+      </ol>
+    </details>
+    <p style="font-size:0.88em;color:var(--c-muted);">⏱ 약 13분 (설명 1 + 청중 실습 8 + 짝꿍 비교 3 + 강사 정리 1)</p>
+  </section>
+
+  <article class="slide" data-slide="2-14" data-slide-label="Slide 2-14">
+    <h3>실습 종료 — 결과 짝꿍과 비교</h3>
+    <ul class="slide-body">
+      <li>옆자리와 결과 화면 보여주기 (3분)</li>
+      <li>체크 포인트
+        <ul>
+          <li>명시사항 7개 빠진 것 있나?</li>
+          <li>금지 표현 섞였나?</li>
+          <li>AI 라벨 멘트 끝에 붙었나?</li>
+        </ul>
+      </li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"끝나신 분들요, 옆자리 분이랑 결과 화면 잠깐 보여주세요. 3분이요. 세 가지만 체크해보시면 돼요. 명시사항 빠진 게 있는지, 금지 표현 섞였는지, AI 라벨 멘트가 끝에 붙어있는지. 만약에 빠진 게 있으면요, ChatGPT에 그냥 '○○이 빠졌어. 다시 작성해줘' 이렇게 한 줄만 추가하시면 바로 수정해서 다시 뽑아줘요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="2-15">
+    <h3>Slide 2-15 — 흔한 실수 박스 (광고문 영역)</h3>
+    <h4>❌ 이렇게 하지 마세요</h4>
+    <ul>
+      <li>ChatGPT에 "최고급 신축, 초역세권" 같은 단어 직접 요청</li>
+      <li>AI 라벨 멘트 빼고 광고에 게시 (과태료 3,000만원 리스크)</li>
+      <li>위반건축물인데 광고문에 표기 누락</li>
+    </ul>
+    <div class="ok-block">
+      <h4>✅ 이렇게 하세요</h4>
+      <ul>
+        <li>프롬프트 금지 표현 블랙리스트에 [최고/유일/확정/보장/사실상/무조건/100%/초역세권/한강전체조망] 항상 포함</li>
+        <li>광고문 끝에 "본 콘텐츠 일부는 AI로 제작되었습니다." 자동 삽입</li>
+        <li>건축물대장 위반 확인 후 "위반건축물: 해당 / 해당 없음" 칸 반드시 채우기</li>
+      </ul>
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"오늘 모듈에서 가장 자주 틀리는 세 가지예요. 왼쪽 빨간 박스 — 광고문 요청할 때 '최고급 신축으로 써줘' 이렇게 직접 금지 단어를 요청하시는 분들 있어요. AI가 그대로 씁니다. 그러면 광고법 위반이에요. 두 번째 — AI 라벨 멘트 까먹고 그대로 게시. 이거 3,000만원이에요. 세 번째 — 위반건축물 표기 누락. 오른쪽 초록 박스대로 프롬프트에 다 박아두시면요, 사람이 까먹어도 AI가 대신 챙겨줘요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="2-16" data-slide-label="Slide 2-16">
+    <h3>AI 생성 이미지 사용 시 추가 주의 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>AI 이미지(가상 스테이징·인테리어 시안) 사용 시</li>
+      <li><strong>절대 금지:</strong> 실사처럼 보이게 만들어 매물 사진 자리 사용</li>
+      <li><strong>필수:</strong> 이미지 캡션에 "AI 생성 이미지(가상 시안)" 표기</li>
+      <li>광고 하단 AI 라벨 멘트와 별개로 <strong>이미지마다</strong> 표시</li>
+    </ul>
+    <figure class="placeholder">스크린샷: AI로 생성된 인테리어 시안 + "AI 생성" 워터마크</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, AI 이미지 얘기 잠깐 할게요. 요즘 ChatGPT로 인테리어 시안 만드는 거 진짜 쉬워요. 빈 방 사진에 가구 합성하는 가상 스테이징, 이건 가능해요. 근데 두 가지만 꼭 지켜주세요. 첫째, 실제 매물 사진 자리에 두면 안 돼요. 그건 허위광고거든요. 둘째, 이미지마다 '가상 시안 — AI 생성' 캡션 또는 워터마크 넣으셔야 해요. 광고 하단의 AI 라벨 멘트랑은 별개로요, 이미지 각각에 표시해야 안전해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-17" data-slide-label="Slide 2-17">
+    <h3>GPTs에 사무소 표준 등록 시연 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>ChatGPT Plus → "Explore GPTs" → "Create a GPT"</li>
+      <li>시스템 프롬프트에 5블록 중 1·3·4·5 입력 (역할 / 필수 포함 / 금지 표현 / AI 라벨)</li>
+      <li>사무소 이름·등록번호·개업공인중개사 성명 미리 채워둠</li>
+      <li>이후엔 매물 정보만 던지면 자동 완성</li>
+    </ul>
+    <figure class="placeholder">스크린샷: GPTs Create 화면 캡처</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 중급 트랙 시연이에요. Plus 결제하신 분들은요, ChatGPT 좌측 사이드바에서 'Explore GPTs' 누르고 'Create a GPT' 선택하세요. 거기에 우리 안전 프롬프트의 1·3·4·5번 블록 — 역할, 필수 포함, 금지 표현, AI 라벨 — 을 시스템 프롬프트로 박아두는 거예요. 사무소 이름이나 등록번호처럼 매번 똑같은 정보도 같이요. 그러면 다음부터는요, [매물 정보] 블록만 던지면 자동으로 같은 규격으로 광고문이 쫙 나와요. 신입 직원도 시니어랑 똑같은 품질로 광고문 만들 수 있거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-18" data-slide-label="Slide 2-18">
+    <h3>Claude Projects 대안 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>Claude Pro → "Projects" → 새 프로젝트</li>
+      <li>사무소 표준 광고 가이드라인 PDF 업로드</li>
+      <li>광고법 조문 + 금지 표현 리스트 첨부</li>
+      <li>ChatGPT GPTs보다 설정 단순 / 긴 PDF 학습 강점</li>
+    </ul>
+    <figure class="placeholder">스크린샷: Claude Projects 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"ChatGPT 대신 Claude 쓰시는 분 있으시죠? Claude Pro에는 Projects 기능이 있어요. ChatGPT GPTs랑 비슷한데요, 설정이 더 단순해요. 사무소 광고 양식 PDF 몇 개 통째로 업로드하고, '여기 양식대로 광고문 만들어줘' 이것만 하면 돼요. 긴 PDF 학습은 Claude가 더 강하거든요. 둘 중 어느 거 쓰셔도 괜찮은데요, 둘 다 결제하실 필요는 없어요. 한쪽 골라서 깊이 쓰세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-19" data-slide-label="Slide 2-19">
+    <h3>Gamma로 카드뉴스 1분 생성 데모 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>Gamma 무료 플랜으로 카드뉴스 8장 자동 생성</li>
+      <li>텍스트 한 줄 입력 → 1분 안에 디자인 완료</li>
+      <li>무료는 워터마크 / Plus 월 $10부터 워터마크 제거</li>
+      <li>결과물: PDF·PPT·PNG·웹페이지 변환</li>
+      <li>단, AI 생성 콘텐츠 라벨 의무 적용 (AI 기본법)</li>
+    </ul>
+    <figure class="placeholder">스크린샷: Gamma 결과 예시</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"카드뉴스 만드는 도구도 잠깐 보고 갈게요. Gamma라는 서비스가 있어요. '마포구 공덕동 신축 오피스텔 카드뉴스 8장 만들어줘' 이렇게 한 줄 치면요, 디자인까지 자동으로 1분 만에 나와요. 무료 플랜은 워터마크가 박혀서요, 정식 광고용으로는 월 $10짜리 Plus부터 추천드려요. 근데 이것도요, AI 기본법 적용 대상이에요. 마지막 페이지에 'AI 제작' 멘트 절대 잊지 마세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-20" data-slide-label="Slide 2-20">
+    <h3>광고 위반 통계 — 왜 이렇게까지 챙겨야 하나 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>부동산광고시장감시센터 적발 (5년 누계)</li>
+      <li><strong>4만 506건</strong></li>
+      <li>2023년부터 연간 1만 건 이상</li>
+      <li>과태료: 공인중개사법 최대 500만원 + AI 기본법 최대 3,000만원</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 왜 이렇게까지 챙겨야 하느냐. 5년 동안 부동산광고시장감시센터가 적발한 게 4만 506건이에요. 2023년부터는 매년 1만 건 넘고 있고요. 과태료가요, 공인중개사법으로 최대 500만원, AI 기본법까지 걸리면 3,000만원이 더 붙어요. 안전 프롬프트 한 번 만들어두시면요, 이걸 한 번에 다 막아주는 거거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-21" data-slide-label="Slide 2-21">
+    <h3>발송 전 3단계 체크리스트 <span class="track-label track-beginner">입문 필수</span></h3>
+    <div class="slide-body">
+      <p><strong>광고 게시 전 30초 체크:</strong></p>
+      <ul style="list-style:none;padding-left:0;">
+        <li>☐ 명시사항 7개 모두 있나? (소재지·면적·가격·거래형태·사무소·성명·사용승인일)</li>
+        <li>☐ 금지 표현 0개? (최고/유일/확정/보장 등)</li>
+        <li>☐ AI 라벨 멘트 있나? ("본 콘텐츠 일부는 AI로 제작되었습니다.")</li>
+      </ul>
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이게 마지막 안전장치예요. AI가 만들어준 광고문, 게시 버튼 누르기 전에 30초만 투자하세요. 첫째, 명시사항 7개 다 있는지. 둘째, 금지 표현 0개인지. 셋째, AI 라벨 멘트 있는지. 셋 다 통과면 바로 발송. 하나라도 빠지면 ChatGPT에 한 줄만 추가하시면 돼요. '○○ 다시 넣어줘' 끝이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="2-22" data-slide-label="Slide 2-22">
+    <h3>즉시 효용 — 오늘 사무실 가서 할 1가지 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>메모장 열기</li>
+      <li>강의 자료의 안전 프롬프트 5블록 복사 → 메모장 저장</li>
+      <li>사무소 이름·등록번호·개업공인중개사 성명 미리 채워두기</li>
+      <li>파일명: <code>AI광고문_안전템플릿.txt</code></li>
+      <li>내일 신규 매물 1건 광고문을 이 템플릿으로 5분 안에 작성</li>
+    </ol>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 오늘 사무실 가서 딱 5분만 투자하세요. 메모장 열고요, 우리 강의 자료에 있는 안전 프롬프트 5블록 복사. 사무소 이름·등록번호·개업공인중개사 이름은 미리 채워두세요. 매번 칠 필요 없게요. 파일명은 'AI광고문_안전템플릿.txt'. 내일 새 매물 들어오는 순간 이 파일 열고 [매물 정보]만 바꿔서 ChatGPT에 던지세요. 5분이면 광고문 3톤 쫙 나와요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="wrap-up" data-slide="2-23">
+    <h3>Slide 2-23 — 모듈 2 정리</h3>
+    <p><strong>오늘 배운 3가지:</strong></p>
+    <ol>
+      <li>공인중개사법 명시사항 7개 + 위반건축물(2025.1.1) + AI 기본법(2026.1.22) — <strong>3중 의무</strong></li>
+      <li>안전 프롬프트 5블록 구조 (역할·매물·필수·금지·AI 라벨)</li>
+      <li>발송 전 30초 체크리스트 (명시사항·금지표현·AI 라벨)</li>
+    </ol>
+    <div class="action-now">
+      <strong>오늘 사무실 돌아가서 바로 할 1가지:</strong><br>
+      안전 프롬프트 템플릿을 메모장에 저장 + 사무소 정보 미리 채우기 + 내일 신규 매물로 5분 안에 광고문 만들기
+    </div>
+    <p><strong>다음 모듈 미리보기:</strong> 고객 응대 + 개인정보 마스킹 (모듈 3)</p>
+  </section>
+
+  <article class="slide" data-slide="2-24" data-slide-label="Slide 2-24">
+    <h3>휴식 안내 ☕</h3>
+    <ul class="slide-body">
+      <li>휴식 10분</li>
+      <li>화장실 / 음료</li>
+      <li>휴식 중 할 일: ChatGPT 모바일 앱 설치 (모듈 5 통합 실습 준비)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 10분 휴식이에요. 화장실 다녀오시고요, 가능하시면 휴식 중에 휴대폰에 ChatGPT 앱 설치해두세요. 모듈 5 통합 실습 때 음성 메모 기능 쓸 거거든요. App Store나 Play Store에서 'ChatGPT' 검색하시면 돼요. 정시에 다시 시작할게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 1분 (휴식 안내)</span></div>
+  </article>
+</section><!-- /module-2 -->
+
+<!-- ============================================================
+     MODULE 3 — 고객 응대 + 개인정보 마스킹 (35분, 20 슬라이드)
+============================================================ -->
+<section data-module="3" id="module-3">
+  <h2>모듈 3 — 고객 응대 + 개인정보 마스킹</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 35분 · <strong>슬라이드:</strong> 20장 · <strong>실습:</strong> 1개 (실습 3-A)
+    <ul>
+      <li><strong>★ 핵심:</strong> 개인정보 마스킹 방법론 (정규식 + 메모장 Ctrl+H)</li>
+      <li><strong>입문 학습 목표:</strong> 메모장 Ctrl+H로 마스킹 → ChatGPT 안전 프롬프트로 3톤 답변 → 사람 검수 후 발송.</li>
+      <li><strong>중급 학습 목표:</strong> 정규식 4종 이해, 국내 LLM 대안 인지, 클로바노트 워크플로우.</li>
+    </ul>
+  </div>
+
+  <article class="slide" data-slide="3-1" data-slide-label="Slide 3-1">
+    <h3>모듈 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>모듈 3 — 고객 응대 + 개인정보 마스킹</li>
+      <li>소요 35분 | 휴식 후 첫 모듈</li>
+      <li>오늘의 약속: <strong>"고객 실명을 ChatGPT에 넣지 않는 법을 손에 익히고 갑니다"</strong></li>
+    </ul>
+    <figure class="placeholder">스크린샷: 카톡 말풍선 → 메모장 → ChatGPT 3단 흐름도</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분 휴식 잘 다녀오셨어요? 모듈 3은요, 솔직히 오늘 강의에서 제일 무거운 주제예요. 광고문은 잘못 써도 과태료로 끝나는데, 개인정보는 잘못 쓰면 형사처벌까지 가거든요. 그래서 35분을 통으로 잡았어요. 끝나고 나가실 때 '고객 이름 ChatGPT에 절대 안 넣는다' 이거 하나만 확실히 가져가시면 오늘 성공입니다."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="3-2">
+    <h3>Slide 3-2 — 충격 사례 · 고객 실명을 ChatGPT에 그대로 넣으면 <span class="track-label track-beginner">입문 필수</span></h3>
+    <p>❌ "김민수 고객(010-1234-5678)이 공덕동 오피스텔 1203호 보고 싶다고 함"</p>
+    <p>이 한 줄을 그대로 ChatGPT에 입력하면:</p>
+    <ul>
+      <li>데이터가 <strong>미국 OpenAI 서버</strong>로 전송 → 국외 이전</li>
+      <li>개인정보보호법 <strong>제28조의8 위반</strong> 소지</li>
+      <li>무료/Plus 플랜은 <strong>학습 데이터로 활용 가능</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분이 매일 카톡으로 받는 문의, 딱 이렇게 생겼잖아요. 김민수 님, 010-XXXX, 어디 매물 보고 싶다. 이걸 그대로 복사해서 ChatGPT에 붙여넣고 '답변 만들어줘' 누르는 순간이요, 김민수 님 정보가 미국 서버로 날아가버려요. 그리고 무료나 Plus 쓰시면 이게 OpenAI 학습 데이터로 들어갈 수도 있고요. 그럼 어떻게 해야 되느냐? 자, 다음 슬라이드에서 보겠습니다."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="3-3" data-slide-label="Slide 3-3">
+    <h3>법령 3종 (외워야 할 조문 번호) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>개인정보보호법 제17조</strong> — 제3자 제공 동의 의무</li>
+      <li><strong>개인정보보호법 제28조의2</strong> — 가명정보는 동의 없이 활용 가능</li>
+      <li><strong>개인정보보호법 제28조의8</strong> — 국외 이전 별도 동의 (2024.3.15 시행)</li>
+      <li><strong>공인중개사법 제25조</strong> — 확인·설명 의무 (AI 답변 그대로 발송 금지)</li>
+    </ul>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <ul>
+        <li><strong>개인정보보호법 제17조</strong> — 제3자 제공 동의</li>
+        <li><strong>개인정보보호법 제28조의2</strong> — 가명정보 처리 특례</li>
+        <li><strong>개인정보보호법 제28조의8 (2024.3.15 시행)</strong> — 국외 이전 별도 동의</li>
+        <li><strong>공인중개사법 제25조</strong> — 중개대상물 확인·설명 의무</li>
+      </ul>
+      <p style="font-size:0.85em;margin-top:8px;">출처: <a href="https://law.go.kr" target="_blank" rel="noopener">law.go.kr</a></p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"조문 번호 4개만 외우시면 돼요. 제17조는 '동의 없이 제3자에게 주지 마라', 제28조의2는 '가명처리하면 동의 없이 써도 된다', 제28조의8은 '미국 서버로 보내려면 별도 동의 받아라'. 그리고 공인중개사법 제25조는 우리 본업이잖아요 — 확인·설명은 사람이 한다. 이 4개가 오늘 모듈 3의 뼈대예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-4" data-slide-label="Slide 3-4">
+    <h3>해법은 두 가지뿐 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>방법 1 — 마스킹(가명처리)</strong> 후 ChatGPT에 입력
+        <ul>
+          <li>제28조의2 적용 → 동의 없이 활용 가능</li>
+          <li>진입 비용: 0원, 메모장만 있으면 됨</li>
+        </ul>
+      </li>
+      <li><strong>방법 2 — 국내 LLM</strong> 사용 (데이터가 국내 서버에 머무름)
+        <ul>
+          <li>HyperCLOVA X (네이버), Solar (업스테이지)</li>
+          <li>진입 비용: SaaS 경유 필요, 입문자에겐 어려움</li>
+        </ul>
+      </li>
+      <li>오늘 실습: <strong>방법 1 (마스킹)</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"선택지는 딱 두 갠데요. 마스킹해서 미국 LLM에 넣거나, 아예 국내 LLM을 쓰거나. 국내 LLM 좋죠. 근데요, 네이버 클로바X 소비자용은 2026년 4월에 종료됐어요. 지금은 기업용 API만 남아 있어서 일반 공인중개사가 바로 못 써요. 그래서 오늘은 누구나 당장 할 수 있는 방법 1, 마스킹 실습으로 갈게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-5" data-slide-label="Slide 3-5">
+    <h3>마스킹 — 절대 입력 금지 7종 <span class="track-label track-beginner">입문 필수</span></h3>
+    <table>
+      <thead><tr><th>항목</th><th>대체</th></tr></thead>
+      <tbody>
+        <tr><td>고객 실명</td><td>고객A, 임차인1</td></tr>
+        <tr><td>휴대전화</td><td>010-****-****</td></tr>
+        <tr><td>주민등록번호</td><td><strong>삭제 (마스킹 불가)</strong></td></tr>
+        <tr><td>매물 동·호수</td><td>###호</td></tr>
+        <tr><td>직장명</td><td>"마포 인근 직장"</td></tr>
+        <tr><td>계좌번호</td><td>[계좌]</td></tr>
+        <tr><td>이메일</td><td>[email]</td></tr>
+      </tbody>
+    </table>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>개인정보보호법 제24조의2</strong> — 주민등록번호 처리 제한 (마스킹 불가, 삭제만 가능)</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 7개는 외우셔도 좋아요. 특히 주민번호요. 주민번호는 마스킹도 안 됩니다. 그냥 삭제예요. 개인정보보호법 제24조의2에 명시돼 있어요. 나머지는 다 치환 가능하고요. 김민수 → 고객A, 010-1234-5678 → 010-****-****, 1203호 → ###호. 단순하죠?"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-6" data-slide-label="Slide 3-6">
+    <h3>입문자용 마스킹 방법 — 메모장 Ctrl+H <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>카톡 원문을 메모장에 붙여넣기 (Ctrl+V)</li>
+      <li>Ctrl+H로 일괄치환 창 열기</li>
+      <li>4종 치환 (이름·전화·호수·직장)</li>
+      <li>마스킹된 텍스트를 ChatGPT에 붙여넣기</li>
+    </ol>
+    <figure class="placeholder">스크린샷: 메모장 Ctrl+H 창</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"코딩 못 하셔도 돼요. 윈도우 메모장만 켜시면 끝이에요. Ctrl+H 누르면 '바꾸기' 창이 뜨거든요. 찾을 내용에 '김민수', 바꿀 내용에 '고객A', '모두 바꾸기'. 끝. 진짜 30초면 끝나는 작업이에요. 자, 다음 슬라이드에서 같이 해봐요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-7" data-slide-label="Slide 3-7">
+    <h3>시연 — 카톡 원문 마스킹 (강사 화면)</h3>
+    <div class="situation">
+      <strong>원문:</strong><br>
+      "김민수 고객(010-1234-5678)이 공덕동 OO오피스텔 1203호 매물 보고 싶다고 함. 본인 회사 ABC전자 마포지사 근무, 출근 도보 가능한지 물음. 이메일은 minsoo.kim@abc.co.kr"
+    </div>
+    <p>→ 메모장 Ctrl+H 4회 작업 → 마스킹 완료본 (다음 슬라이드)</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 카톡 한 통, 여러분 사무소에서 매일 받으시는 거랑 거의 똑같이 만들어봤어요. 자, 여기 보세요. 메모장 켭니다. 붙여넣기. Ctrl+H. 김민수 → 고객A, 모두 바꾸기. 다시 Ctrl+H. 010-1234-5678 → 010-****-****, 모두 바꾸기. 1203호 → ###호. ABC전자 마포지사 → 마포 인근 직장. 자, 끝났어요. 30초도 안 걸렸죠?"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (실시간 시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-8" data-slide-label="Slide 3-8">
+    <h3>시연 결과 — 마스킹 완료본</h3>
+    <div class="situation" style="border-left-color:#2f9e44;">
+      <strong>마스킹 후:</strong><br>
+      "고객A(010-****-****)가 공덕동 OO오피스텔 ###호 매물 보고 싶다고 함. 본인 마포 인근 직장 근무, 출근 도보 가능한지 물음. 이메일은 [email]"
+    </div>
+    <p>이제 ChatGPT에 안전하게 입력 가능</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이렇게 만들면 이제 안전해요. 이 텍스트에는요, 김민수 님을 특정할 수 있는 정보가 하나도 없잖아요. 가명정보가 된 거예요. 개인정보보호법 제28조의2 적용 대상이라서 동의 없이 활용 가능합니다. 자, 이제 이 마스킹된 텍스트 가지고 ChatGPT에 답변 초안 받아볼게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-9" data-slide-label="Slide 3-9">
+    <h3>중급자용 — 정규식 패턴 4종 (참고) <span class="track-label track-intermediate">중급 심화</span></h3>
+    <pre class="prompt"><code id="prompt-3-regex">휴대전화: 01[016789][-\s]?\d{3,4}[-\s]?\d{4}
+주민번호: (\d{6})[-\s]?\d{7}
+이메일:   [\w\.-]+@[\w\.-]+\.\w+
+계좌:     \d{3,6}[-\s]\d{2,4}[-\s]\d{4,7}</code><button class="copy-btn" type="button" data-target="prompt-3-regex">📋 복사</button></pre>
+    <ul>
+      <li>입문자: <strong>이 슬라이드는 메모만</strong></li>
+      <li>중급자: 사무소 CRM에 마스킹 자동화 시 사용</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여긴 중급자분들만 보세요. 입문자분들은 '아, 이런 게 있구나' 하시고 그냥 메모장 쓰시면 돼요. 정규식, 영어로 regex라고 하는데요, 이게 있으면 카톡 한 달치를 한 번에 자동 마스킹할 수 있거든요. 사무소에 IT 담당 직원 계시면 이 슬라이드 사진 찍어서 보여주세요. 5분이면 자동화 가능해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-10" data-slide-label="Slide 3-10">
+    <h3>ChatGPT 입력 — 안전 프롬프트 템플릿 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>역할: "공인중개사 카톡 응대 도우미"</li>
+      <li>매물·고객 정보 (마스킹된)</li>
+      <li>요청: 답변 3개 톤 (공손/친근/전문가)</li>
+      <li>금지 표현: 확정·100%·절대·보장</li>
+      <li>마무리: 직접 방문 안내로 끝맺기</li>
+    </ol>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이제 마스킹된 텍스트를 ChatGPT에 넣을 차례인데요, 그냥 '답변해줘' 하시면요, 광고법 위반 표현이 섞여 나와요. 그래서 프롬프트에 다섯 가지를 꼭 넣어주셔야 돼요. 역할 부여, 정보 제공, 요청 명시, 금지 표현 리스트, 마무리 톤. 이 5종 세트만 외우시면 됩니다."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-11" data-slide-label="Slide 3-11">
+    <h3>시연 — ChatGPT 답변 받기 (강사 화면)</h3>
+    <ul class="slide-body">
+      <li>강사 시연: ChatGPT에 안전 프롬프트 입력 → 3개 톤 답변 받기</li>
+      <li>결과 톤별 길이: 공손(긴 존댓말) / 친근(반말 섞임) / 전문가(객관적 정보 위주)</li>
+      <li>발송 직전 3단계 체크: 명시사항 ⭕ / 금지표현 ❌ / AI 라벨 ⭕</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT 응답 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 실제로 받아볼게요. 프롬프트 붙여넣고, 엔터. 보통 10초 안에 답변 3개 톤이 다 나와요. 공손한 톤은 어머님 세대 고객용, 친근한 톤은 30대 직장인 고객용, 전문가 톤은 투자 문의 고객용이에요. 그리고 절대 — 이거 그대로 보내시면 안 됩니다. 꼭 보내기 전에 3단계 체크하세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (실시간 시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-12" data-slide-label="Slide 3-12">
+    <h3>발송 직전 3단계 체크 — 공인중개사법 제25조 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body" style="list-style:none;padding-left:0;">
+      <li>✅ 1. <strong>명시사항 포함?</strong> — 매물 정보, 사무소명, 연락처</li>
+      <li>✅ 2. <strong>금지 표현 없음?</strong> — 확정·100%·절대·보장·초역세권</li>
+      <li>✅ 3. <strong>사람이 한 번 읽고 수정?</strong> — 공인중개사법 제25조 확인·설명 의무</li>
+      <li>AI가 만든 답변이라도 <strong>법적 책임은 공인중개사 본인</strong></li>
+    </ul>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>공인중개사법 제25조</strong> — 중개대상물의 확인·설명 (위반 시 500만원 이하 과태료)</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"AI가 만든 답변이라고 해서 사고 나면 OpenAI가 책임져 줍니까? 아니죠. 우리가 집니다. 공인중개사법 제25조에 따라 확인·설명 책임은 100% 개업공인중개사한테 있어요. 그래서 발송 직전에 한 번은 사람이 꼭 읽어야 됩니다. 30초만 들여도 큰 사고 막을 수 있거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="3-13">
+    <h3>Slide 3-13 — ❌ 이렇게 하지 마세요 / ✅ 이렇게 하세요</h3>
+    <h4>❌ 하지 마세요</h4>
+    <ul>
+      <li>"김민수 고객 010-1234-5678 답변 정리해줘" (실명·전화 그대로)</li>
+      <li>주민번호 입력 (마스킹도 불가, 삭제만 가능)</li>
+      <li>ChatGPT 답변을 검수 없이 그대로 카톡 발송</li>
+      <li>카톡 채널에 AI 자동응답 설정 (매물·가격·계약 질문까지)</li>
+    </ul>
+    <div class="ok-block">
+      <h4>✅ 이렇게 하세요</h4>
+      <ul>
+        <li>"고객A 답변 정리해줘 (이름·전화는 마스킹 완료)"</li>
+        <li>주민번호는 메모장에서 삭제</li>
+        <li>AI 답변 → 사람 검수 → 발송 (제25조)</li>
+        <li>자동응답은 <strong>영업시간·위치 안내만</strong>, 나머지는 사람</li>
+      </ul>
+    </div>
+    <div class="highlight-callout">이 슬라이드, 사진 찍으세요.</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 슬라이드, 사진 찍으세요. 자, 휴대폰 들어주시고요. 왼쪽은 절대 안 됩니다. 오른쪽이 정답이에요. 특히 마지막 줄이 중요해요. 요즘 카톡 채널에 AI 자동응답 붙이시는 분들 많잖아요. 근데 매물이나 가격 질문까지 AI가 자동으로 답하게 두면요, 위법이에요. AI는 '영업시간 9시부터 6시까지입니다' 이 정도만 답하게 하세요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="3-14" data-slide-label="Slide 3-14">
+    <h3>실습 안내</h3>
+    <ul class="slide-body">
+      <li>지금부터 10분 청중 실습</li>
+      <li>노트북 메모장 켜기 → 강사 배포 카톡 원문 복사</li>
+      <li>Ctrl+H로 마스킹 4종 → ChatGPT에 안전 프롬프트와 함께 입력</li>
+      <li>답변 받은 후 짝꿍과 비교 (1분)</li>
+      <li>어려우면 손들기 — 강사·조교 1:N 지원</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 여러분이 직접 해보실 시간이에요. 10분 드릴게요. 다음 슬라이드에 있는 카톡 원문 그대로 메모장에 붙여넣으시고요, 마스킹하시고, ChatGPT에 넣으시면 돼요. 막히시면 손 드세요. 저랑 조교가 돌아다닐 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-15" data-slide-label="Slide 3-15">
+    <h3>실습 자료 — 카톡 원문 (배포)</h3>
+    <pre class="prompt"><code id="prompt-3-katalk">[가상 카톡 — 청중 복사용]
+
+안녕하세요, 김민수입니다. (010-1234-5678)
+공덕동 OO오피스텔 1203호 매물 보고 싶습니다.
+저는 ABC전자 마포지사 근무 중이고
+출근 도보 가능한지 궁금합니다.
+연락처는 minsoo.kim@abc.co.kr 입니다.
+이번 주 토요일 오전 임장 가능할까요?</code><button class="copy-btn" type="button" data-target="prompt-3-katalk">📋 복사</button></pre>
+    <p>위 텍스트 그대로 메모장에 복사</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 카톡, 여러분 실제 받으시는 거랑 똑같이 만들었어요. 다 가짜예요. 김민수도 가짜, 010-1234-5678도 가짜, 이메일도 다 가짜고요. 안심하고 쓰시면 돼요. 자, 시작!"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 (안내)</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-16" data-slide-label="Slide 3-16">
+    <h3>실습 — 복사용 안전 프롬프트</h3>
+    <pre class="prompt"><code id="prompt-3-safe">당신은 서울 마포구 소재 공인중개사 사무소의
+카톡 응대 도우미입니다.
+
+[고객 문의 — 마스킹 완료]
+(여기에 마스킹한 텍스트 붙여넣기)
+
+[요청]
+- 3개 톤(공손/친근/전문가)으로 답변 초안 작성
+- 매물 직접 방문 안내로 마무리
+- 사무소명: ___ / 등록번호: ___
+
+[금지 표현]
+확정, 100%, 절대, 보장, 초역세권, 최저가
+
+[마무리]
+"위 내용은 임장 후 정확히 확인드립니다" 1줄 포함</code><button class="copy-btn" type="button" data-target="prompt-3-safe">📋 복사</button></pre>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 프롬프트요, 복사해서 가지고 가세요. 사무소명이랑 등록번호만 미리 채워두시면, 매일 쓰시는 도구가 돼요. 그리고 금지 표현 리스트, 이거 빠뜨리면요, ChatGPT가 '초역세권 최저가 매물' 같은 거 만들어버려요. 꼭 꼭 넣으세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 실습 중 청중 사용</span></div>
+  </article>
+
+  <article class="slide" data-slide="3-17" data-slide-label="Slide 3-17">
+    <h3>실습 — 예상 결과 (강사 시연용)</h3>
+    <div class="situation">
+      <strong>ChatGPT 출력 예시 (공손 톤):</strong><br>
+      "고객A님, 안녕하세요. 문의주신 공덕동 OO오피스텔 ###호 매물에 대해 안내드립니다. 공덕역 5·6호선·공항철도 환승역에 도보 3분 거리로, 마포 인근 직장이시면 출근 동선이 매우 편리하실 것으로 보입니다. 다만 정확한 도보 시간과 매물 상태는 임장 시 확인이 가능하니, 토요일 오전 일정 가능하신 시간 알려주시면 안내드리겠습니다."
+    </div>
+    <p>친근/전문가 톤은 길이·어휘만 다름</p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이런 식으로 나와요. 보세요 — 확정·100%·절대 같은 표현 하나도 없고요, '도보 3분 거리'는 사실이고, '편리하실 것으로 보입니다'처럼 단정 안 짓고, 마무리는 임장 안내로 딱 끝났어요. 이대로 보내셔도 큰 무리 없는 수준이에요. 그래도 한 번은 꼭 읽어보시고 발송하세요!"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="practice" data-practice="3-A">
+    <h3>실습 3-A: 카톡 마스킹 → ChatGPT 답변 초안 → 사람 검수</h3>
+    <div class="situation">
+      <strong>상황:</strong> 30대 여성 직장인(가상 고객A)이 공덕동 오피스텔 매물에 대해 카톡으로 문의함. 카톡 원문에는 실명·전화번호·1203호·직장명·이메일이 포함됨.
+    </div>
+    <p><strong>마스킹 절차 (메모장 Ctrl+H):</strong></p>
+    <ol>
+      <li><code>김민수</code> → <code>고객A</code></li>
+      <li><code>010-1234-5678</code> → <code>010-****-****</code></li>
+      <li><code>1203호</code> → <code>###호</code></li>
+      <li><code>ABC전자 마포지사</code> → <code>마포 인근 직장</code></li>
+      <li><code>minsoo.kim@abc.co.kr</code> → <code>[email]</code></li>
+    </ol>
+    <p><strong>복사용 안전 프롬프트 (마스킹 + 매물 정보 모두 포함):</strong></p>
+    <pre class="prompt"><code id="prompt-3a">당신은 서울 마포구 소재 공인중개사 사무소의 카톡 응대 도우미입니다.
+
+[고객 문의 — 마스킹 완료]
+고객A(010-****-****)가 공덕동 OO오피스텔 ###호 매물 보고 싶다고 함.
+본인 마포 인근 직장 근무, 출근 도보 가능한지 물음.
+이메일은 [email]. 이번 주 토요일 오전 임장 희망.
+
+[매물 정보]
+- 위치: 서울 마포구 공덕동 OO오피스텔
+- 면적: 전용 23㎡ (약 7평)
+- 가격: 보증금 5천만원 / 월 80만원
+- 특징: 신축, 공덕역 5·6호선·공항철도 도보 3분, 빌트인 풀옵션
+- 사무소명: ___ / 등록번호: ___
+
+[요청]
+- 3개 톤(공손/친근/전문가)으로 카톡 답변 초안 작성
+- 각 답변 200자 내외
+- 토요일 오전 임장 일정 제안으로 마무리
+
+[금지 표현]
+확정, 100%, 절대, 보장, 초역세권, 최저가, 유일
+
+[마무리 멘트 필수]
+"위 내용은 임장 후 정확히 확인드립니다" 1줄 포함</code><button class="copy-btn" type="button" data-target="prompt-3a">📋 복사</button></pre>
+    <details class="expected">
+      <summary>예상 결과 (공손 톤)</summary>
+      <blockquote>
+        <p>"고객A님, 안녕하세요. 문의주신 공덕동 OO오피스텔 ###호 매물에 대해 안내드립니다.</p>
+        <p>해당 매물은 공덕역 5·6호선·공항철도 환승역에서 도보 3분 거리에 위치한 신축 오피스텔입니다. 전용 23㎡(약 7평), 보증금 5천만원에 월세 80만원이며 빌트인 풀옵션 구성입니다. 마포 인근 직장이시면 출근 동선이 매우 편리하실 것으로 보입니다.</p>
+        <p>다만 정확한 도보 시간·세부 컨디션은 임장 시 확인이 가능하므로, 토요일 오전 10시 또는 11시 중 가능하신 시간 알려주시면 일정 안내드리겠습니다.</p>
+        <p>위 내용은 임장 후 정확히 확인드립니다."</p>
+      </blockquote>
+    </details>
+    <details class="extension">
+      <summary>확장 과제 (중급자용)</summary>
+      <ol>
+        <li>위 결과를 "30대 여성 1인 가구 직장인 친근한 톤"으로 다시 요청</li>
+        <li>클로바노트로 가상 통화 녹음 → 텍스트화 → 위 프롬프트에 붙여넣어 답변 받기</li>
+        <li>정규식으로 휴대전화 자동 마스킹 스크립트 작성 (Python 5줄)</li>
+      </ol>
+    </details>
+    <p style="font-size:0.88em;color:var(--c-muted);">⏱ 약 10분 (마스킹 3분 + 프롬프트 입력 3분 + 결과 검토·짝꿍 공유 4분)</p>
+  </section>
+
+  <article class="slide" data-slide="3-18" data-slide-label="Slide 3-18">
+    <h3>통화 후 자동 요약 — 도구 3종 비교 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <table>
+      <thead><tr><th>도구</th><th>무료 한도</th><th>강점</th></tr></thead>
+      <tbody>
+        <tr><td><strong>클로바노트</strong></td><td>월 300분</td><td>한국어 STT 최강, 화자 분리</td></tr>
+        <tr><td><strong>다글로</strong></td><td>월 30분</td><td>API 제공, CRM 연동</td></tr>
+        <tr><td><strong>에이닷 노트</strong></td><td>SKT 가입자 무료</td><td>통화 종료 즉시 요약</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>모두 통화 녹음 후 자동 요약 + To-Do 추출</li>
+      <li>단, <strong>녹음 파일 제3자 공유는 위법</strong> (통신비밀보호법)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"통화 응대 끝나고 메모 정리, 이거 30분 걸리잖아요. 이걸 30초로 줄여주는 게 이 세 도구예요. SKT 쓰시는 분은 에이닷 노트가 1순위예요. 무료고, 자동이고. SKT 아니시면 클로바노트 깔으세요. 월 300분 무료니까, 하루 10분씩 한 달 쓸 수 있어요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="wrap-up" data-slide="3-19">
+    <h3>Slide 3-19 — 모듈 3 정리</h3>
+    <p><strong>오늘 배운 3가지:</strong></p>
+    <ol>
+      <li>메모장 Ctrl+H로 30초 안에 마스킹하는 법</li>
+      <li>마스킹 후 ChatGPT 안전 프롬프트로 3톤 답변 받는 법</li>
+      <li>공인중개사법 제25조 — AI 답변도 사람이 검수 후 발송</li>
+    </ol>
+    <div class="action-now">
+      <strong>오늘 사무실 가서 바로 할 1가지:</strong><br>
+      메모장에 "마스킹 치환 4종"(이름·전화·호수·직장) 단축 메모 저장. 내일 첫 카톡 문의 오면 이 메모 보며 워크플로우 1회 실행.
+    </div>
+    <p><strong>다음 모듈 미리보기:</strong> AI가 알려준 시세·법령을 1차 출처로 검증하는 법</p>
+  </section>
+
+  <article class="slide" data-slide="3-20" data-slide-label="Slide 3-20">
+    <h3>휴식 안내 + 다음 모듈 예고</h3>
+    <ul class="slide-body">
+      <li>다음: 모듈 4 — 시장·법령 리서치 + 환각 검증 (30분)</li>
+      <li>키워드: NotebookLM, 5단계 검증 체크리스트, 변호사 가짜 판례 사건</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 모듈 3 끝났어요. 잠깐 1분 스트레칭하시고요, 바로 모듈 4 갈게요. 모듈 4는요, 'AI가 거짓말한다'는 주제예요. 솔직히 저도 처음엔 의심했는데요, 변호사가 ChatGPT 믿고 가짜 판례 법원에 냈다가 처벌받은 사건이 있어요. 그게 우리한테도 똑같이 일어날 수 있거든요. 그걸 막는 5단계 체크리스트, 배우러 가겠습니다."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+</section><!-- /module-3 -->
+
+<!-- ============================================================
+     MODULE 4 — 시장·법령 리서치 + 환각 검증 (30분, 18 슬라이드)
+============================================================ -->
+<section data-module="4" id="module-4">
+  <h2>모듈 4 — 시장·법령 리서치 + 환각 검증</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 30분 · <strong>슬라이드:</strong> 18장 · <strong>실습:</strong> 2개 (실습 4-A 메인, 4-B 보조)
+    <ul>
+      <li><strong>★ 핵심:</strong> 1차 출처 검증 5단계 (AI 환각 회피)</li>
+      <li><strong>입문 학습 목표:</strong> 5단계 체크리스트 외우기. rt.molit / law.go.kr / glaw.scourt.go.kr 재확인 절차 수행.</li>
+      <li><strong>중급 학습 목표:</strong> NotebookLM 정책 PDF 워크플로우. 호갱노노 vs 디스코 매물별 도구 선택. korean-law-mcp 인지.</li>
+    </ul>
+  </div>
+
+  <section class="instructor-guide" aria-label="모듈 4 강사 진행 가이드">
+    <h3>강사 진행 가이드</h3>
+    <p class="ig-note">강사 모드에서만 표시됩니다. 강의 시작 전 미리 읽어주세요.</p>
+    <ul>
+      <li><strong>시간 배분:</strong> 총 30분, 슬라이드 18장. 도입 5분 + 도구 시연 12분 + 실습 8분 + 정리 5분</li>
+      <li><strong>청중 수준 점검:</strong> 모듈 시작 시 거수로 "korean-law-mcp 들어본 적 있으신 분?" 물어보세요.
+        <ul>
+          <li>손드는 사람이 50% 미만이면 → <strong>Slide 4-17(korean-law-mcp)을 건너뛰고</strong> Slide 4-18로 직행 (3분 단축)</li>
+          <li>손드는 사람이 50% 이상이면 → 4-17 그대로 진행</li>
+        </ul>
+      </li>
+      <li><strong>옵션 슬라이드:</strong> Slide 4-17은 중급 심화. 건너뛰어도 모듈 학습 목표 달성에 영향 없습니다.</li>
+      <li><strong>즉시 효용 강조 시점:</strong> 정리 슬라이드(4-18)에서 "오늘 사무실 가서 NotebookLM에 정책 PDF 1개 업로드해보세요" 한 번 더 짚어주세요.</li>
+    </ul>
+  </section>
+
+  <article class="slide" data-slide="4-1" data-slide-label="Slide 4-1">
+    <h3>모듈 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>모듈 4 — 시장·법령 리서치 + 환각 검증</li>
+      <li>소요 30분</li>
+      <li>오늘의 약속: <strong>"AI 답변 = 가설, 1차 출처 = 사실"</strong></li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT 답변 → 4개 1차 출처 사이트로 검증되는 도식</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 모듈 4 시작할게요. 이번 모듈은요, '믿지 마라'가 핵심이에요. ChatGPT가 그럴듯하게 답을 줘도, 우리는 그걸 그냥 '가설'로만 보는 거예요. 진짜 사실은요, 국토부 사이트, 법제처 사이트, 대법원 사이트에 있어요. 그걸 30분 안에 손에 익히고 가는 게 오늘 목표예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="4-2">
+    <h3>Slide 4-2 — 충격 사례 · 변호사가 ChatGPT 가짜 판례 법정 제출 <span class="track-label track-beginner">입문 필수</span></h3>
+    <h4>국내 사건 (2024~2025)</h4>
+    <ul>
+      <li>한 지방법원 형사재판부에 변호사가 제출한 <strong>판결 5개가 실제로 존재하지 않음</strong></li>
+      <li>변호사가 'ChatGPT 사용했다' 인정</li>
+      <li>변호사법 위반 검토</li>
+    </ul>
+    <h4>미국 사건 (2023)</h4>
+    <ul>
+      <li>뉴욕 변호사 2명, ChatGPT 가짜 판례 제출 → <strong>각 $5,000 벌금</strong></li>
+    </ul>
+    <p>한국형사법무정책연구원 조사: <strong>변호사 4명 중 3명이 법조 AI 사용 경험</strong></p>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 이거 실화예요. 변호사가 — 법 전문가가요 — ChatGPT한테 '이 사건이랑 비슷한 판례 찾아줘' 했더니, ChatGPT가 그럴듯한 사건번호 5개를 뚝딱 만들어줬어요. 그걸 그대로 법원에 냈다가요, 판사가 '이 판례 어디 있는 거냐'고 물어봤는데, 없는 판례였던 거예요. 변호사도 이렇게 당해요. 우리 공인중개사가 안 당할 이유, 솔직히 없잖아요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="4-3" data-slide-label="Slide 4-3">
+    <h3>우리에게도 똑같이 일어난다 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>공인중개사 환각 위험 시나리오:</strong></li>
+      <li>❌ "공인중개사법 제○○조에 따르면..." (조문 번호가 가짜)</li>
+      <li>❌ "공덕동 평균 시세는 ○억" (학습 시점 고정, 현재 시세 아님)</li>
+      <li>❌ "이 매물 사면 ○% 오른다" (자본시장법 위반 + 환각)</li>
+      <li>❌ "취득세율은 ○%" (매년 바뀜)</li>
+      <li>AI 답변 그대로 고객에게 전달 → <strong>손해배상·과태료</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분도 이렇게 당할 수 있어요. ChatGPT한테 '강남구 양도세율 얼마야?' 물어보면요, 자신 있게 숫자 딱 알려줘요. 근데 그게 작년 숫자일 수도 있고, 아예 지어낸 숫자일 수도 있거든요. 그걸 고객한테 '양도세는 ○○% 나옵니다' 하고 답해버리면요, 나중에 차액 손해배상 청구 들어와요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-4" data-slide-label="Slide 4-4">
+    <h3>1차 출처 검증 5단계 체크리스트 (핵심) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li><strong>법령 조문</strong> → <a href="https://law.go.kr" target="_blank" rel="noopener">law.go.kr</a> 직접 검색</li>
+      <li><strong>판례 사건번호</strong> → <a href="https://glaw.scourt.go.kr" target="_blank" rel="noopener">glaw.scourt.go.kr</a> 실존 확인</li>
+      <li><strong>실거래가</strong> → <a href="https://rt.molit.go.kr" target="_blank" rel="noopener">rt.molit.go.kr</a> 재조회</li>
+      <li><strong>정책 시행일</strong> → 국토부 보도자료 + 법제처 부칙 2중 확인</li>
+      <li><strong>숫자(시세·세율·면적)</strong> → AI에게 묻지 말고 "이미 검증된 숫자 주고 정리만" 시키기</li>
+    </ol>
+    <div class="highlight-callout">이 슬라이드 사진 찍으세요. 인쇄본 배포 (휴대용 카드).</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이 슬라이드 사진 찍으세요. 다섯 줄이에요. 법령은 law.go.kr, 판례는 glaw.scourt.go.kr, 실거래가는 rt.molit.go.kr, 정책 시행일은 보도자료랑 법제처 두 번 확인, 숫자는 AI한테 묻지 말고 주고 정리만 시킨다. 끝이에요. 인쇄본 한 장씩 받아가시고요 — 코팅해서 책상 위에 딱 두시면 돼요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분</span><span>인쇄물 배포</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-5" data-slide-label="Slide 4-5">
+    <h3>1단계 — 법령 조문 검증 (law.go.kr) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>ChatGPT가 "공인중개사법 제○조" 인용하면</li>
+      <li><a href="https://law.go.kr" target="_blank" rel="noopener">https://law.go.kr</a> 접속</li>
+      <li>검색창에 "공인중개사법" 입력</li>
+      <li>좌측 조문 목록에서 제○조 클릭</li>
+      <li>본문 일치 여부 확인</li>
+    </ol>
+    <p>5초 작업</p>
+    <figure class="placeholder">스크린샷: law.go.kr 검색 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"법령 조문은요, 5초면 검증돼요. law.go.kr 즐겨찾기에 넣어두시고요, ChatGPT가 '제25조'라고 하면 그냥 law.go.kr 가서 '공인중개사법 제25조' 검색하면 끝이에요. 글자 한 자라도 다르면요, ChatGPT 답은 그냥 무시하세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-6" data-slide-label="Slide 4-6">
+    <h3>2단계 — 판례 사건번호 검증 (glaw.scourt.go.kr) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>ChatGPT가 "대법원 2024다○○○○○" 인용하면</li>
+      <li><a href="https://glaw.scourt.go.kr" target="_blank" rel="noopener">https://glaw.scourt.go.kr</a> 접속 (대법원 종합법률정보)</li>
+      <li>사건번호 그대로 검색</li>
+      <li>실존하지 않으면 → <strong>AI 환각</strong>, 즉시 폐기</li>
+    </ol>
+    <p>모듈 4-2 변호사 사례 = 이 단계 생략의 결과</p>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p>예시 실존 판례: <strong>서울북부지법 2024가단111852</strong> — 신탁 부동산 임대차 중개 설명의무 (2025-05-13)</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"판례 검증이 진짜 제일 중요해요. 왜냐면요, ChatGPT가 제일 잘 지어내는 게 판례 사건번호거든요. '2024다12345' 이렇게 그럴듯하게 막 만들어 내요. glaw.scourt.go.kr 즐겨찾기 추가하시고요, 사건번호 그대로 복사 붙여넣어서 검색하세요. 없으면 즉시 폐기예요. 이것도 5초면 끝나요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-7" data-slide-label="Slide 4-7">
+    <h3>3단계 — 실거래가 검증 (rt.molit.go.kr) <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>ChatGPT 학습 데이터 = <strong>고정 시점</strong>, 현재 시세 모름</li>
+      <li>호갱노노 = 1차 출처? <strong>아니오</strong> (1~7일 지연)</li>
+      <li>1차 출처는 <a href="https://rt.molit.go.kr" target="_blank" rel="noopener">rt.molit.go.kr</a> 한 곳뿐</li>
+      <li><strong>절차:</strong>
+        <ol>
+          <li>동·아파트명·계약월 검색</li>
+          <li>실거래가 표 확인 (매매·전월세 모두)</li>
+          <li>ChatGPT 답변과 비교</li>
+        </ol>
+      </li>
+    </ul>
+    <figure class="placeholder">스크린샷: rt.molit.go.kr 검색 결과</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"실거래가는요, rt.molit.go.kr 한 곳이에요. 호갱노노가 편하긴 한데 며칠씩 지연되거든요. 정확한 검증은 국토부 사이트로 가셔야 돼요. 그리고요, ChatGPT한테 시세 묻지 마세요. ChatGPT는 작년 데이터로 학습된 애예요. 오늘 시세는 몰라요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-8" data-slide-label="Slide 4-8">
+    <h3>4단계 — 정책 시행일 2중 확인 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>정책 시행일 = <strong>한 글자도 추측 금지</strong></li>
+      <li>2중 확인
+        <ol>
+          <li>국토부 보도자료 (정책 발표 원문)</li>
+          <li>법제처 부칙 (실제 시행 날짜)</li>
+        </ol>
+      </li>
+      <li>예시: 위반건축물 광고 표기 의무 = <strong>2025.1.1 시행</strong> / AI 기본법 라벨 의무 = <strong>2026.1.22 시행</strong></li>
+      <li>ChatGPT가 "○○년 ○월부터 시행"이라고 해도 → <strong>검증 필수</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"시행일은요, 진짜 위험해요. 작년 11월에 시행된 정책을 ChatGPT가 '내년 1월'이라고 답하면요, 우리가 고객한테 '아직 시간 있다'고 안내했다가 큰일 나는 거예요. 보도자료랑 법제처 부칙, 두 번 확인하세요. 꼭 두 번."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-9" data-slide-label="Slide 4-9">
+    <h3>5단계 — 숫자는 AI에게 묻지 말고 주고 정리만 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>❌ 잘못된 사용: "강남구 신축 아파트 평균 시세 알려줘"</li>
+      <li>✅ 올바른 사용 ↓</li>
+    </ul>
+    <pre class="prompt"><code id="prompt-4-numbers">다음 5건 실거래가의 평균·중앙값·최고·최저를 표로 만들어줘:
+16.5억(2025-11) / 16.2억(2026-01) / 17.0억(2026-02) / 16.8억(2026-03) / 16.5억(2026-04)</code><button class="copy-btn" type="button" data-target="prompt-4-numbers">📋 복사</button></pre>
+    <ul>
+      <li>AI는 <strong>계산기·요약기</strong>로만 사용</li>
+      <li>숫자 출처는 사람이 1차 출처에서 가져옴</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이게요, 5단계 중에서 핵심이에요. AI한테 숫자를 묻지 마세요. 우리가 rt.molit.go.kr 가서 다섯 건 직접 뽑아오고요, ChatGPT한테는 '이거 표로 만들어줘'만 시키는 거예요. 그러면 환각 위험은 0이고, 표 만들기 30초로 끝나요. AI는 계산기예요, 출처가 아니에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-10" data-slide-label="Slide 4-10">
+    <h3>권장 도구 7개 (즐겨찾기 등록) <span class="track-label track-beginner">입문 필수</span></h3>
+    <table>
+      <thead><tr><th>용도</th><th>도구</th><th>URL</th></tr></thead>
+      <tbody>
+        <tr><td>실거래가 1차</td><td>국토부 실거래가</td><td><a href="https://rt.molit.go.kr" target="_blank" rel="noopener">rt.molit.go.kr</a></td></tr>
+        <tr><td>아파트 시각화</td><td>호갱노노</td><td><a href="https://hogangnono.com" target="_blank" rel="noopener">hogangnono.com</a></td></tr>
+        <tr><td>상가·토지</td><td>디스코</td><td><a href="https://disco.re" target="_blank" rel="noopener">disco.re</a></td></tr>
+        <tr><td>공간정보</td><td>V-World</td><td><a href="https://vworld.kr" target="_blank" rel="noopener">vworld.kr</a></td></tr>
+        <tr><td>법령 1차</td><td>법제처</td><td><a href="https://law.go.kr" target="_blank" rel="noopener">law.go.kr</a></td></tr>
+        <tr><td>판례 1차</td><td>대법원</td><td><a href="https://glaw.scourt.go.kr" target="_blank" rel="noopener">glaw.scourt.go.kr</a></td></tr>
+        <tr><td>정책 PDF 요약</td><td>NotebookLM</td><td><a href="https://notebooklm.google" target="_blank" rel="noopener">notebooklm.google</a></td></tr>
+      </tbody>
+    </table>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이 7개요. 브라우저 즐겨찾기에 폴더 하나 만들어서 다 넣으세요. 폴더 이름은 'AI 검증'이라고 하시고요. 매물 유형별로 호갱노노는 아파트용, 디스코는 상가·토지용으로 쓰시면 돼요. NotebookLM은 따로 뒤에서 설명 드릴게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-11" data-slide-label="Slide 4-11">
+    <h3>시연 — ChatGPT 답변 vs 실거래가 (공덕동)</h3>
+    <ul class="slide-body">
+      <li>강사 시연 1: ChatGPT에 "마포구 공덕동 오피스텔 평균 월세 알려줘" 입력</li>
+      <li>강사 시연 2: rt.molit.go.kr에서 동일 조건 재조회</li>
+      <li><strong>차이점 비교</strong> — 학습 시점 / 표본 차이 / 호가 vs 실거래</li>
+      <li>결론: "ChatGPT는 가설, rt.molit이 사실"</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 직접 보여드릴게요. ChatGPT에 '공덕동 오피스텔 월세 시세' 물어봅니다. 답이 딱 나왔죠? 그럴듯하잖아요. 이제 rt.molit.go.kr 가서 같은 조건으로 재조회해요. 보세요 — 숫자가 다르죠. ChatGPT가 거짓말한 게 아니라요, 학습 시점이 다른 거예요. 그래서 ChatGPT 시세를 고객에게 그대로 전달하시면 안 됩니다."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 4분 (실시간 시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-12" data-slide-label="Slide 4-12">
+    <h3>시연 — NotebookLM 정책 PDF 요약 <span class="track-label track-intermediate">중급 심화</span></h3>
+    <ul class="slide-body">
+      <li>강사 시연: 10·15 부동산 대책 PDF를 NotebookLM에 업로드</li>
+      <li>질문: "이 대책의 ① 적용 지역 ② 적용 대상 ③ 시행일 ④ 실거주 의무 요건을 표로"</li>
+      <li>결과: 답변마다 <strong>원문 페이지 인용 표시</strong></li>
+      <li>일반 ChatGPT 대비: <strong>외부 학습 데이터 환각 위험 거의 0</strong></li>
+    </ul>
+    <figure class="placeholder">스크린샷: NotebookLM 인용 표시 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"NotebookLM이요, 진짜 강력해요. 무료고요. 정책 PDF를 통째로 올려놓으면, 이 PDF 안에서만 답을 찾아요. 답변 옆에 '몇 페이지에서 가져왔다' 인용 표시가 다 붙거든요. 환각이 거의 안 일어나요. 정책 자료 분석할 때는요, ChatGPT보다 NotebookLM이 훨씬 안전해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분 (실시간 시연)</span></div>
+  </article>
+
+  <section class="warnings" data-slide="4-13">
+    <h3>Slide 4-13 — ❌ 이렇게 하지 마세요 / ✅ 이렇게 하세요</h3>
+    <h4>❌ 하지 마세요</h4>
+    <ul>
+      <li>"강남구 양도세율 알려줘" (환각 + 매년 변동)</li>
+      <li>ChatGPT 인용 판례 사건번호 그대로 고객에게 전달</li>
+      <li>ChatGPT 인용 시세를 고객 상담 자료에 그대로 사용</li>
+      <li>"이 매물 사면 ○% 오른다" 류 투자 권유 (자본시장법 위반)</li>
+    </ul>
+    <div class="ok-block">
+      <h4>✅ 이렇게 하세요</h4>
+      <ul>
+        <li>양도세는 홈택스·세무사에서 확인 후 AI에 "정리만"</li>
+        <li>판례 사건번호 → glaw.scourt.go.kr 실존 확인 후 인용</li>
+        <li>시세 → rt.molit.go.kr에서 가져온 숫자만 사용</li>
+        <li>투자 추천 X, "과거 추이 정리"까지만</li>
+      </ul>
+    </div>
+    <div class="highlight-callout">이 슬라이드도 사진 찍어두세요.</div>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>자본시장법</strong> — 무인가 투자권유 금지 ("이 매물 사면 ○% 오른다" 류는 자본시장법 위반 소지)</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"이 슬라이드도 사진 찍으세요. 왼쪽이 사고 나는 패턴, 오른쪽이 안전한 패턴이에요. 특히 마지막 줄, 자본시장법까지 걸립니다. 'AI가 그러던데 이 매물 오른대요' — 이 말 절대 하지 마세요. AI는 시장 분석에서도 '과거 추이 정리'까지가 한계예요."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="4-14" data-slide-label="Slide 4-14">
+    <h3>실습 안내</h3>
+    <ul class="slide-body">
+      <li>지금부터 8분 청중 실습</li>
+      <li>1단계: ChatGPT에 "공인중개사법 제25조 확인설명 의무 조문 내용 알려줘" 입력</li>
+      <li>2단계: law.go.kr에서 동일 조문 검색 → 일치/불일치 확인</li>
+      <li>3단계: 짝꿍과 결과 비교 (1분)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분이 직접 해보실 시간이에요. 두 단계예요. ChatGPT에 공인중개사법 제25조 물어보시고요, 답이 나오면 law.go.kr 가서 진짜 25조랑 비교해보세요. 99%는 비슷할 거예요. 근데 1%는 다를 수 있거든요. 그 1%를 직접 보시는 게요, 오늘 실습의 핵심이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-15" data-slide-label="Slide 4-15">
+    <h3>실습 — 복사용 프롬프트 + 검증 절차</h3>
+    <p><strong>1단계 — ChatGPT 입력:</strong></p>
+    <pre class="prompt"><code id="prompt-4a-slide">당신은 한국 부동산 법률 전문가입니다.
+
+[질문]
+공인중개사법 제25조(중개대상물의 확인·설명)의
+조문 내용을 정확히 알려주세요.
+
+[요청]
+- 조문 본문 그대로 인용
+- 핵심 의무 3가지 요약
+- 위반 시 처벌 조항 함께 안내</code><button class="copy-btn" type="button" data-target="prompt-4a-slide">📋 복사</button></pre>
+    <p><strong>2단계 — 검증 (law.go.kr):</strong></p>
+    <ol>
+      <li><a href="https://law.go.kr" target="_blank" rel="noopener">https://law.go.kr</a> 접속</li>
+      <li>"공인중개사법" 검색 → 좌측 메뉴 "제25조" 클릭</li>
+      <li>ChatGPT 답변과 본문 한 줄씩 비교</li>
+      <li>불일치 항목 메모</li>
+    </ol>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"프롬프트 복사해서 ChatGPT에 넣으세요. 답 받으셨으면, 이제 law.go.kr 새 탭 열고 공인중개사법 제25조 찾으세요. 두 화면 띄워놓고 한 줄씩 비교하시는 거예요. '확인·설명 의무'라는 표현이 같은가, 처벌 조항 — 500만원 이하 과태료 맞는가, 이런 식으로요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 6분 (실습)</span></div>
+  </article>
+
+  <article class="slide" data-slide="4-16" data-slide-label="Slide 4-16">
+    <h3>실습 — 예상 결과 + 검증 포인트</h3>
+    <ul class="slide-body">
+      <li><strong>예상 결과:</strong> ChatGPT 답변과 law.go.kr 본문이 <strong>약 90% 일치</strong></li>
+      <li>차이가 발생할 수 있는 지점:
+        <ul>
+          <li>조문 인용 시 일부 표현이 의역됨</li>
+          <li>시행령·시행규칙 조항이 본법 조문에 섞임</li>
+          <li>처벌 조항 금액이 옛날 기준일 수 있음</li>
+        </ul>
+      </li>
+      <li>결론: <strong>"그래서 1차 출처가 절대 기준"</strong></li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분 결과 어떠셨어요? 거의 비슷하죠? 그래도 어딘가 한 글자, 한 단어 다른 게 분명히 있을 거예요. 만약에 시행령 조항이 본법에 슬쩍 섞여 있으면요, 그게 진짜 위험한 환각이에요. 본법 조문이라고 믿고 고객한테 안내했다가는 사고 납니다. 그래서요, law.go.kr이 절대 기준이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="practice" data-practice="4-A">
+    <h3>실습 4-A: ChatGPT 법령 답변을 law.go.kr로 검증</h3>
+    <div class="situation">
+      <strong>상황:</strong> 모듈 3 마스킹·답변 과정에서 ChatGPT가 "공인중개사법 제25조 확인·설명 의무를 지켜야 합니다"라고 알려줬다. 이 조문이 실제로 존재하는지, 내용이 정확한지 1차 출처에서 검증한다.
+    </div>
+    <p><strong>1단계 — 복사용 프롬프트 (ChatGPT 입력):</strong></p>
+    <pre class="prompt"><code id="prompt-4a">당신은 한국 부동산 법률 전문가입니다.
+
+[질문]
+공인중개사법 제25조(중개대상물의 확인·설명)의
+조문 내용을 정확히 알려주세요.
+
+[요청]
+- 조문 본문 그대로 인용
+- 핵심 의무 3가지 요약
+- 위반 시 처벌 조항 함께 안내
+- 시행일(현행 기준) 명시</code><button class="copy-btn" type="button" data-target="prompt-4a">📋 복사</button></pre>
+    <p><strong>2단계 — 검증 절차 (law.go.kr):</strong></p>
+    <ol>
+      <li><a href="https://law.go.kr" target="_blank" rel="noopener">https://law.go.kr</a> 접속</li>
+      <li>검색창에 "공인중개사법" 입력 → 법령 클릭</li>
+      <li>좌측 조문 목록에서 "제25조" 찾아 클릭</li>
+      <li>본문을 ChatGPT 답변과 한 줄씩 비교</li>
+      <li>다음 4개 항목 일치 여부 체크:
+        <ul style="list-style:none;padding-left:1em;">
+          <li>☐ 조문 제목이 "중개대상물의 확인·설명"인가</li>
+          <li>☐ "성실·정확하게 설명하고" 표현이 있는가</li>
+          <li>☐ "토지대장, 등기사항증명서" 등 근거자료 제시 의무가 있는가</li>
+          <li>☐ 시행일이 일치하는가</li>
+        </ul>
+      </li>
+    </ol>
+    <details class="expected">
+      <summary>예상 결과 (강사 시연용)</summary>
+      <p>ChatGPT 답변: 약 90% 일치하지만 일부 표현이 의역되거나, 시행령 조항(제21조 등)이 본법에 섞일 수 있음. law.go.kr 본문: 절대 기준 — 차이 발생 시 즉시 1차 출처 채택.</p>
+      <p><strong>학습 포인트:</strong> "AI가 자신 있게 답해도 1차 출처가 절대 기준"을 체감.</p>
+    </details>
+    <details class="extension">
+      <summary>확장 과제 (중급자용)</summary>
+      <ol>
+        <li>위 검증을 신탁 부동산 임대차 판례(서울북부지법 2024가단111852)에도 적용 — glaw.scourt.go.kr에서 실존 확인</li>
+        <li>NotebookLM에 공인중개사법 시행령 PDF 업로드 → "제25조 관련 시행령 조항" 자연어 검색 → 인용 표시 확인</li>
+        <li>ChatGPT vs Claude vs NotebookLM 3개 도구에 동일 질문 → 환각 빈도 비교</li>
+      </ol>
+    </details>
+    <p style="font-size:0.88em;color:var(--c-muted);">⏱ 약 8분 (ChatGPT 입력 2 + law.go.kr 검증 4 + 짝꿍 공유 2)</p>
+  </section>
+
+  <section class="practice" data-practice="4-B">
+    <h3>실습 4-B (보조): 공덕동 시세 검증 — ChatGPT vs rt.molit.go.kr</h3>
+    <div class="situation">
+      <strong>상황:</strong> 강사 4-11 시연을 청중이 직접 따라하는 버전. 시간이 부족하면 강사 시연만 보고 청중 실습은 4-A로 한정.
+    </div>
+    <p><strong>복사용 프롬프트:</strong></p>
+    <pre class="prompt"><code id="prompt-4b">당신은 부동산 시장 분석 보조 도구입니다.
+
+[질문]
+서울 마포구 공덕동 신축 오피스텔
+전용 23㎡(약 7평) 평균 월세 수준을 알려주세요.
+
+[제약]
+- 데이터 출처 시점을 반드시 명시
+- 최신 데이터를 모를 경우 "rt.molit.go.kr에서 확인 필요"라고 답하기</code><button class="copy-btn" type="button" data-target="prompt-4b">📋 복사</button></pre>
+    <p><strong>검증 절차:</strong></p>
+    <ol>
+      <li>rt.molit.go.kr 접속 → 좌측 "오피스텔" 선택</li>
+      <li>지역: 서울특별시 → 마포구 → 공덕동</li>
+      <li>계약일자: 최근 3개월 → 전용면적: 20~25㎡ → 임대차 구분: 월세</li>
+      <li>ChatGPT 답변 수치와 비교</li>
+    </ol>
+    <details class="expected">
+      <summary>예상 결과</summary>
+      <p>ChatGPT는 학습 시점 기준 답변. rt.molit.go.kr은 최신. 두 숫자가 다르면 무조건 rt.molit 채택.</p>
+    </details>
+  </section>
+
+  <article class="slide" data-slide="4-17" data-slide-label="Slide 4-17">
+    <h3>중급자 옵션 — korean-law-mcp 소개 <span class="track-label track-intermediate">중급 심화</span> <span class="option-label">옵션 · 중급</span></h3>
+    <ul class="slide-body">
+      <li><strong>korean-law-mcp</strong> (chrisryugj/korean-law-mcp, GitHub)</li>
+      <li>Claude Desktop에 설치 → 자연어로 법령·판례 자동 검증 조회</li>
+      <li>법제처 42개 API → 17개 MCP 도구로 통합</li>
+      <li><strong>verify_citations</strong> 기능: 인용 정확성 자동 검증</li>
+      <li>입문자는 듣고 패스 / 중급자만 IT 동료에게 설치 요청</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여기는요, 중급자분들만 들으세요. 입문자분들은 '아, 이런 게 있구나' 하시면 충분해요. korean-law-mcp라는 오픈소스가 있거든요. Claude Desktop이라는 프로그램에 이걸 깔면요, '신탁 부동산 임대차 판례 5개 찾아줘' 같은 자연어 질의가 자동으로 법제처 사이트랑 연결돼요. 환각이 거의 0이에요. 근데 설치가 좀 까다로워서요, IT 동료한테 부탁하시는 게 편해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="wrap-up" data-slide="4-18">
+    <h3>Slide 4-18 — 모듈 4 정리</h3>
+    <p><strong>오늘 배운 3가지:</strong></p>
+    <ol>
+      <li>AI 환각은 변호사도 당한다 (가짜 판례 사건)</li>
+      <li>5단계 검증 체크리스트 (법령·판례·실거래가·시행일·숫자)</li>
+      <li>NotebookLM은 환각 위험이 거의 없는 정책 PDF 요약 도구</li>
+    </ol>
+    <div class="action-now">
+      <strong>오늘 사무실 돌아가서 바로 할 1가지:</strong><br>
+      브라우저 즐겨찾기에 <strong>검증 4종</strong> 등록 — rt.molit.go.kr / law.go.kr / glaw.scourt.go.kr / 호갱노노. AI 답변에 의문이 생기는 순간 1클릭 이동.
+    </div>
+    <p><strong>다음 모듈 미리보기:</strong> 답사 → 음성 메모 → 광고 → 마스킹 → 발송 통합 실습</p>
+  </section>
+</section><!-- /module-4 -->
+
+<!-- ============================================================
+     MODULE 5 — 통합 실습 (답사→음성→광고→발송) (30분, 22 슬라이드)
+============================================================ -->
+<section data-module="5" id="module-5">
+  <h2>모듈 5 — 통합 실습 (답사→음성→광고→발송)</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 30분 · <strong>슬라이드:</strong> 22장 · <strong>실습:</strong> 1개 (실습 5-A 미니)
+    <ul>
+      <li><strong>★ 핵심:</strong> 모바일 음성 메모 워크플로우 (현장 ROI 최고)</li>
+      <li><strong>입문 학습 목표:</strong> 차량 1인 환경 30초 음성 메모 → ChatGPT 텍스트 정리 → 광고 초안 전 과정 1회 수행.</li>
+      <li><strong>중급 학습 목표:</strong> 5단계 자동화 워크플로우를 자기 사무소에 맞게 재구성.</li>
+    </ul>
+  </div>
+
+  <section class="instructor-guide" aria-label="모듈 5 강사 진행 가이드">
+    <h3>강사 진행 가이드</h3>
+    <p class="ig-note">강사 모드에서만 표시됩니다. 강의 시작 전 미리 읽어주세요.</p>
+    <ul>
+      <li><strong>시간 배분:</strong> 총 30분이지만 22장으로 빡빡합니다. 음성 응답·인터넷 지연 시 즉시 초과 위험.
+        <ul><li>여유 확보: Slide 5-5(중급 도구 비교)와 Slide 5-20(중급 자동화)을 옵션 처리하면 2~3분 절감</li></ul>
+      </li>
+      <li><strong>청중 수준 점검:</strong> 거수로 "ChatGPT 음성 모드 써본 적 있으신 분?" 물어보세요.
+        <ul>
+          <li>50% 미만이면 → 5-5, 5-20 건너뛰고 시연 위주로</li>
+          <li>50% 이상이면 → 옵션 슬라이드 포함</li>
+        </ul>
+      </li>
+      <li><strong>인터넷·음성 백업 흐름 (필독):</strong> 음성 모드가 안 되면 <strong>Slide 5-7B(텍스트 대체 흐름)</strong>로 즉시 전환. 청중 휴대폰 앱 미설치 시 강사 화면 시연으로 대체.</li>
+      <li><strong>고객 미팅 중 음성 금기:</strong> Slide 5-16은 절대 시간 단축하지 마세요. 통신비밀보호법 위반 사례라 이 한 슬라이드 때문에 강의에 신뢰가 생깁니다.</li>
+    </ul>
+  </section>
+
+  <article class="slide" data-slide="5-1" data-slide-label="Slide 5-1">
+    <h3>모듈 5 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>모듈 5: 통합 실습 — 답사→음성→광고→발송</li>
+      <li>30분 / 강사 시연 70% + 청중 실습 30%</li>
+      <li>오늘 배운 모든 것을 한 흐름으로</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 휴대폰을 손에 들고 차량 운전석에서 음성 입력하는 일러스트</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분, 드디어 마지막 실습 모듈이에요. 지금까지 광고문, 마스킹, 검증 따로따로 배웠잖아요. 이걸 한 줄로 쫙 꿰어볼 거예요. 시나리오 들어보세요 — 답사 끝나고 차에 탔어요. 손은 핸들에 있고요, 메모 적을 시간도 없죠. 이때 휴대폰에 대고 딱 30초만 말하면요, 사무실 도착하기 전에 광고 초안이 떡하니 준비되어 있는, 그런 워크플로우예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-2" data-slide-label="Slide 5-2">
+    <h3>학습 목표 (입문/중급 분리)</h3>
+    <ul class="slide-body">
+      <li><span class="track-label track-beginner">입문 필수</span> 차량에서 30초 음성 → 광고 초안까지 한 번 직접 해본다</li>
+      <li><span class="track-label track-intermediate">중급 심화</span> 5단계 워크플로우를 자기 사무소 톤에 맞게 변형</li>
+      <li>모듈 2(광고법), 모듈 3(마스킹), 모듈 4(검증) 통합 적용</li>
+      <li>발송 직전 3중 체크 (명시사항 / 금지 표현 / AI 라벨)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"오늘 모듈 5 목표는 진짜 단순해요. 처음 들으시는 분은요, 그냥 따라만 오세요. 한 번 해보면 돼요. 써보신 분들은, 이걸 자기 사무소 색깔로 어떻게 바꿀지 머릿속에 그려보시고요. 발송하기 직전에 3가지는 꼭 체크할 거예요 — 명시사항 들어갔나, 금지 표현 안 섞였나, AI 라벨 붙였나. 이렇게 셋이요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-3" data-slide-label="Slide 5-3">
+    <h3>왜 음성 워크플로우가 ROI 최고인가 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>답사 1건 평균 정리 시간: 30분</li>
+      <li>음성 메모 → AI 정리 시간: 30초</li>
+      <li>하루 3건 답사 시 — <strong>약 90분 절감</strong></li>
+      <li>사무실 도착 전에 광고 초안 완료</li>
+    </ul>
+    <figure class="placeholder">인포그래픽: "30분 → 30초" 화살표</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"솔직히 저요, 오늘 강의에서 딱 하나만 가져가신다면 저는 이 모듈을 추천해요. 왜냐고요? 답사 끝나고 사무실 와서 매물 정리하는 데 평균 30분 쓰시잖아요. 그쵸? 그걸 차에서 30초에 끝낸다는 거거든요. 하루 3건 답사 다니시면요, 90분이 빈 시간으로 돌아와요. 그 90분이면 새 고객 응대 하나 더 받을 수 있어요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span><span>상호작용: 거수 1회</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-4" data-slide-label="Slide 5-4">
+    <h3>5단계 워크플로우 전체 그림 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>답사 직후 차량 음성 30초</li>
+      <li>ChatGPT 모바일 음성 입력</li>
+      <li>매물 정보 카드 자동 생성</li>
+      <li>광고문 + 광고법 체크</li>
+      <li>마스킹 → 카톡 발송 (AI 라벨 포함)</li>
+    </ol>
+    <figure class="placeholder">5단계 플로우차트</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"전체 그림 한 번 보고 갈게요. 다섯 단계예요. 1단계는 음성, 2단계는 ChatGPT에 넣기, 3단계는 정리된 매물 정보 받기, 4단계는 그걸로 광고문 만들고 광고법 체크, 5단계는 고객한테 보내기 전에 마스킹하고 AI 라벨 붙이는 거. 이제 제가 처음부터 끝까지 한 번 쭉 시연해볼게요. 여러분은 그냥 편하게 보기만 하세요. 휴대폰은 잠깐 내려놓으셔도 돼요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-5" data-slide-label="Slide 5-5">
+    <h3>도구 선택지 비교 <span class="track-label track-intermediate">중급 심화</span> <span class="option-label">옵션 · 중급</span></h3>
+    <ul class="slide-body">
+      <li>ChatGPT 음성 모드 (무료): 입력→텍스트화 즉시</li>
+      <li>ChatGPT 고급 음성 (Plus $20): 대화형 자연 음성</li>
+      <li>클로바노트 (무료 월 300분): 한국어 STT 최강, 화자 분리</li>
+      <li>다글로 (무료 월 30분) / 에이닷 노트 (SKT 가입자)</li>
+      <li><strong>오늘 시연:</strong> ChatGPT 모바일 음성 입력 (무료 가능)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"잠깐 중급자 분들 보세요. 음성 도구가 여러 개 있거든요. ChatGPT 음성, 클로바노트, 다글로, 에이닷. 각자 강점이 달라요. 오늘은 가장 진입 장벽 낮은 ChatGPT 모바일 음성 입력으로 보여드릴 거예요. 무료로 다 돼요. 클로바노트는 통화 녹음 정리에 더 강해요 — 이건 모듈 3에서 잠깐 다뤘잖아요. 처음 시작하시는 분은요, ChatGPT 하나만 익히세요. 그거면 충분해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-6" data-slide-label="Slide 5-6">
+    <h3>시연 1단계 — 답사 직후 30초 음성</h3>
+    <ul class="slide-body">
+      <li>상황: 마포구 공덕동 답사 종료, 차량 운전석 도착</li>
+      <li>휴대폰 ChatGPT 앱 → 마이크 아이콘 탭</li>
+      <li>30초 안에 본 것 그대로 말하기</li>
+      <li>"정리해줘"가 아니라 "본 것을 그대로 말하기"</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT 모바일 앱 마이크 버튼</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 시연 시작할게요. 제 휴대폰 화면 미러링해서 보여드릴게요. ChatGPT 앱 켜고요, 가운데 마이크 아이콘 톡 탭. 자, 이제 제가 마포구 공덕동 답사 막 끝낸 상황이에요. 차에 탔어요. 운전석에 앉아서, 핸들 잡기 전에, 30초만 음성으로 입력해볼게요. 포인트는요 — 깔끔하게 정리해서 말하려고 하지 마세요. 본 그대로 말하면 돼요. AI가 알아서 정리해주거든요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분 (시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-7" data-slide-label="Slide 5-7">
+    <h3>시연 1단계 — 실제 음성 입력 스크립트</h3>
+    <div class="situation">
+      <strong>강사 음성 입력 (실제 녹음):</strong><br>
+      "방금 본 매물 정리할게. 공덕동 OO오피스텔, 전용 23제곱미터, 7평 정도. 신축이고, 보증금 5천에 월세 80, 공덕역까지 도보 3분. 5호선이랑 6호선, 공항철도 다 됨. 빌트인 풀옵션. 단점은 채광이 살짝 아쉬워. 다음 약속은 11시 망원동."
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"보세요, 지금 제가 휴대폰에 대고 말한 그대로예요. '~할게'로 시작했죠? 이거 친구한테 카톡 음성 메시지 보내듯이 말한 거예요. 격식 차릴 필요 하나도 없어요. 그리고 단점도 같이 말했어요 — '채광 아쉬워.' 이거 광고문에는 그대로 안 들어가지만, 사무소 내부 매물장에는 남아 있어야 하잖아요. AI가 알아서 분리해줘요. 혹시 음성이 안 되면? 5-7B 슬라이드에서 텍스트 대체 흐름 보여드릴게요. 결과는 똑같으니까 걱정 마시고요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분 (실제 녹음 시연)</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-7B" data-slide-label="Slide 5-7B">
+    <h3>Slide 5-7B: 음성 안 될 때 — 텍스트 대체 흐름 <span class="option-label" style="background:#fff3bf;color:#9c6f00;border-color:#fab005">백업</span></h3>
+    <ul>
+      <li>인터넷 약함·앱 미설치 시 즉시 텍스트로 전환</li>
+      <li>흐름: 메모장/카톡에 매물 정보 타이핑 → ChatGPT 웹에 붙여넣기 → 같은 결과</li>
+      <li>음성 30초 ≈ 텍스트 1~2분 (큰 차이 없음)</li>
+    </ul>
+    <figure class="placeholder">스크린샷: 휴대폰 메모장 → ChatGPT 웹 화면 흐름</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 만약에요. 강의장 인터넷이 갑자기 느려졌거나, 음성 모드가 안 되거나, 휴대폰에 ChatGPT 앱이 없으신 분 — 걱정 마세요. 똑같이 됩니다. 메모장이나 카톡 나한테 보내기 창에 매물 정보 그냥 타이핑하시고요, 그걸 복사해서 ChatGPT 웹사이트에 붙여넣으시면 끝나요. 음성으로 30초 걸리던 게 텍스트로는 1~2분 정도? 큰 차이 없어요. 진짜 중요한 건 'AI에게 매물 정보를 정리시키는 행위' 그 자체거든요. 입력 방식은 부차적이에요."</blockquote>
+    </aside>
+  </article>
+
+  <article class="slide" data-slide="5-8" data-slide-label="Slide 5-8">
+    <h3>시연 2단계 — ChatGPT 자동 텍스트 변환</h3>
+    <ul class="slide-body">
+      <li>음성 입력 종료 즉시 텍스트로 변환됨</li>
+      <li>화면 상단에 회색 텍스트로 표시</li>
+      <li>30초 음성 → 약 5초 안에 텍스트화 완료</li>
+    </ul>
+    <figure class="placeholder">스크린샷: ChatGPT가 음성을 텍스트로 변환한 화면</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 보세요. 보세요, 30초 만에 광고가 나옵니다! 제가 말 끝낸 순간 텍스트로 다 적혔잖아요. 한국어 인식 정확도가 진짜 좋아졌어요. 사투리도 어지간하면 다 알아들어요. 운전 중에도 충분히 돼요. 근데 시끄러운 카페나 미팅 중에는 정확도가 좀 떨어져요. 답사 직후 차량 1인 환경, 이게 베스트예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-9" data-slide-label="Slide 5-9">
+    <h3>시연 3단계 — 매물 정보 카드로 정리 요청</h3>
+    <p>텍스트화된 음성에 이어서 한 줄 추가 입력:</p>
+    <pre class="prompt"><code id="prompt-5-card">위 내용을 매물 정보 카드로 정리해줘. 다음 형식으로:
+
+[외부 광고용 정보]
+- 소재지
+- 면적
+- 가격
+- 입주
+- 옵션
+- 교통
+
+[사무소 내부 메모]
+- 강사가 직접 본 단점·특이사항
+- 다음 일정</code><button class="copy-btn" type="button" data-target="prompt-5-card">📋 복사</button></pre>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 ChatGPT한테 한 줄 더 쳐볼게요. '위 내용을 매물 정보 카드로 정리해줘.' 여기서 디테일 하나 추가해요 — 외부 광고용이랑 사무소 내부 메모는 구분해 달라고요. 왜냐면요, 채광 아쉬운 건 광고에 들어가면 안 되잖아요. 그건 내부 메모로만 남기는 거예요. 이렇게 한 마디만 더 추가하면, AI가 알아서 쫙 분리해줘요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-10" data-slide-label="Slide 5-10">
+    <h3>시연 3단계 — 매물 정보 카드 출력 예시</h3>
+    <div class="situation">
+      <strong>[외부 광고용 정보]</strong>
+      <ul>
+        <li>소재지: 서울 마포구 공덕동 OO오피스텔</li>
+        <li>면적: 전용 23㎡ (약 7평)</li>
+        <li>가격: 보증금 5천만원 / 월 80만원</li>
+        <li>옵션: 빌트인 풀옵션 / 신축</li>
+        <li>교통: 공덕역(5호선·6호선·공항철도) 도보 3분</li>
+      </ul>
+      <strong>[내부 메모]</strong> 채광 아쉬움 / 다음: 11시 망원동
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 결과 보세요! 깔끔하게 두 섹션으로 딱 나왔어요. 위는 광고에 쓸 정보, 아래는 내부 메모. 채광 아쉬운 건 아래로 쏙 빠졌죠? 그리고 다음 일정도 따로 정리됐고요. 이거 사무실 도착하면 매물장에 그대로 복붙 하면 끝이에요. 정리하는 데 5초밖에 안 걸려요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-11" data-slide-label="Slide 5-11">
+    <h3>시연 4단계 — 광고문 생성 + 광고법 체크</h3>
+    <p>이어서 한 줄: "위 외부 광고용 정보로 네이버 부동산 광고문 작성. 모듈 2 안전 템플릿 기준."</p>
+    <ul>
+      <li>자동 포함: 명시사항 7개 / 위반건축물 표기 / AI 라벨</li>
+      <li>자동 회피: 금지 표현 8종 (최저가·유일·확정 등)</li>
+    </ul>
+    <pre class="prompt"><code id="prompt-5-ad">위 외부 광고용 정보로 네이버 부동산 광고문을 작성해줘. 다음 규칙 준수:
+
+[필수 포함]
+- 소재지·면적(전용)·가격·입주가능일·사무소명·등록번호
+- 위반건축물: 해당 없음 (2025.1.1 시행 의무)
+- 광고 하단: "본 콘텐츠 일부는 AI로 제작되었습니다."(AI 기본법 제31조)
+
+[금지 표현]
+- 최저가, 유일, 확정, 보장, 사실상, 무조건, 100%, 초역세권
+
+[톤]
+- 1인 가구 직장인 타겟, 친근하고 신뢰감 있게
+- 300자 이내</code><button class="copy-btn" type="button" data-target="prompt-5-ad">📋 복사</button></pre>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 광고문 만들 차례예요. 한 줄만 더 칠게요. '위 정보로 네이버 부동산 광고문 작성, 모듈 2 안전 템플릿 기준.' 모듈 2에서 배운 거 기억나시죠? 명시사항 자동 포함, 위반건축물 표기, AI 라벨까지 한 번에 다 들어가요. 금지 표현도 알아서 쏙 빠지고요. 제가 매번 일일이 체크 안 해도 되니까 편하죠."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-12" data-slide-label="Slide 5-12">
+    <h3>시연 4단계 — 광고문 출력 예시</h3>
+    <div class="situation">
+      "공덕역 도보 3분, 신축 풀옵션 오피스텔 (전용 23㎡). 5호선·6호선·공항철도 트리플 역세권. 보증금 5천 / 월세 80. 즉시 입주 가능. 1인 가구 직장인분께 추천드립니다.<br>
+      (위반건축물: 해당 없음 / 사무소명·등록번호: 입력 필요)<br>
+      <em>본 콘텐츠 일부는 AI로 제작되었습니다.</em>"
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 보세요! 광고문 나왔어요. '초역세권' 안 썼죠? '도보 3분, 트리플 역세권'으로 객관 표현 갔어요. '최저가' 같은 단어도 안 보이고요. 그리고 위반건축물 표기, AI 라벨 멘트까지 싹 다 들어갔잖아요. 이걸 제가 손으로 쓰려면요, 진짜 30분 걸려요. AI는 5초예요. 5초."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-13" data-slide-label="Slide 5-13">
+    <h3>시연 5단계 — 마스킹 후 고객A에게 카톡</h3>
+    <ul class="slide-body">
+      <li>광고문을 고객A에게 카톡 발송 직전 변환</li>
+      <li>고객 실명·전화번호 절대 입력 금지 → "[고객A]" 사용</li>
+    </ul>
+    <pre class="prompt"><code id="prompt-5-katalk">위 광고문을 [고객A]에게 보낼 카톡 답변으로 정리해줘.
+
+[조건]
+- 정중한 톤, 5줄 이내
+- 방문 일정 제안으로 마무리
+- 단정 표현 금지 (확정·100%·절대)
+- 광고법 명시사항은 카톡 본문이 아닌 별첨 안내 자료로 분리 안내</code><button class="copy-btn" type="button" data-target="prompt-5-katalk">📋 복사</button></pre>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 마지막 단계예요. 이 광고문을 그대로 카톡에 붙여넣지 않아요. 카톡용으로 한 번 더 다듬어요. 그리고 고객 실명은 절대 안 적어요 — '고객A'로 가요. 하나만 강조할게요. 광고법 명시사항 7개를 카톡에 다 박으면요, 답이 너무 길어져요. 그쵸? 그래서 본문은 짧게 가고, 명시사항은 사무소 정식 광고 페이지 링크나 별첨 파일로 분리해서 안내해요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-14" data-slide-label="Slide 5-14">
+    <h3>시연 5단계 — 카톡 답변 출력 예시</h3>
+    <div class="situation">
+      "안녕하세요, 고객님. 문의주신 공덕동 오피스텔 안내드립니다.<br>
+      공덕역 도보 3분, 전용 23㎡ 신축 풀옵션입니다.<br>
+      보증금 5천 / 월 80, 즉시 입주 가능합니다.<br>
+      직접 보러 오시면 더 자세히 안내드릴 수 있어요. 이번 주 어떤 시간대 가능하실까요?<br>
+      (정식 광고 정보 별첨)"
+    </div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"딱 이 정도예요. 깔끔하죠? 5줄. 정중하고, 단정 표현 없고, 직접 방문으로 자연스럽게 유도. 마지막 줄에 '정식 광고 정보 별첨' 한 줄 넣어서 명시사항 의무는 분리해놨고요. 이걸 그대로 복사해서 카톡 채널에 붙여넣고 발송. 보세요, 답사 끝나고 사무실 가는 차 안에서 다 끝났어요!"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-15" data-slide-label="Slide 5-15">
+    <h3>발송 직전 3중 체크 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body" style="list-style:none;padding-left:0;">
+      <li>☐ 명시사항 들어갔나? (소재지·면적·가격·입주·등록번호·위반건축물)</li>
+      <li>☐ 금지 표현 안 섞였나? (최저가·확정·100% 등)</li>
+      <li>☐ AI 라벨 붙였나? (광고에 한해, 카톡 답변은 별첨 페이지에)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 발송하기 전에 딱 3가지만 확인하세요. 명시사항, 금지 표현, AI 라벨. 이 셋만 보면 돼요. AI가 자동으로 다 했지만요, 사람 눈으로 한 번 더 확인. 왜냐고요? 책임 지는 사람은 결국 우리 공인중개사잖아요. AI는 그냥 보조일 뿐이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <section class="warnings" data-slide="5-16">
+    <h3>Slide 5-16 — ❌ 절대 하지 마세요 · 고객 미팅 중 음성 사용 금기</h3>
+    <ul>
+      <li>❌ 고객과 미팅 중 음성 모드 켜기</li>
+      <li>❌ 동의 없는 통화 녹음 → 음성 입력</li>
+      <li>❌ 카페·식당 등 공공장소에서 매물 음성 입력 (옆자리 듣기)</li>
+      <li>❌ 고객 실명·전화번호를 음성으로 말하기</li>
+    </ul>
+    <aside class="law-citation">
+      <h4>법령 인용</h4>
+      <p><strong>통신비밀보호법</strong> — 본인이 대화 당사자면 합법이지만, 고객 동의 없는 녹음을 AI 서버로 보내는 건 별개 문제.</p>
+    </aside>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여기서 진짜 중요한 거 짚고 갈게요. 음성 모드는 강력합니다. 그래서 함부로 쓰면 안 됩니다. 고객 앞에서 켜놓으면 안 됩니다 — 통신비밀보호법상 본인이 대화 당사자라면 합법이지만, 고객 동의 없는 녹음을 AI 서버로 보내는 건 완전히 별개 문제입니다. 카페에서도 위험해요 — 옆자리 누가 들을지 모르잖아요. 답사 직후 차량 1인 환경, 이거 하나만 기억하세요. 이건 진짜 양보 못 합니다."</blockquote>
+    </aside>
+  </section>
+
+  <article class="slide" data-slide="5-17" data-slide-label="Slide 5-17">
+    <h3>✅ 음성 워크플로우 안전 사용 5원칙 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body" style="list-style:none;padding-left:0;">
+      <li>✅ 1인 환경에서만 사용 (차량·사무실 본인 자리)</li>
+      <li>✅ 고객 식별 정보 음성 입력 금지 → "고객A"</li>
+      <li>✅ 답사 직후 30초 이내 — 그때만 효과</li>
+      <li>✅ AI 출력은 반드시 사람 검수 (특히 가격·법령)</li>
+      <li>✅ 발송 전 3중 체크 (명시사항·금지표현·AI라벨)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"반대로요, 이 다섯 가지만 지키시면 음성 워크플로우는 진짜 강력한 도구예요. 1인 환경, 마스킹, 30초 이내, 사람 검수, 3중 체크. 인쇄해서 차량 대시보드에 붙여두셔도 좋아요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-18" data-slide-label="Slide 5-18">
+    <h3>청중 실습 안내</h3>
+    <ul class="slide-body">
+      <li>5분 미니 실습 시작</li>
+      <li>각자 휴대폰 ChatGPT 앱 켜기</li>
+      <li>본인 사무소 매물 1개 떠올리기 (실명·주소 마스킹)</li>
+      <li>음성 30초 입력 → 광고 초안까지</li>
+      <li>짝꿍과 결과 1줄씩 공유</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 이제 여러분 차례예요! 긴장하지 마시고, 짝꿍이랑 같이 해보세요. 휴대폰 꺼내세요. ChatGPT 앱 켜시고요, 마이크 아이콘 톡 누르세요. 본인 사무소 매물 중에 하나 떠올리시면 돼요. 주소는 동까지만, 호수는 빼고, 가격은 대략 범위만. 30초 안에 음성으로 쓱 말씀하시고요, 광고 초안까지 받아보세요. 5분 드릴게요. 옆 짝꿍과 결과 한 줄씩 공유해보시고요. 자, 시작!"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 30초 (안내) + 5분 실습</span></div>
+  </article>
+
+  <section class="practice" data-practice="5-A">
+    <h3>실습 5-A: 청중 본인 매물 음성 워크플로우 (미니 5분)</h3>
+    <div class="situation">
+      <strong>상황:</strong> 청중 각자가 본인 사무소에 보유 중인 매물 1개를 떠올린다. 음성 입력 시 마스킹 원칙:
+      <ul>
+        <li>동까지만 (호수·번지 X)</li>
+        <li>가격은 범위로 (정확한 보증금 X, "보증금 5천 정도" OK)</li>
+        <li>임대인·임차인 실명 절대 입력 X</li>
+      </ul>
+    </div>
+    <p><strong>복사용 프롬프트 (음성 후 텍스트화된 내용 뒤에 입력):</strong></p>
+    <pre class="prompt"><code id="prompt-5a">위 음성 메모를 매물 정보 카드로 정리하고, 네이버 부동산 광고문 1개를 작성해줘.
+
+[규칙]
+- 외부 광고용 정보와 내부 메모 분리
+- 명시사항 포함 (소재지·면적·가격·입주·사무소명/등록번호 자리는 [입력 필요]로 표시)
+- 위반건축물 여부: 해당 없음
+- 금지 표현 회피 (최저가·확정·100%·초역세권)
+- 광고 하단에 "본 콘텐츠 일부는 AI로 제작되었습니다." 멘트 포함
+- 1인 가구 직장인 타겟, 300자 이내</code><button class="copy-btn" type="button" data-target="prompt-5a">📋 복사</button></pre>
+    <details class="expected">
+      <summary>예상 결과 (강사 시연용)</summary>
+      <p>청중 매물이 무엇이든 다음 형식으로 출력:</p>
+      <ul>
+        <li>매물 정보 카드 (외부/내부 분리)</li>
+        <li>광고문 (300자 내외)</li>
+        <li>광고법 명시사항 + AI 라벨 자동 포함</li>
+      </ul>
+    </details>
+    <details class="extension">
+      <summary>확장 과제 (중급자용)</summary>
+      <ul>
+        <li>같은 매물을 "신혼부부 타겟" 톤으로 다시 요청</li>
+        <li>또는 같은 매물을 "투자자 타겟" 톤으로 다시 요청</li>
+        <li>결과 차이를 짝꿍과 비교 — 어떤 단어가 바뀌었는가?</li>
+      </ul>
+    </details>
+    <p style="font-size:0.88em;color:var(--c-muted);">⏱ 약 5분 (음성 30초 + AI 출력 30초 + 검수 1분 + 공유 3분)</p>
+  </section>
+
+  <article class="slide" data-slide="5-19" data-slide-label="Slide 5-19">
+    <h3>실습 마무리 — 짝꿍과 공유</h3>
+    <ul class="slide-body">
+      <li>1분 공유 시간</li>
+      <li>짝꿍에게 "내 매물 광고 초안 한 줄" 보여주기</li>
+      <li>발견한 점·놀란 점·아쉬운 점 1가지씩</li>
+      <li>강사가 2~3명 청중에게 마이크 전달</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 5분 끝났어요! 어떠셨어요? 짝꿍한테 본인 매물 광고 초안 한 줄 보여주세요. 그리고 발견한 점, 놀란 점, 아쉬운 점. 한 분씩만 발표 부탁드릴게요. (마이크 전달) 어떠셨어요? 시간 얼마나 걸리셨어요?"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 3분</span></div>
+  </article>
+
+  <article class="slide" data-slide="5-20" data-slide-label="Slide 5-20">
+    <h3>자동화 더 깊게 가기 <span class="track-label track-intermediate">중급 심화</span> <span class="option-label">옵션 · 중급</span></h3>
+    <ul class="slide-body">
+      <li>ChatGPT Plus 메모리 기능 → 사무소 톤 자동 적용</li>
+      <li>Claude Projects에 사무소 광고 양식 5개 미리 업로드</li>
+      <li>클로바노트 + ChatGPT 조합: 통화 녹음 → 자동 마스킹 → 답례 카톡</li>
+      <li>(선택) CRM 연동 자동화 — IT 동료와 상의 필요</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 중급자 분들 보세요. 오늘 시연은 무료 ChatGPT로 했지만요, Plus 결제하시면 메모리 기능이라는 게 있어요. 우리 사무소 톤을 한 번 알려주면, 그다음부터는 자동 적용. Claude Projects도 비슷하고요. 더 욕심내시면 CRM 자동화까지 갈 수 있는데, 이건 IT 동료랑 상의해야 돼요. 처음부터 너무 무리하지 마시고요, 오늘 배운 5단계부터 한 달 써보세요. 그게 진짜 빠른 길이에요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 2분</span></div>
+  </article>
+
+  <section class="warnings" data-slide="5-21">
+    <h3>Slide 5-21 — 모듈 5 흔한 실수·금기 정리</h3>
+    <ul>
+      <li>❌ 음성으로 고객 실명·전화번호 말하기</li>
+      <li>❌ 미팅 중·카페에서 음성 모드 켜기</li>
+      <li>❌ AI 출력 검수 없이 그대로 발송</li>
+      <li>❌ 매물 정확 호수·번지까지 음성 입력</li>
+    </ul>
+    <div class="ok-block">
+      <p>✅ 1인 환경 + 마스킹 + 사람 검수 + 3중 체크</p>
+    </div>
+    <div class="highlight-callout">사진 한 장. 차량 대시보드에 붙여두세요.</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 한 번 더 정리할게요. 절대 하지 말 것 네 가지, 꼭 할 것 다섯 가지. 외우지 마시고요, 사진 한 장 딱 찍으세요. 차량 대시보드에 붙여두시면 돼요."</blockquote>
+    </aside>
+  </section>
+
+  <section class="wrap-up" data-slide="5-22">
+    <h3>Slide 5-22 — 모듈 5 정리</h3>
+    <p><strong>오늘 배운 3가지:</strong></p>
+    <ol>
+      <li>답사 후 30초 음성 → 5분 후 광고 초안 완성</li>
+      <li>외부 광고용 정보와 내부 메모 자동 분리</li>
+      <li>발송 직전 3중 체크 (명시사항·금지표현·AI라벨)</li>
+    </ol>
+    <div class="action-now">
+      <strong>오늘 사무실 돌아가서 바로 할 1가지:</strong><br>
+      모바일 ChatGPT 앱 첫 화면 단축 아이콘 등록
+    </div>
+    <p><strong>다음 모듈:</strong> Q&amp;A + 내일 시작 액션플랜</p>
+  </section>
+</section><!-- /module-5 -->
+
+<!-- ============================================================
+     MODULE 6 — Q&A + 내일 시작 액션플랜 (10분, 12 슬라이드)
+============================================================ -->
+<section data-module="6" id="module-6">
+  <h2>모듈 6 — Q&amp;A + 내일 시작 액션플랜</h2>
+  <div class="module-meta">
+    <strong>소요 시간:</strong> 10분 · <strong>슬라이드:</strong> 12장 · <strong>실습:</strong> 7일 챌린지
+    <ul>
+      <li><strong>입문 학습 목표:</strong> 오늘 강의 내용 중 가장 헷갈리는 것 1가지를 강사에게 물어 해소.</li>
+      <li><strong>중급 학습 목표:</strong> 내일부터 7일 챌린지를 시작.</li>
+      <li><strong>공통 목표:</strong> 강의장 나서기 전 "내일 월요일 아침 9시 첫 행동 1가지" 결정.</li>
+    </ul>
+  </div>
+
+  <section class="instructor-guide" aria-label="모듈 6 강사 진행 가이드">
+    <h3>강사 진행 가이드 (압축 모드 필독)</h3>
+    <p class="ig-note">강사 모드에서만 표시됩니다. 강의 시작 전 미리 읽어주세요.</p>
+    <ul>
+      <li><strong>시간 배분 경고:</strong> 커리큘럼 10분이지만 슬라이드 12장 풀버전은 약 18분 분량. <strong>반드시 압축 모드로 진행</strong>하세요.</li>
+      <li><strong>압축 진행 룰:</strong>
+        <ul>
+          <li>Q&amp;A 시간: 5분 (풀버전 7분에서 단축)</li>
+          <li>Slide 6-9 (강사 연락처 QR): QR 30초 보여만 주고 통과, 설명 길게 X</li>
+          <li>Slide 6-4~6-8 (7일 챌린지 카드): 슬라이드 한 장당 30~40초로 빠르게 넘기기</li>
+          <li>Slide 6-11 (짝꿍 다짐 공유): 30초만 — 한 명만 발표, 청중 박수로 마무리</li>
+        </ul>
+      </li>
+      <li><strong>Q&amp;A 단축 옵션 (선택):</strong> 시간이 정말 부족하면 Q&amp;A 5분 → 3분으로 줄이고 6-9 QR 슬라이드에서 "강의 후 카톡 채널로 질문 받아드릴게요" 안내</li>
+      <li><strong>마무리 분위기:</strong> Slide 6-12 마지막 멘트는 천천히, 진심으로. "오늘 끝까지 함께해주셔서 감사합니다"는 강의 만족도를 결정합니다.</li>
+    </ul>
+  </section>
+
+  <article class="slide" data-slide="6-1" data-slide-label="Slide 6-1">
+    <h3>모듈 6 타이틀 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>모듈 6: Q&amp;A + 내일 시작 액션플랜</li>
+      <li>10분 / 자유 Q&amp;A 7분 + 7일 챌린지 3분</li>
+      <li>"들었으면 실행해야 가치 있다"</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분, 드디어 마지막 10분이에요. 강의장 나가시면 가장 흔한 일이 뭔지 아세요? '오, 좋은 강의였어' 하고 끝나는 거예요. 일주일 지나면 다 잊거든요. 그래서 이 마지막 10분이 사실 제일 중요해요. 두 가지 할 거예요. 첫째, 여러분 질문 받고요. 둘째, 오늘 들은 걸 일주일 챌린지로 묶어드릴게요. 끝나기 전에 다 결정하고 가는 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-2" data-slide-label="Slide 6-2">
+    <h3>자유 Q&amp;A 시작</h3>
+    <ul class="slide-body">
+      <li>지금부터 7분간 자유 질문</li>
+      <li>손 들어주세요</li>
+      <li>어떤 질문이든 OK (가격·법령·도구·내 사무소 적용 등)</li>
+      <li>"이 질문 해도 되나?" → 됩니다. 다 됩니다.</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 궁금한 거 있으시면 편하게 물어보세요. 지금부터 7분간 자유 질문 시간이에요. 손 살짝 들어주세요. 어떤 질문이든 OK예요. '이거 너무 초보 질문 아닌가' 이런 걱정 하지 마세요. 옆에 앉으신 분도 똑같이 궁금해 하실 거예요. 자, 마이크 드릴게요. (조교가 마이크 전달)"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 30초 (안내) + 7분 Q&amp;A</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-3" data-slide-label="Slide 6-3">
+    <h3>예상 Q&amp;A 가이드 <span style="background:#fff3bf;color:#9c6f00;padding:2px 8px;border-radius:4px;font-size:0.85em;">강사 백포켓 (청중 노출 X)</span></h3>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q1. ChatGPT 무료로 충분한가요, Plus 결제해야 하나요?</strong></summary>
+      <p>처음에는 무조건 무료. 무료 한도가 답답해질 때까지 써보세요. 답답해지면 그때 Plus($20). 무료에서도 광고문 생성, 음성 입력, 마스킹 워크플로우 다 됩니다. Pro($200)는 일반 중개사에게는 과합니다.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q2. 고객 정보를 마스킹해도 진짜 안전한가요?</strong></summary>
+      <p>마스킹은 가명정보 처리(개인정보보호법 제28조의2)에 해당해서 동의 없이 활용 가능합니다. 단, 이름·전화·정확한 호수·계좌는 무조건 가공. 추가로 ChatGPT 설정 &gt; 데이터 컨트롤 &gt; "Improve the model for everyone" OFF 켜두시면 학습 데이터로도 안 갑니다.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q3. AI 학습 옵트아웃 어떻게 설정하나요?</strong></summary>
+      <p>ChatGPT 화면 우상단 본인 아이콘 → 설정(Settings) → 데이터 컨트롤(Data controls) → "Improve the model for everyone" 토글 OFF. 30초면 됩니다.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q4. AI가 거짓말(환각)하면 어떻게 알아채나요?</strong></summary>
+      <p>법령 조문, 판례 사건번호, 시세, 시행일, 숫자 — 이 다섯 가지는 무조건 1차 출처 재확인입니다. ChatGPT가 "공인중개사법 제25조에 따르면..." 하면 law.go.kr에서 직접 검색. 사건번호는 glaw.scourt.go.kr. 시세는 rt.molit.go.kr. 모듈 4의 5단계 체크리스트.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q5. 광고법 위반하면 진짜 과태료 나오나요?</strong></summary>
+      <p>나옵니다. 공인중개사법 위반은 최대 500만원, 5년간 4만 506건 적발됐고 매년 1만 건씩 늘고 있어요. 2026년 1월 22일부터 AI 기본법 시행되면 라벨 미부착 시 추가로 3,000만원 과태료입니다. 이중 리스크예요.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q6. 음성 모드에서 고객 동의 어떻게 받나요?</strong></summary>
+      <p>가장 안전한 답: 고객 앞에서는 안 씁니다. 답사 후 차량 1인 환경에서만. 만약 통화 녹음 정리 도구(클로바노트 등)를 쓰신다면 통화 시작할 때 "AI 정리 위해 녹음하겠습니다" 한마디 안내 권장.</p>
+    </details>
+    <details style="background:#fff;padding:10px 14px;border:1px solid var(--c-border);border-radius:6px;margin:8px 0;">
+      <summary><strong>Q7. 외국인 고객 응대 영어 번역 믿을 만한가요?</strong></summary>
+      <p>일상 안내(보증금·월세 안내, 임장 일정 조율)는 OK. 단, 계약서 본문은 반드시 법무부 공식 다국어 표준임대차계약서 사용. AI 번역본을 계약 효력 문서로 쓰면 안 됩니다. AI는 의사소통 보조, 법적 효력 문서는 공식 번역.</p>
+    </details>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트 (Q&amp;A 진행 가이드)</h4>
+      <blockquote>"(청중이 질문하면) 어, 진짜 좋은 질문이세요! (답변 후) 또 다른 분 있으실까요? (질문 없으면) 사실 저요, 강의 끝나고 자주 받는 질문이 있어요 — 'Plus 결제해야 하나요?' (자연스럽게 Q1 답변). 또 자주 받는 거 — '마스킹해도 안전해요?' (Q2 답변). 이런 식으로 7분 채울 수 있음."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 7분</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-4" data-slide-label="Slide 6-4">
+    <h3>7일 챌린지 — 내일부터 시작 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>들은 강의를 일주일 행동으로</li>
+      <li>하루 1가지씩만</li>
+      <li>하루 10~15분이면 충분</li>
+      <li>7일 후 — 다른 공인중개사</li>
+    </ul>
+    <div class="highlight-callout">사진 찍으세요. 다음 슬라이드부터 일별 액션.</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분, 마지막 슬라이드 그룹이에요. 7일 챌린지. 딱 7일만 해보세요. 일주일 후 진짜 달라지실 거예요. 들은 걸 일주일 행동으로 묶어드릴게요. 하루에 딱 1가지씩, 10~15분이면 돼요. 7일 후에 보면요, 여러분이 좀 다른 공인중개사가 되어 있을 거예요. 사진 찍으세요. 다음 슬라이드부터 일별 액션 보여드릴게요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-5" data-slide-label="Slide 6-5">
+    <h3>7일 챌린지 — Day 1~3 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>Day 1 (월요일):</strong> ChatGPT 가입 + 첫 광고문 1개 생성 (15분)</li>
+      <li><strong>Day 2 (화요일):</strong> 보유 매물 중 가장 오래된 광고 1개 리뉴얼 (15분)</li>
+      <li><strong>Day 3 (수요일):</strong> 마스킹 정규식 단축키 메모장 설정 (10분)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"Day 1, 월요일 — ChatGPT 가입. 아직 안 하신 분 분명히 계실 거예요. 가입하시고 첫 광고문 1개 만들어보세요. 모듈 2 프롬프트 그대로 쓰시면 돼요. Day 2, 화요일 — 사무소 매물 중에 광고문 가장 오래된 거 있으시잖아요? 6개월 전에 올린 거. 그거 한 번 리뉴얼해보세요. Day 3, 수요일 — 메모장 열어서 마스킹 치환 4종 — 이름, 전화, 호수, 직장 — 단축키로 딱 설정하세요. 다음 주부터 1초 만에 마스킹돼요. 진짜 신세계예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-6" data-slide-label="Slide 6-6">
+    <h3>7일 챌린지 — Day 4~5 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>Day 4 (목요일):</strong> 클로바노트 설치 + 통화 후 요약 1회 (15분)</li>
+      <li><strong>Day 5 (금요일):</strong> NotebookLM에 정책 PDF 1개 업로드해보기 (15분)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"Day 4, 목요일 — 클로바노트 무료로 설치하세요. 그날 통화 1건 녹음해서 자동 요약 받아보세요. 30초면 정리돼요. Day 5, 금요일 — 이건 살짝 도전이에요. NotebookLM이라고 구글 도구 있거든요. 거기에 평소에 들고 다니시는 정책 PDF — 예를 들면 작년 10·15 부동산 대책 — 하나 업로드해보세요. 자동으로 요약 표 만들어줘요. 모듈 4에서 잠깐 언급했잖아요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-7" data-slide-label="Slide 6-7">
+    <h3>7일 챌린지 — Day 6~7 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li><strong>Day 6 (토요일):</strong> 모바일 음성 모드로 매물 답사 메모 1회 (10분)</li>
+      <li><strong>Day 7 (일요일):</strong> 7일 회고 + 다음 주 적용 방향 정하기 (20분)</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"Day 6, 토요일 — 답사 한 건 있으시잖아요. 차에 타자마자 30초 음성 입력 시도! 첫날엔 진짜 어색해요. 솔직히 저도 그랬어요. 근데 한 번만 해보면 손에 착 익어요. Day 7, 일요일 — 일주일 회고예요. 일주일 동안 뭐가 가장 좋았는지, 뭐가 어색했는지, 다음 주에 어떤 걸 더 깊이 가볼지. 딱 20분만 투자하시면요, 다음 주가 완전히 달라져요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-8" data-slide-label="Slide 6-8">
+    <h3>7일 챌린지 — 전체 한 장 요약 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ol class="slide-body">
+      <li>Day 1: ChatGPT 가입 + 첫 광고문</li>
+      <li>Day 2: 오래된 광고 1개 리뉴얼</li>
+      <li>Day 3: 마스킹 단축키 메모장</li>
+      <li>Day 4: 클로바노트 통화 요약 1회</li>
+      <li>Day 5: NotebookLM 정책 PDF 1개</li>
+      <li>Day 6: 답사 음성 메모 1회</li>
+      <li>Day 7: 7일 회고 + 다음 주 방향</li>
+    </ol>
+    <div class="highlight-callout">한 장 요약. 사진 한 번 더 찍으세요. 인쇄해서 사무소 책상에 붙여두셔도 됩니다.</div>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 한 장에 모두 모아놨어요. 사진 한 번 더 찍으세요. 인쇄해서 사무소 책상에 딱 붙여두셔도 좋아요. 7일 다 끝내신 분은요, 저한테 카톡 한 줄 주세요. (피드백 채널 안내 슬라이드에서 다시 언급)"</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-9" data-slide-label="Slide 6-9">
+    <h3>추가 학습 리소스</h3>
+    <ul class="slide-body">
+      <li><strong>공인중개사회 교육:</strong> 한국공인중개사협회 정기 보수교육·온라인 강좌</li>
+      <li><strong>공식 자료:</strong>
+        <a href="https://law.go.kr" target="_blank" rel="noopener">law.go.kr</a> /
+        <a href="https://rt.molit.go.kr" target="_blank" rel="noopener">rt.molit.go.kr</a> /
+        <a href="https://glaw.scourt.go.kr" target="_blank" rel="noopener">glaw.scourt.go.kr</a> /
+        <a href="https://hogangnono.com" target="_blank" rel="noopener">호갱노노</a>
+      </li>
+      <li><strong>AI 도구 한국어 자료:</strong> OpenAI 한국어 도움말, Anthropic Claude 한국 가이드</li>
+      <li><strong>추천 유튜브 채널:</strong> "프롬프트 엔지니어링" 한국어 채널</li>
+      <li><strong>개인정보보호위원회:</strong> <a href="https://pipc.go.kr" target="_blank" rel="noopener">pipc.go.kr</a> — 생성형 AI 개인정보 처리 안내서(2025.8)</li>
+    </ul>
+    <figure class="placeholder">QR 코드 5개 (강사 발표 직전 생성)</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"더 공부하고 싶은 분을 위한 리소스예요. 한국공인중개사협회 보수교육에 AI 활용 과목이 점점 늘고 있거든요. 그리고 즐겨찾기 4개 — law.go.kr, rt.molit.go.kr, glaw.scourt.go.kr, 호갱노노 — 이건 모듈 4에서 다뤘잖아요. 강의 끝나고 QR 코드 사진 찰칵 찍으세요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-10" data-slide-label="Slide 6-10">
+    <h3>강사 연락처 + 피드백 채널</h3>
+    <ul class="slide-body">
+      <li><strong>강사:</strong> [이름 placeholder]</li>
+      <li><strong>카톡 채널:</strong> [강사 카톡 채널 placeholder]</li>
+      <li><strong>이메일:</strong> [강사 이메일 placeholder]</li>
+      <li><strong>7일 챌린지 인증:</strong> "Day 7 완료!" 한 줄 카톡 → 강사 답장 약속</li>
+      <li><strong>강의 피드백 설문:</strong> [Google Form QR 코드 placeholder]</li>
+    </ul>
+    <figure class="placeholder">강사 카톡 채널 QR · 피드백 Google Form QR (발표 직전 생성)</figure>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"여러분, 오늘 강의 끝났다고 끝이 아니에요. 7일 챌린지 다 끝내신 분은요, 카톡 채널에 'Day 7 완료!' 딱 한 줄만 보내주세요. 제가 직접 답장 드릴게요. 강의 피드백 설문 QR 코드도 있어요. 솔직하게 적어주세요. 다음 강의 더 좋아지게 만들 거예요. 다음 강의 일정은 카톡 채널에서 공지됩니다."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분 30초</span></div>
+  </article>
+
+  <article class="slide" data-slide="6-11" data-slide-label="Slide 6-11">
+    <h3>강의 마무리 — 오늘 사무실 돌아가서 첫 1가지 <span class="track-label track-beginner">입문 필수</span></h3>
+    <ul class="slide-body">
+      <li>강의장 나가시기 전 결정하세요</li>
+      <li>내일 월요일 아침 9시, 사무실 도착해서 가장 먼저 할 일 1가지</li>
+      <li><strong>후보 5개 중 1개:</strong>
+        <ol>
+          <li>ChatGPT 가입 (안 하신 분)</li>
+          <li>모듈 2 광고 프롬프트 메모장 저장</li>
+          <li>마스킹 치환 4종 단축키 설정</li>
+          <li>즐겨찾기 4개 등록 (law/rt/glaw/호갱노노)</li>
+          <li>모바일 ChatGPT 앱 단축 아이콘 등록</li>
+        </ol>
+      </li>
+      <li>옆 짝꿍에게 한 줄로 말씀하시고 나가세요</li>
+    </ul>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 여러분, 강의장 나가시기 전에 딱 하나만 결정하세요. 내일 월요일 아침 9시 첫 행동. 후보 5개 보여드릴게요. 본인한테 제일 부족한 거 하나 고르세요. 그리고요, 옆 짝꿍에게 한 줄로 말씀하세요 — '저는 내일 가서 ___ 합니다.' 말로 뱉어야 진짜 해요. 머릿속으로만 결정하면요, 일주일 후 다 잊어요. 진짜로요. 짝꿍이랑 같이 응원하면서 가시는 거예요."</blockquote>
+    </aside>
+    <div class="slide-meta"><span>⏱ 약 1분</span></div>
+  </article>
+
+  <section class="wrap-up" data-slide="6-12">
+    <h3>Slide 6-12 — 감사합니다 + 마지막 한 마디</h3>
+    <ul>
+      <li>오늘 함께해주셔서 감사합니다</li>
+      <li>AI는 우리 공인중개사 일을 <strong>대체하지 않습니다</strong></li>
+      <li>AI는 30분짜리 단순 작업을 30초로 줄여줍니다</li>
+      <li>그 절약된 시간은 — 우리가 고객에게 더 잘 응대하는 시간</li>
+      <li>7일 후, 카톡 채널에서 만나요</li>
+    </ul>
+    <p><strong>오늘 강의 전체 3가지:</strong></p>
+    <ol>
+      <li>AI는 30분짜리 단순 작업을 30초로 줄여주는 도구</li>
+      <li>개인정보 마스킹·환각 검증·광고법 준수는 사람의 책임</li>
+      <li>모바일 음성 워크플로우 1개만 익혀도 하루 90분 절약</li>
+    </ol>
+    <aside class="speaker-notes">
+      <h4>강사 스크립트</h4>
+      <blockquote>"자, 마지막 한 마디만 드릴게요. AI는요, 우리 일을 대체하지 않아요. AI가 30분짜리 광고문 작성을 30초로 줄여줄 뿐이에요. 그 줄어든 29분 30초는 어디로 가야 될까요? 고객한테 한 번 더 전화 드리는 시간으로요. 답사 한 건 더 갈 수 있는 시간으로요. 결국은 사람의 일이에요. AI는 우리를 더 사람답게 만들어주는 도구거든요. 오늘 끝까지 함께해주셔서 정말 감사합니다. 7일 후에 카톡 채널에서 꼭 봬요. 안녕히 가세요!"</blockquote>
+    </aside>
+  </section>
+</section><!-- /module-6 -->
+
+</main>
+
+<footer class="site-footer">
+  <p>공인중개사를 위한 AI 활용 특강 (180분) · 6 모듈 · 110 슬라이드</p>
+  <p>© 강사 [이름] · 작성일 2026-05-28 · <a href="practice.html">실습 자료 보기</a></p>
+  <p style="font-size:0.85em;color:#868e96;margin-top:12px;">본 페이지는 교육용 자료입니다. 법령은 시행일 기준으로 작성됐으며, 실제 업무 적용 시 <a href="https://law.go.kr">law.go.kr</a> 등 1차 출처에서 재확인해주세요.</p>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // ===== Copy buttons =====
+  document.querySelectorAll('.copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', async function() {
+      var targetId = btn.dataset.target;
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      var text = target.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        // Fallback for older browsers / non-https contexts
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (err) {}
+        document.body.removeChild(ta);
+      }
+      var original = btn.textContent;
+      btn.textContent = '✅ 복사됨';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+
+  // ===== Speaker mode toggle =====
+  var speakerToggle = document.getElementById('speaker-mode-toggle');
+  if (speakerToggle) {
+    speakerToggle.addEventListener('click', function() {
+      var on = document.body.classList.toggle('speaker-mode');
+      speakerToggle.textContent = on ? '강사 모드 OFF' : '강사 모드 ON';
+    });
+  }
+
+  // ===== Print button =====
+  var printBtn = document.getElementById('print-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', function() { window.print(); });
+  }
+
+  // ===== Scroll spy — highlight current module in nav =====
+  var navLinks = document.querySelectorAll('.nav-modules a[href^="#module-"]');
+  var modules = document.querySelectorAll('section[data-module]');
+  function updateActive() {
+    var scrollY = window.scrollY + 120;
+    var current = null;
+    modules.forEach(function(m) {
+      if (m.offsetTop <= scrollY) current = m.id;
+    });
+    navLinks.forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+})();
+</script>
+</body>
+</html>
