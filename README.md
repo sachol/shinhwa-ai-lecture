@@ -2,8 +2,8 @@
 
 > 한국 공인중개사가 ChatGPT·Claude·Gamma·NotebookLM 등 AI 도구를 **법적으로 안전하게** 실무에 적용하기 위한 입문~중급 특강 자료.
 
-**Live 강의 페이지:** *(배포 후 URL 채워넣기)*
-**실습 자료:** *(배포 후 URL 채워넣기)*
+**Live 강의 페이지:** https://shinhwa-ai-lecture.vercel.app
+**실습 자료:** https://shinhwa-ai-lecture.vercel.app/practice
 
 ---
 

@@ -284,7 +284,7 @@ https://github.com/{user}/shinhwa-ai-lecture/blob/main/docs/case-study.md
 ```
 
 추가 자료:
-- 본 강의 페이지: *(Vercel URL placeholder)*
+- 본 강의 페이지: https://shinhwa-ai-lecture.vercel.app
 - 강사 카톡 채널: *(placeholder)*
 - 강의 일정·후속 강의: *(placeholder)*
 
