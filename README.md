@@ -38,14 +38,14 @@
 
 ### 강사용 (강의 진행)
 
-1. [lecture/index.html](lecture/index.html) 또는 배포된 URL을 강의장 컴퓨터에서 열기
+1. [index.html](index.html) 또는 배포된 URL을 강의장 컴퓨터에서 열기
 2. 우상단 **"강사 모드 ON"** 버튼 클릭 → 강사 스크립트·진행 가이드 카드 표시
 3. 모듈 4·5·6 시작 시 노란 가이드 카드(🎤) 먼저 읽고 시간 압축·옵션 슬라이드 판단
 4. 자세한 운영 가이드: [docs/instructor-manual.md](docs/instructor-manual.md)
 
 ### 수강생용 (강의 후)
 
-1. 강의장에서 받은 [실습 자료](lecture/practice.html) URL 열기
+1. 강의장에서 받은 [실습 자료](practice.html) URL 열기
 2. 모든 복사용 프롬프트 코드 블록 우하단의 **"복사"** 버튼 클릭 → ChatGPT에 붙여넣기
 3. 7일 챌린지 (Day 1~7) 따라가기
 4. 자세한 사용 가이드: [docs/student-guide.md](docs/student-guide.md)
@@ -95,7 +95,7 @@ shinhwa-ai-lecture/
 자료를 수정·확장하고 싶을 때:
 
 1. **소스 수정** — `source/modules/module-{N}.md` 또는 `source/research/{topic}.md` 수정
-2. **HTML 재빌드** — Claude Code에서 `"모듈 N HTML 재빌드해줘"` 요청 → html-builder 에이전트가 `lecture/index.html` 동기화
+2. **HTML 재빌드** — Claude Code에서 `"모듈 N HTML 재빌드해줘"` 요청 → html-builder 에이전트가 `index.html` 동기화
 3. **QA 재검증** (선택) — `"QA 다시 돌려줘"` 요청 → qa-reviewer가 경계면 검증
 4. **변경 이력 기록** — `docs/change-log.md`에 한 줄 추가
 5. **GitHub 푸시** — `git commit && git push` → Vercel 자동 배포

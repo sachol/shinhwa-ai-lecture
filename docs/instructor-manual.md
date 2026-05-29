@@ -16,7 +16,7 @@
 ## 1. 강의 1주 전 — 준비 체크리스트
 
 ### 콘텐츠 검증 (필수)
-- [ ] [lecture/index.html](../lecture/index.html) 또는 배포된 URL 한 번 처음부터 끝까지 훑기
+- [ ] [index.html](../index.html) 또는 배포된 URL 한 번 처음부터 끝까지 훑기
 - [ ] 강사 모드 ON으로 강사 스크립트·진행 가이드 읽기
 - [ ] 모듈 4·5·6 시작부 노란 가이드 카드(🎤) 숙지
 - [ ] 법령 시행일·과태료 금액 변동 여부 재확인:
@@ -27,7 +27,7 @@
 
 ### 스크린샷 (선택, 강력 권장)
 - [ ] [docs/screenshot-guide.md](screenshot-guide.md) 미니멈 5장 캡처 (1-9, 2-11, 3-6, 4-12, 5-6)
-- [ ] `lecture/assets/` 디렉토리에 저장
+- [ ] `assets/` 디렉토리에 저장
 - [ ] Claude Code에서 `"스크린샷 N개 캡처 완료, HTML 교체해줘"` 요청 → 자동 반영
 
 ### 강사 개인 정보 채우기
@@ -44,7 +44,7 @@
 ## 2. 강의 당일 — 직전 30분
 
 1. **노트북 5개 탭 미리 열기:**
-   - 본 강의 페이지 (lecture/index.html 또는 배포 URL)
+   - 본 강의 페이지 (index.html 또는 배포 URL)
    - ChatGPT (chatgpt.com)
    - Claude (claude.ai)
    - 국토부 실거래가 (rt.molit.go.kr)
