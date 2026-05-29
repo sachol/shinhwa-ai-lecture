@@ -279,14 +279,14 @@ ChatGPT 단독으로는 **전 과정 6주의 시간을 3주로 단축** 정도. 
 본 사례를 발표·블로그·강의에 인용 가능:
 
 ```
-노제승. (2026). "하네스 구조로 강의 자료 만들기: 5명 AI 에이전트 팀으로 4시간 만에 180분 특강 자료 만들기."
+도시아재. (2026). "하네스 구조로 강의 자료 만들기: 5명 AI 에이전트 팀으로 4시간 만에 180분 특강 자료 만들기."
 https://github.com/sachol/shinhwa-ai-lecture/blob/main/docs/case-study.md
 ```
 
 추가 자료:
 - 본 강의 페이지: https://shinhwa-ai-lecture.vercel.app
 - 문의·연락처: sachol@kakao.com
-- 작성자: 노제승 (공인중개사)
+- 작성자: 도시아재 (공인중개사)
 
 ---
 

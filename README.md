@@ -106,11 +106,11 @@ shinhwa-ai-lecture/
 
 - **콘텐츠:** CC BY-NC-SA 4.0 (비상업적 사용 자유 / 출처 표시 / 동일조건변경허락)
 - **상업 사용** (사내 교육·유료 강의 등): 별도 문의 — sachol@kakao.com
-- **인용 시:** `노제승. (2026). 공인중개사를 위한 AI 활용 특강. https://github.com/sachol/shinhwa-ai-lecture`
+- **인용 시:** `도시아재. (2026). 공인중개사를 위한 AI 활용 특강. https://github.com/sachol/shinhwa-ai-lecture`
 
 ## 연락처
 
-- **강사:** 노제승 (공인중개사)
+- **강사:** 도시아재 (공인중개사)
 - **이메일:** sachol@kakao.com
 - **카톡 채널:** 강의 시 안내
 
