@@ -146,7 +146,7 @@ ChatGPT 단독으로는 **전 과정 6주의 시간을 3주로 단축** 정도. 
 
 - html-builder 1명이 모듈 6개 .md를 모두 읽고 단일 `index.html` + `practice.html` 빌드
 - 한국어 타이포 (Pretendard) + 인쇄 CSS + 모바일 CSS + 복사 버튼 JS + 강사 모드 토글
-- 결과: 2,711줄, 슬라이드 110장, 복사 버튼 30개
+- 결과: 초기 빌드 2,711줄·슬라이드 110장 → 이후 피드백 보완으로 **2,828줄·슬라이드 111장**, 복사 버튼 30개
 
 ### 3.5 Phase 5 (QA, 약 30분)
 
@@ -279,14 +279,14 @@ ChatGPT 단독으로는 **전 과정 6주의 시간을 3주로 단축** 정도. 
 본 사례를 발표·블로그·강의에 인용 가능:
 
 ```
-신화. (2026). "하네스 구조로 강의 자료 만들기: 5명 AI 에이전트 팀으로 4시간 만에 180분 특강 자료 만들기."
-https://github.com/{user}/shinhwa-ai-lecture/blob/main/docs/case-study.md
+노제승. (2026). "하네스 구조로 강의 자료 만들기: 5명 AI 에이전트 팀으로 4시간 만에 180분 특강 자료 만들기."
+https://github.com/sachol/shinhwa-ai-lecture/blob/main/docs/case-study.md
 ```
 
 추가 자료:
 - 본 강의 페이지: https://shinhwa-ai-lecture.vercel.app
-- 강사 카톡 채널: *(placeholder)*
-- 강의 일정·후속 강의: *(placeholder)*
+- 문의·연락처: sachol@kakao.com
+- 작성자: 노제승 (공인중개사)
 
 ---
 

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="하네스 구조로 강의 자료 만들기 — 5명 AI 에이전트 팀이 180분 특강 자료를 약 4시간에. gpters.org 발표용 메타 대시보드.">
+<title>하네스로 강의 자료 만들기 — 발표 대시보드</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* ===== 디자인 토큰 (index.html 강의 페이지에서 그대로 상속) ===== */
+:root {
+  --c-bg: #fafafa;
+  --c-paper: #ffffff;
+  --c-text: #1a1a1a;
+  --c-muted: #5a5a5a;
+  --c-primary: #1971c2;
+  --c-primary-dark: #1864ab;
+  --c-warn-bg: #fff5f5;
+  --c-warn-border: #c92a2a;
+  --c-warn-text: #842029;
+  --c-ok-bg: #ebfbee;
+  --c-ok-border: #2f9e44;
+  --c-law-bg: #f1f3f5;
+  --c-law-border: #868e96;
+  --c-track-beg-bg: #e7f5ff;
+  --c-track-beg-text: #1971c2;
+  --c-track-int-bg: #fff3bf;
+  --c-track-int-text: #9c6f00;
+  --c-border: #e9ecef;
+  --c-accent: #d6336c; /* 강사 모드 강조색 — KPI·하이라이트 포인트로 재사용 */
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  color: var(--c-text);
+  background: var(--c-bg);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5 { letter-spacing: -0.02em; line-height: 1.35; }
+p { margin: 0 0 0.8em 0; }
+ul, ol { margin: 0 0 0.6em 0; padding-left: 1.3em; }
+li { margin-bottom: 0.25em; }
+a { color: var(--c-primary); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--c-primary-dark); }
+
+/* ===== Sticky Nav (강의 페이지 헤더 룩 상속) ===== */
+header.dash-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--c-border);
+  padding: 10px 24px;
+}
+.nav-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1320px; margin: 0 auto; flex-wrap: wrap; }
+.nav-brand { font-size: 1.0em; font-weight: 700; margin: 0; color: var(--c-text); white-space: nowrap; }
+.nav-brand small { font-weight: 500; color: var(--c-muted); font-size: 0.82em; margin-left: 8px; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 4px; }
+.nav-links a {
+  display: inline-block; padding: 5px 11px; border-radius: 999px; font-size: 0.82em;
+  background: #f1f3f5; color: #495057; text-decoration: none; transition: all 0.15s;
+}
+.nav-links a:hover { background: #dee2e6; color: #212529; }
+
+/* ===== Panel layout ===== */
+main { max-width: 1320px; margin: 0 auto; padding: 28px 24px 40px; }
+section.panel {
+  background: var(--c-paper);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 34px 38px;
+  margin-bottom: 26px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.panel-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.panel-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex: none;
+  background: var(--c-primary); color: #fff; border-radius: 999px;
+  font-size: 0.95em; font-weight: 700; letter-spacing: 0;
+}
+.panel-head h2 {
+  font-size: 1.5em; margin: 0; color: var(--c-primary-dark);
+}
+.panel-head .sub { color: var(--c-muted); font-size: 0.9em; margin-left: auto; }
+
+/* ===== Hero ===== */
+section.hero {
+  background: linear-gradient(135deg, #1864ab 0%, #1971c2 55%, #1c7ed6 100%);
+  color: #fff; border: none; border-radius: 14px;
+  padding: 48px 44px; margin-bottom: 26px;
+  box-shadow: 0 4px 18px rgba(24,100,171,0.25);
+}
+.hero-tag {
+  display: inline-block; background: rgba(255,255,255,0.18); color: #fff;
+  font-size: 0.85em; font-weight: 600; padding: 4px 14px; border-radius: 999px;
+  letter-spacing: 0.02em; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.3);
+}
+.hero h1 { font-size: 2.7em; margin: 0 0 10px; line-height: 1.2; color: #fff; }
+.hero .hero-sub { font-size: 1.2em; color: #e7f5ff; margin: 0 0 28px; font-weight: 500; }
+.hero-transform {
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 12px; padding: 22px 28px; margin-bottom: 24px;
+}
+.transform-block { text-align: center; }
+.transform-block .tlabel { font-size: 0.82em; color: #d0ebff; letter-spacing: 0.04em; }
+.transform-block .tval { font-size: 2.0em; font-weight: 800; line-height: 1.15; }
+.transform-block.before .tval { color: #ffc9c9; text-decoration: line-through; text-decoration-thickness: 2px; }
+.transform-block.after .tval { color: #b2f2bb; }
+.transform-arrow { font-size: 2.0em; font-weight: 800; color: #ffe066; }
+.hero-meta { font-size: 0.92em; color: #d0ebff; }
+.hero-meta strong { color: #fff; }
+
+/* ===== KPI grid ===== */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px;
+}
+.kpi-card {
+  background: #f8f9fa; border: 1px solid var(--c-border); border-radius: 10px;
+  padding: 20px 18px; text-align: center;
+}
+.kpi-card .kpi-val { font-size: 2.3em; font-weight: 800; color: var(--c-primary); line-height: 1.1; letter-spacing: -0.03em; }
+.kpi-card .kpi-val small { font-size: 0.45em; font-weight: 700; color: var(--c-muted); }
+.kpi-card .kpi-label { font-size: 0.9em; color: var(--c-muted); margin-top: 6px; }
+.kpi-card.accent { background: #fff0f6; border-color: #fcc2d7; }
+.kpi-card.accent .kpi-val { color: var(--c-accent); }
+
+/* ===== Definition / analogy ===== */
+.def-quote {
+  font-size: 1.25em; font-weight: 700; color: var(--c-primary-dark);
+  background: var(--c-track-beg-bg); border-left: 5px solid var(--c-primary);
+  padding: 18px 22px; border-radius: 0 8px 8px 0; margin: 0 0 22px;
+}
+.analogy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.analogy-col {
+  border: 1px solid var(--c-border); border-radius: 10px; padding: 18px 20px; background: #fff;
+}
+.analogy-col h4 { margin: 0 0 12px; font-size: 1.0em; color: #212529; }
+.analogy-col.company { background: #f8f9fa; }
+.analogy-col.harness { background: #e7f5ff; border-color: #a5d8ff; }
+.map-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 0.94em; }
+.map-row .mk { font-weight: 700; min-width: 86px; }
+.map-row .ma { color: #adb5bd; }
+
+/* ===== Agent cards ===== */
+.agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.agent-card {
+  border: 1px solid var(--c-border); border-radius: 10px; padding: 18px 18px;
+  background: #fff; position: relative; border-top: 4px solid var(--c-primary);
+}
+.agent-card .agent-name { font-family: 'D2Coding','Menlo','Consolas',monospace; font-weight: 700; color: var(--c-primary-dark); font-size: 0.98em; }
+.agent-card .agent-role { font-size: 0.92em; color: var(--c-text); margin: 8px 0 10px; }
+.agent-card .agent-skill {
+  display: inline-block; font-family: 'D2Coding','Menlo','Consolas',monospace;
+  font-size: 0.78em; background: var(--c-law-bg); color: #495057;
+  padding: 3px 9px; border-radius: 6px; border: 1px solid var(--c-border); word-break: break-all;
+}
+.agent-card.orchestrator { border-top-color: var(--c-accent); background: #fff0f6; grid-column: 1 / -1; }
+.agent-card.orchestrator .agent-name { color: var(--c-accent); }
+.agent-card.orchestrator .agent-skill { background: #ffe3ec; border-color: #fcc2d7; }
+
+/* ===== Pipeline ===== */
+.pipeline { display: flex; flex-direction: column; gap: 6px; }
+.phase-row { display: flex; align-items: stretch; gap: 14px; }
+.phase-tag {
+  flex: none; width: 130px; display: flex; flex-direction: column; justify-content: center;
+  background: var(--c-primary); color: #fff; border-radius: 10px; padding: 12px 14px;
+}
+.phase-tag .pn { font-size: 0.78em; opacity: 0.85; letter-spacing: 0.05em; }
+.phase-tag .pt { font-weight: 700; font-size: 1.0em; }
+.phase-tag .pm { font-size: 0.76em; opacity: 0.85; margin-top: 2px; }
+.phase-tag.qa { background: var(--c-ok-border); }
+.phase-tag.feedback { background: var(--c-accent); }
+.phase-body { flex: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: #f8f9fa; border: 1px solid var(--c-border); border-radius: 10px; padding: 12px 16px; }
+.exec-mode {
+  flex: none; font-size: 0.74em; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.exec-mode.parallel { background: var(--c-track-int-bg); color: var(--c-track-int-text); }
+.exec-mode.serial { background: var(--c-track-beg-bg); color: var(--c-track-beg-text); }
+.worker-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.worker-chip {
+  font-family: 'D2Coding','Menlo','Consolas',monospace; font-size: 0.78em;
+  background: #fff; border: 1px solid var(--c-border); border-radius: 6px; padding: 3px 8px;
+}
+.worker-chip.parallel-chip { border-color: #ffd43b; background: #fff9db; }
+.phase-out { font-size: 0.82em; color: var(--c-muted); width: 100%; margin-top: 2px; }
+.phase-out code { background: #fff; border: 1px solid var(--c-border); border-radius: 4px; padding: 1px 6px; font-size: 0.92em; }
+.phase-connector { text-align: center; color: #adb5bd; font-size: 1.1em; line-height: 1; margin: -2px 0; }
+
+/* ===== Tables ===== */
+table { width: 100%; border-collapse: collapse; margin: 4px 0; font-size: 0.94em; }
+th, td { border: 1px solid var(--c-border); padding: 10px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f3f5; font-weight: 700; }
+tbody tr:nth-child(even) { background: #fafafa; }
+td.col-chatgpt { background: var(--c-warn-bg); }
+td.col-harness { background: var(--c-ok-bg); }
+.cmp-tag { font-weight: 700; }
+.cmp-tag.minus { color: var(--c-warn-text); }
+.cmp-tag.plus { color: #1b5e20; }
+
+/* ===== Design decisions ===== */
+.decision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.decision-card {
+  border: 1px solid var(--c-border); border-radius: 10px; padding: 20px; background: #fff;
+  border-left: 5px solid var(--c-primary);
+}
+.decision-card .dnum { font-size: 1.8em; font-weight: 800; color: var(--c-primary); line-height: 1; }
+.decision-card h4 { margin: 8px 0 8px; font-size: 1.05em; }
+.decision-card p { font-size: 0.9em; color: var(--c-muted); margin: 0; }
+
+/* ===== Generalize (highlight panel) ===== */
+section.panel.highlight { border: 2px solid var(--c-accent); background: #fff0f6; }
+section.panel.highlight .panel-num { background: var(--c-accent); }
+section.panel.highlight .panel-head h2 { color: var(--c-accent); }
+.key-message {
+  background: #fff; border: 2px dashed var(--c-accent); border-radius: 10px;
+  padding: 18px 22px; margin: 0 0 20px; font-size: 1.12em; font-weight: 700; color: #a61e4d;
+}
+.key-message .frame { color: var(--c-primary-dark); }
+.key-message .swap { color: var(--c-accent); }
+section.panel.highlight table td.swap-col { background: #ffe3ec; }
+
+/* ===== Steps ===== */
+.step-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.step-card {
+  border: 1px solid var(--c-border); border-radius: 10px; padding: 18px 18px; background: #fff;
+  position: relative;
+}
+.step-card .step-badge {
+  display: inline-block; background: var(--c-primary); color: #fff; font-size: 0.78em; font-weight: 700;
+  padding: 3px 12px; border-radius: 999px; margin-bottom: 10px;
+}
+.step-card .step-time { float: right; font-size: 0.82em; color: var(--c-muted); font-weight: 600; }
+.step-card h4 { margin: 0 0 8px; font-size: 1.05em; }
+.step-card p { font-size: 0.88em; color: var(--c-muted); margin: 0; }
+
+/* ===== CTA links ===== */
+.cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.cta-card {
+  display: block; border: 1px solid var(--c-border); border-radius: 10px; padding: 18px 20px;
+  background: #fff; text-decoration: none; color: var(--c-text); transition: all 0.15s;
+}
+.cta-card:hover { background: #f1f3f5; border-color: #adb5bd; color: var(--c-text); transform: translateY(-2px); }
+.cta-card .cta-title { font-weight: 700; color: var(--c-primary-dark); font-size: 1.02em; }
+.cta-card .cta-url { font-size: 0.82em; color: var(--c-muted); word-break: break-all; margin-top: 6px; }
+.cta-card.primary { background: var(--c-track-beg-bg); border-color: #a5d8ff; }
+
+/* ===== Footer (강의 페이지 푸터 룩 상속) ===== */
+footer.site-footer {
+  background: #212529; color: #ced4da; padding: 32px 24px; margin-top: 40px;
+  text-align: center; font-size: 0.9em; border-radius: 14px;
+}
+footer.site-footer a { color: #74c0fc; }
+footer.site-footer .self-proof {
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid #495057;
+  color: #adb5bd; font-style: italic; font-size: 0.95em;
+}
+footer.site-footer .self-proof strong { color: #74c0fc; font-style: normal; }
+
+/* ===== Beam projector (1920×1080) ===== */
+@media (min-width: 1600px) {
+  body { font-size: 19px; }
+  .hero h1 { font-size: 3.1em; }
+  .kpi-card .kpi-val { font-size: 2.6em; }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 820px) {
+  body { font-size: 16px; }
+  main { padding: 18px 12px 40px; }
+  section.panel { padding: 22px 18px; border-radius: 10px; }
+  section.hero { padding: 30px 22px; }
+  .hero h1 { font-size: 1.9em; }
+  .hero .hero-sub { font-size: 1.0em; }
+  .transform-block .tval { font-size: 1.5em; }
+  .analogy-grid { grid-template-columns: 1fr; }
+  .phase-row { flex-direction: column; }
+  .phase-tag { width: 100%; flex-direction: row; gap: 8px; align-items: baseline; }
+  .panel-head h2 { font-size: 1.25em; }
+  table { font-size: 0.85em; }
+  th, td { padding: 7px 8px; }
+  .nav-links { display: none; }
+}
+
+/* ===== Print ===== */
+@media print {
+  body { background: #fff; font-size: 10.5pt; line-height: 1.5; }
+  header.dash-nav, .nav-links { display: none !important; }
+  main { max-width: 100%; padding: 0; }
+  section.panel, section.hero { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; margin-bottom: 14px; padding: 16px 18px; }
+  section.hero { background: #1864ab !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .kpi-card, .agent-card, .decision-card, .step-card, .cta-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  footer.site-footer { background: #fff; color: #333; border: 1px solid #ccc; }
+  footer.site-footer a { color: #1864ab; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.78em; color: #555; }
+}
+</style>
+</head>
+<body>
+
+<header class="dash-nav">
+  <div class="nav-row">
+    <p class="nav-brand">하네스로 강의 자료 만들기 <small>발표 대시보드 · gpters.org</small></p>
+    <nav class="nav-links" aria-label="패널 목차">
+      <a href="#kpi">지표</a>
+      <a href="#what">하네스란</a>
+      <a href="#team">팀</a>
+      <a href="#pipeline">흐름</a>
+      <a href="#compare">비교</a>
+      <a href="#decisions">설계</a>
+      <a href="#generalize">일반화</a>
+      <a href="#steps">적용</a>
+      <a href="#links">링크</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     PANEL 1 — HERO
+============================================================ -->
+<section class="hero" aria-labelledby="hero-title">
+  <span class="hero-tag">메타 발표 · 이 자료를 만든 과정 그 자체</span>
+  <h1 id="hero-title">하네스 구조로 강의 자료 만들기</h1>
+  <p class="hero-sub">5명 AI 에이전트 팀이 180분 특강 자료를 약 4시간에</p>
+
+  <div class="hero-transform">
+    <div class="transform-block before">
+      <div class="tlabel">사람 단독</div>
+      <div class="tval">약 28일</div>
+    </div>
+    <div class="transform-arrow" aria-hidden="true">→</div>
+    <div class="transform-block after">
+      <div class="tlabel">하네스</div>
+      <div class="tval">약 4시간</div>
+    </div>
+  </div>
+
+  <p class="hero-meta">작성자 <strong>노제승</strong> · <strong>sachol@kakao.com</strong> · 공인중개사</p>
+</section>
+
+<!-- ============================================================
+     PANEL 2 — KPI
+============================================================ -->
+<section class="panel" id="kpi" aria-labelledby="kpi-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">1</span>
+    <h2 id="kpi-title">핵심 지표</h2>
+    <span class="sub">풀 사이클 1회 결과</span>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi-card accent">
+      <div class="kpi-val">약 4<small>시간</small></div>
+      <div class="kpi-label">사람 작업 시간</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">111<small>장</small></div>
+      <div class="kpi-label">생성 슬라이드</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">6<small>개</small></div>
+      <div class="kpi-label">실습 시나리오</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">17<small>건+</small></div>
+      <div class="kpi-label">법령 인용 (1차 검증)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">50<small>+</small></div>
+      <div class="kpi-label">인용 출처 (URL+확인일)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">7<small>개</small></div>
+      <div class="kpi-label">QA 검증 경계면</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-val">$5~10</div>
+      <div class="kpi-label">풀 사이클 1회 비용</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 3 — WHAT IS HARNESS
+============================================================ -->
+<section class="panel" id="what" aria-labelledby="what-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">2</span>
+    <h2 id="what-title">하네스란?</h2>
+    <span class="sub">한 줄 정의 + 회사 비유</span>
+  </div>
+  <p class="def-quote">Harness = 전문 AI 에이전트 팀 + 각자의 스킬(매뉴얼) + 조율 흐름</p>
+  <div class="analogy-grid">
+    <div class="analogy-col company">
+      <h4>🏢 잘 굴러가는 회사</h4>
+      <div class="map-row"><span class="mk">부서</span><span class="ma">▸</span><span>마케팅·개발·디자인·QA</span></div>
+      <div class="map-row"><span class="mk">매뉴얼</span><span class="ma">▸</span><span>부서별 "우리는 이렇게 일한다"</span></div>
+      <div class="map-row"><span class="mk">사장</span><span class="ma">▸</span><span>새 프로젝트마다 팀 꾸리고 조율</span></div>
+    </div>
+    <div class="analogy-col harness">
+      <h4>🤖 하네스</h4>
+      <div class="map-row"><span class="mk">에이전트</span><span class="ma">▸</span><span>각 분야 전문 AI</span></div>
+      <div class="map-row"><span class="mk">스킬</span><span class="ma">▸</span><span>분야별 단계별 매뉴얼 문서</span></div>
+      <div class="map-row"><span class="mk">오케스트레이터</span><span class="ma">▸</span><span>전체 흐름 자동 조율</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 4 — TEAM (5 agents + orchestrator)
+============================================================ -->
+<section class="panel" id="team" aria-labelledby="team-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">3</span>
+    <h2 id="team-title">팀 구성</h2>
+    <span class="sub">5 에이전트 + 오케스트레이터 1</span>
+  </div>
+  <div class="agent-grid">
+    <article class="agent-card">
+      <div class="agent-name">research-analyst</div>
+      <p class="agent-role">4개 주제 영역 리서치 (도구·사례·법령)</p>
+      <span class="agent-skill">realtor-curriculum-research</span>
+    </article>
+    <article class="agent-card">
+      <div class="agent-name">curriculum-designer</div>
+      <p class="agent-role">모듈 구성·시간 배분·학습 흐름</p>
+      <span class="agent-skill">realtor-curriculum-design</span>
+    </article>
+    <article class="agent-card">
+      <div class="agent-name">content-writer</div>
+      <p class="agent-role">슬라이드 본문·강사 스크립트·실습</p>
+      <span class="agent-skill">realtor-lecture-content</span>
+    </article>
+    <article class="agent-card">
+      <div class="agent-name">html-builder</div>
+      <p class="agent-role">HTML 페이지 빌드 (한국어·인쇄·복사 버튼)</p>
+      <span class="agent-skill">realtor-html-lecture-build</span>
+    </article>
+    <article class="agent-card">
+      <div class="agent-name">qa-reviewer</div>
+      <p class="agent-role">경계면 교차 검증</p>
+      <span class="agent-skill">realtor-lecture-qa</span>
+    </article>
+    <article class="agent-card orchestrator">
+      <div class="agent-name">🎯 오케스트레이터 (사장)</div>
+      <p class="agent-role">5 에이전트 호출·병렬/순차 조율·피드백 사이클 관리</p>
+      <span class="agent-skill">realtor-ai-lecture-orchestrator</span>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 5 — PIPELINE
+============================================================ -->
+<section class="panel" id="pipeline" aria-labelledby="pipeline-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">4</span>
+    <h2 id="pipeline-title">파이프라인 흐름</h2>
+    <span class="sub">병렬은 나란히 · 순차는 화살표</span>
+  </div>
+  <div class="pipeline">
+
+    <div class="phase-row">
+      <div class="phase-tag"><span class="pn">PHASE 1</span><span class="pt">리서치</span><span class="pm">약 50분</span></div>
+      <div class="phase-body">
+        <span class="exec-mode parallel">⫴ 병렬 4명</span>
+        <div class="worker-chips">
+          <span class="worker-chip parallel-chip">AI 기본</span>
+          <span class="worker-chip parallel-chip">매물 분석</span>
+          <span class="worker-chip parallel-chip">고객 응대</span>
+          <span class="worker-chip parallel-chip">시장·법령</span>
+        </div>
+        <div class="phase-out">→ <code>01_research_*.md</code> 4건 · 서로 의존 없음 → 동시 출동</div>
+      </div>
+    </div>
+    <div class="phase-connector" aria-hidden="true">▼</div>
+
+    <div class="phase-row">
+      <div class="phase-tag"><span class="pn">PHASE 2</span><span class="pt">커리큘럼</span><span class="pm">약 20분</span></div>
+      <div class="phase-body">
+        <span class="exec-mode serial">→ 순차 1명</span>
+        <div class="worker-chips"><span class="worker-chip">curriculum-designer</span></div>
+        <div class="phase-out">→ <code>02_curriculum.md</code> · 리서치 4건이 모두 끝나야 시작 가능</div>
+      </div>
+    </div>
+    <div class="phase-connector" aria-hidden="true">▼</div>
+
+    <div class="phase-row">
+      <div class="phase-tag"><span class="pn">PHASE 3</span><span class="pt">콘텐츠</span><span class="pm">약 1시간</span></div>
+      <div class="phase-body">
+        <span class="exec-mode parallel">⫴ 묶음 병렬 3명</span>
+        <div class="worker-chips">
+          <span class="worker-chip parallel-chip">모듈 1·2</span>
+          <span class="worker-chip parallel-chip">모듈 3·4</span>
+          <span class="worker-chip parallel-chip">모듈 5·6</span>
+        </div>
+        <div class="phase-out">→ <code>03_content_module-1~6.md</code> · 톤 일관성 위해 전부 병렬 X, 3명만 묶음</div>
+      </div>
+    </div>
+    <div class="phase-connector" aria-hidden="true">▼</div>
+
+    <div class="phase-row">
+      <div class="phase-tag"><span class="pn">PHASE 4</span><span class="pt">HTML 빌드</span><span class="pm">약 40분</span></div>
+      <div class="phase-body">
+        <span class="exec-mode serial">→ 순차 1명</span>
+        <div class="worker-chips"><span class="worker-chip">html-builder</span></div>
+        <div class="phase-out">→ <code>output/index.html</code> · <code>output/practice.html</code></div>
+      </div>
+    </div>
+    <div class="phase-connector" aria-hidden="true">▼</div>
+
+    <div class="phase-row">
+      <div class="phase-tag qa"><span class="pn">PHASE 5</span><span class="pt">QA</span><span class="pm">약 30분</span></div>
+      <div class="phase-body">
+        <span class="exec-mode serial">→ 순차 1명</span>
+        <div class="worker-chips"><span class="worker-chip">qa-reviewer</span></div>
+        <div class="phase-out">→ <code>04_qa_report.md</code> · <strong>7개 경계면 교차검증</strong> + 법령 1차 출처 재확인</div>
+      </div>
+    </div>
+    <div class="phase-connector" aria-hidden="true">▼</div>
+
+    <div class="phase-row">
+      <div class="phase-tag feedback"><span class="pn">PHASE 6</span><span class="pt">보고+피드백</span><span class="pm">반복</span></div>
+      <div class="phase-body">
+        <span class="exec-mode serial">↺ 부분 재실행</span>
+        <div class="phase-out">사용자 보고 → 피드백 발생 시 <strong>영향받은 에이전트만</strong> 재실행 (전체 재제작 X)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 6 — COMPARE
+============================================================ -->
+<section class="panel" id="compare" aria-labelledby="compare-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">5</span>
+    <h2 id="compare-title">ChatGPT 단독 vs 하네스</h2>
+    <span class="sub">진짜 차이</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%;">차이점</th>
+        <th style="width:41%;">ChatGPT 단독</th>
+        <th style="width:41%;">하네스 (5 에이전트)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>작업 깊이</strong></td>
+        <td class="col-chatgpt"><span class="cmp-tag minus">얕음</span> 표면적("일반론")</td>
+        <td class="col-harness"><span class="cmp-tag plus">깊음</span> 각 에이전트가 자기 영역만 파니까</td>
+      </tr>
+      <tr>
+        <td><strong>사실 검증</strong></td>
+        <td class="col-chatgpt"><span class="cmp-tag minus">수동</span> 사람이 따로 검증</td>
+        <td class="col-harness"><span class="cmp-tag plus">자동</span> qa-reviewer가 1차 출처 재검증</td>
+      </tr>
+      <tr>
+        <td><strong>일관성</strong></td>
+        <td class="col-chatgpt"><span class="cmp-tag minus">깨짐</span> 모듈마다 다름</td>
+        <td class="col-harness"><span class="cmp-tag plus">통일</span> 표준 가상 매물·법령 인용 통일</td>
+      </tr>
+      <tr>
+        <td><strong>재실행</strong></td>
+        <td class="col-chatgpt"><span class="cmp-tag minus">처음부터</span> 다시</td>
+        <td class="col-harness"><span class="cmp-tag plus">부분</span> 영향받은 에이전트만</td>
+      </tr>
+      <tr>
+        <td><strong>비용</strong></td>
+        <td class="col-chatgpt">낮음 (월 $20)</td>
+        <td class="col-harness">중간 (Claude Code Pro + 토큰)</td>
+      </tr>
+      <tr>
+        <td><strong>학습 곡선</strong></td>
+        <td class="col-chatgpt">즉시 사용</td>
+        <td class="col-harness">하네스 구성 1회 (이후 무한 재사용)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================
+     PANEL 7 — DESIGN DECISIONS
+============================================================ -->
+<section class="panel" id="decisions" aria-labelledby="decisions-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">6</span>
+    <h2 id="decisions-title">핵심 설계 결정 3가지</h2>
+  </div>
+  <div class="decision-grid">
+    <article class="decision-card">
+      <div class="dnum">①</div>
+      <h4>병렬 vs 순차</h4>
+      <p>리서치 4개 영역은 의존 없음 → 병렬. 커리큘럼은 리서치 4건이 끝나야 시작 → 순차. 콘텐츠는 톤 일관성 위해 3명만 묶음 병렬.</p>
+    </article>
+    <article class="decision-card">
+      <div class="dnum">②</div>
+      <h4>파일 기반 데이터 전달</h4>
+      <p>메모리·메시지가 아닌 <code>_workspace/</code>의 .md 파일로 주고받음. 사후 검증·부분 재실행 가능, 사람이 어디가 문제인지 진단 가능.</p>
+    </article>
+    <article class="decision-card">
+      <div class="dnum">③</div>
+      <h4>QA "경계면 교차 비교"</h4>
+      <p>"슬라이드 다 있다"가 아니라 "리서치 노트의 도구가 콘텐츠 슬라이드에 정확히 등장하는가" 등 7개 경계면 검증. 1건만 어긋나도 Critical/Major.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 8 — GENERALIZE (HIGHLIGHT)
+============================================================ -->
+<section class="panel highlight" id="generalize" aria-labelledby="generalize-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">7</span>
+    <h2 id="generalize-title">당신의 도메인은?</h2>
+    <span class="sub">발표 하이라이트</span>
+  </div>
+  <p class="key-message">
+    <span class="frame">에이전트 5명 + 스킬 6개 틀은 그대로</span>,
+    <span class="swap">도메인 특수 부분(스킬 내용)만 교체</span>.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:26%;">도메인</th>
+        <th class="swap-col">변경 필요한 부분 (스킬 내용)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>⚖️ 변호사 대상 AI 강의</strong></td>
+        <td class="swap-col">리서치 주제·법령(변호사법) / 표준 가상 사건 / 톤(변호사 적합)</td>
+      </tr>
+      <tr>
+        <td><strong>🩺 의사 대상 AI 강의</strong></td>
+        <td class="swap-col">리서치 주제·법령(의료법·개보법 의료) / 표준 가상 환자 / 톤(의료진 적합)</td>
+      </tr>
+      <tr>
+        <td><strong>💼 일반 직장인 AI 강의</strong></td>
+        <td class="swap-col">리서치 주제 / 표준 시나리오 / 톤(가벼움)</td>
+      </tr>
+      <tr>
+        <td><strong>🎓 학생 대상 AI 강의</strong></td>
+        <td class="swap-col">리서치 주제 / 안전 가이드 / 톤(매우 가벼움)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================================================
+     PANEL 9 — 4-STEP
+============================================================ -->
+<section class="panel" id="steps" aria-labelledby="steps-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">8</span>
+    <h2 id="steps-title">본인 도메인 적용 4-Step</h2>
+  </div>
+  <div class="step-flow">
+    <article class="step-card">
+      <span class="step-badge">STEP 1</span><span class="step-time">약 1시간</span>
+      <h4>하네스 구성</h4>
+      <p>Claude Code + harness 스킬 설치 → "OO 대상 AI 특강 하네스 구성해줘" → 5 에이전트 + 6 스킬 + CLAUDE.md 자동 생성. (1회)</p>
+    </article>
+    <article class="step-card">
+      <span class="step-badge">STEP 2</span><span class="step-time">약 4시간</span>
+      <h4>첫 풀 사이클</h4>
+      <p>"OO 대상 AI 특강 자료 만들어줘" → Phase 1~6 자동 진행 → 결과 검토.</p>
+    </article>
+    <article class="step-card">
+      <span class="step-badge">STEP 3</span><span class="step-time">반복</span>
+      <h4>피드백 사이클</h4>
+      <p>"톤을 ~로" "모듈 N에 ~ 추가" "법령 시행일 확인" → 영향받은 에이전트만 부분 재실행.</p>
+    </article>
+    <article class="step-card">
+      <span class="step-badge">STEP 4</span><span class="step-time">1회</span>
+      <h4>발행</h4>
+      <p>GitHub 리포 구조 + Vercel 자동 배포 + 강사 매뉴얼·수강생 가이드 작성.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANEL 10 — LINKS / CTA
+============================================================ -->
+<section class="panel" id="links" aria-labelledby="links-title">
+  <div class="panel-head">
+    <span class="panel-num" aria-hidden="true">9</span>
+    <h2 id="links-title">직접 보기</h2>
+    <span class="sub">실제 산출물 + 사례 전문</span>
+  </div>
+  <div class="cta-grid">
+    <a class="cta-card primary" href="https://shinhwa-ai-lecture.vercel.app" target="_blank" rel="noopener">
+      <span class="cta-title">📚 실제 강의 페이지</span>
+      <div class="cta-url">shinhwa-ai-lecture.vercel.app</div>
+    </a>
+    <a class="cta-card" href="https://shinhwa-ai-lecture.vercel.app/practice" target="_blank" rel="noopener">
+      <span class="cta-title">📋 실습 자료</span>
+      <div class="cta-url">shinhwa-ai-lecture.vercel.app/practice</div>
+    </a>
+    <a class="cta-card" href="https://github.com/sachol/shinhwa-ai-lecture" target="_blank" rel="noopener">
+      <span class="cta-title">💻 GitHub 리포</span>
+      <div class="cta-url">github.com/sachol/shinhwa-ai-lecture</div>
+    </a>
+    <a class="cta-card" href="https://github.com/sachol/shinhwa-ai-lecture/blob/main/docs/case-study.md" target="_blank" rel="noopener">
+      <span class="cta-title">📄 사례 전문 (case-study)</span>
+      <div class="cta-url">github.com/sachol/.../docs/case-study.md</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <p>© 노제승 · 2026 · <a href="mailto:sachol@kakao.com">sachol@kakao.com</a> · CC BY-NC-SA 4.0</p>
+  <p class="self-proof">
+    이 발표 대시보드 또한 <strong>동일한 하네스 워크플로우(Claude Code + 에이전트)</strong>로 제작되었습니다.
+  </p>
+</footer>
+
+</body>
+</html>
