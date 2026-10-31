@@ -5,6 +5,8 @@
 **Live 강의 페이지:** https://shinhwa-ai-lecture.vercel.app
 **실습 자료:** https://shinhwa-ai-lecture.vercel.app/practice
 
+**AI 매물사진 개선 실습:** https://shinhwa-ai-lecture.vercel.app/property-photo
+
 ---
 
 ## 왜 만들었나
