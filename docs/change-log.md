@@ -11,6 +11,11 @@
 
 ---
 
+## v1.2.1 — 2026-10-31 (카카오톡 OG 미리보기 추가)
+
+- `property-photo.html`에 Open Graph·Twitter Card 메타데이터 추가
+- 카카오톡 링크 미리보기용 1200×630 이미지 `assets/og-property-photo.png` 추가
+- 절대 URL과 이미지 크기·대체텍스트 명시
 ## v1.2.0 — 2026-10-31 (AI 매물사진 개선 실습교재 추가)
 
 - 독립 실습 페이지 `property-photo.html` 추가
